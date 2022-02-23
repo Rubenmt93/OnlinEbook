@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "onlinebook-a779c": {
+      "hosting": {
+        "OnlinEbook": [
+          "onlinebook-a779c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "onlinebook-a779c"
+  }
+}

@@ -30,7 +30,7 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "src/assets/my-theme.scss",
               "src/styles.css"
             ],
             "scripts": []
@@ -98,10 +98,20 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "OnlinEbook:build:production",
+            "firebaseProject": "onlinebook-a779c",
+            "firebaseHostingSite": "onlinebook-a779c"
           }
         }
       }

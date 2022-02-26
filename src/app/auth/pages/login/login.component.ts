@@ -23,9 +23,20 @@ export class LoginComponent  {
 
   }
   login(){
-    console.log("inicio sesion");
+    console.log();
+  
     this.authservice.login(this.loginForm.controls['email'].value,this.loginForm.controls['passwd'].value)
-    
+    this.getlocaluser()
+
   }
-   
+  async getlocaluser(){
+    const user = await this.authservice.getCurrentuser();
+    if(user){
+      console.log('User ->', user.email);
+      
+    }else{
+      console.log('no user');
+      
+    }
+  }
 }

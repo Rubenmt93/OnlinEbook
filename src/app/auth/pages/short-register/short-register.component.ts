@@ -4,20 +4,22 @@ import { ConfirmedValidator } from '../../confirmed.validators';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-short-register',
+  templateUrl: './short-register.component.html',
+  styleUrls: ['./short-register.component.css']
 })
-export class RegisterComponent{
+export class ShortRegisterComponent {
+
+  
+
+ 
   emailPattern:string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 
   registerForm: FormGroup = this.fb.group({
     email     : ['',[Validators.required,Validators.pattern(this.emailPattern)]],
     passwd1    : ['',[Validators.required,Validators.minLength(6)]],
-    passwd2    : ['',[Validators.required,Validators.minLength(6)]],
-    name      : ['',[Validators.required,Validators.minLength(3)]],
-    username  : ['',[Validators.required,Validators.minLength(3)]],
-    age       : ['',[Validators.required,Validators.min(0)]],    
+    passwd2    : ['',[Validators.required,Validators.minLength(6)]],   
+    username  : ['',[Validators.required,Validators.minLength(3)]],    
   },{ 
     validator: ConfirmedValidator('passwd1', 'passwd2')
   })
@@ -27,7 +29,6 @@ export class RegisterComponent{
 
   validezCampo(campo: string){
     return this.registerForm.controls[campo].errors && this.registerForm.controls[campo].touched
-
   }
   matchPasswd(){
       if (this.registerForm.controls['passwd1'].value !== this.registerForm.controls['passwd1'].value 
@@ -36,16 +37,9 @@ export class RegisterComponent{
       }
       return false
   }
-  register(){
-    console.log("Valido:"+ this.registerForm.valid);    
-    console.log("Value:");
-    console.log( this.registerForm.value );
+  register(){    
     this.authservice.register(this.registerForm.controls['email'].value,this.registerForm.controls['passwd1'].value)
-
-
-    
   }
-
 
 
 }

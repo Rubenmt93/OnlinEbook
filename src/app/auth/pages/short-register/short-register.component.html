@@ -1,0 +1,77 @@
+<div class="componentcontainer">
+    <div class="container">       
+        
+        <div class="header">
+            <h2>Registro</h2>
+        </div>  
+        
+
+        <form   autocomplete="off"
+                [formGroup]="registerForm"
+                (ngSubmit)="register()">   
+            <div class="formGrid">               
+                
+                <mat-form-field class="example-full-width">
+                    <mat-label> 
+                        <mat-icon matPrefix> email </mat-icon> 
+                        Correo electrónico
+                    </mat-label>
+                    <input  type="email" 
+                            formControlName=email              
+                            matInput                                                 
+                            placeholder="example@example.com">         
+                    <mat-error *ngIf="validezCampo('email')">Introducir un correo valido</mat-error>
+                </mat-form-field>
+
+                
+                <mat-form-field class="example-full-width">                
+                    <mat-label> 
+                        <mat-icon matPrefix> person_outline </mat-icon> 
+                        Nombre de usuario
+                    </mat-label>
+                    <input  type="text"
+                            formControlName='username' 
+                            matInput>  
+                    <mat-error *ngIf="validezCampo('username')">Campo requerido</mat-error>                     
+                </mat-form-field>      
+                
+                <mat-form-field class="example-full-width">                
+                    <mat-label> 
+                        <mat-icon matPrefix> lock </mat-icon> 
+                        Contraseña
+                    </mat-label>
+                    <input  type="password"
+                            formControlName='passwd1'  
+                            matInput> 
+                    <mat-error *ngIf="validezCampo('passwd1')">Campo requerido</mat-error>                                         
+                </mat-form-field>
+                
+                <mat-form-field class="example-full-width">                
+                    <mat-label> 
+                        <mat-icon matPrefix> lock </mat-icon> 
+                        Repetir Contraseña
+                    </mat-label>
+                    <input  type="password"
+                            formControlName='passwd2'   
+                            matInput>                          
+                    <mat-error *ngIf="validezCampo('passwd2')">Campo requerido</mat-error>   
+                </mat-form-field>
+
+                <mat-error *ngIf="matchPasswd()">Las contraseñas deben coincidir</mat-error>         
+            </div>                                 
+       
+            <button mat-raised-button 
+                    type="submit"
+                    color="primary"
+                    [disabled]="registerForm.invalid">
+                    Acceder
+            </button>
+
+            <span> ¿Ya tienes una cuenta? <a routerLink='/auth/login'>Inicia sesión</a></span>
+            
+        </form>
+       
+    </div>
+
+     
+</div>

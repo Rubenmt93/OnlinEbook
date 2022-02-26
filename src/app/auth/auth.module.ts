@@ -10,13 +10,15 @@ import { RegisterComponent } from './pages/register/register.component';
 import { AngularFireModule } from '@angular/fire/compat'
 import { environment } from '../../environments/environment';
 import { AuthService } from './services/auth.service';
+import { ShortRegisterComponent } from './pages/short-register/short-register.component';
 
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ShortRegisterComponent
   ],
   imports: [
     CommonModule,

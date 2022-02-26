@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth} from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app'
-
+import {first} from 'rxjs/operators' 
 @Injectable()
 export class AuthService {
 
@@ -12,7 +12,8 @@ export class AuthService {
     try{
       console.log('banana');
       
-      return await this.fireBaseAuth.signInWithEmailAndPassword(email,passwd)
+       return await this.fireBaseAuth.signInWithEmailAndPassword(email,passwd);
+       
     }catch (err){
       console.log("Error en el login", err);
       return null
@@ -31,5 +32,7 @@ export class AuthService {
       return null
     } 
   }
-  getCurrentuser(){}
+   getCurrentuser(){
+    return  this.fireBaseAuth.authState.pipe(first()).toPromise();
+  }
 }

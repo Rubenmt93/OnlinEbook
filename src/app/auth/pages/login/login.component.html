@@ -1,26 +1,46 @@
 <div class="componentcontainer">
     <div class="container">
+        
+        
         <div class="header">
             <h2>Inicio sesion</h2>
-        </div>
-
-       
-        <form action="">
-    
+        </div>       
+        <form   autocomplete="off"
+                [formGroup]="loginForm"
+                (ngSubmit)="login()">    
             <mat-form-field class="example-full-width">
-                <mat-label>Email</mat-label>
-                <input type="email" 
-                       matInput  
+                <mat-label> 
+                    <mat-icon matPrefix> email </mat-icon> 
+                    Correo electrónico
+                </mat-label>
+                <input type="email"                 
+                       matInput
+                       formControlName='email'                        
                        placeholder="example@example.com">         
+                <mat-error *ngIf="validezCampo('email')">Introducir un correo valido</mat-error>
             </mat-form-field>
 
-             <mat-form-field class="example-full-width">
-                <mat-label>Contraseña</mat-label>
-                <input type="password" 
-                       matInput  
-                       >         
-             </mat-form-field>
-             <button mat-raised-button color="primary">Primary</button>
+            <mat-form-field class="example-full-width">
+                
+                <mat-label> 
+                    <mat-icon matPrefix> lock </mat-icon> 
+                    Contraseña
+                </mat-label>
+                <input  [type]="hide ? 'password' : 'text'" 
+                        formControlName='passwd' 
+                        matInput> 
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>        
+                <mat-error *ngIf="validezCampo('passwd')">Campo requerido</mat-error>
+            </mat-form-field>
+            <button mat-raised-button 
+                    color="primary"
+                    type="submit"
+                    [disabled]="loginForm.invalid">
+                        Acceder
+            </button>
+            <span>  ¿No tienes cuenta?<a routerLink='/auth/register'> Registrate</a></span>
         </form>
     </div>
+
+    
 </div>

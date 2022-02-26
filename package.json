@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-material-components/file-input": "^7.0.1",
     "@angular/animations": "~12.1.0-",
     "@angular/cdk": "^12.2.13",
     "@angular/common": "~12.1.0-",
@@ -21,11 +22,13 @@
     "@angular/platform-browser": "~12.1.0-",
     "@angular/platform-browser-dynamic": "~12.1.0-",
     "@angular/router": "~12.1.0-",
+    "@firebase/auth": "^0.19.9",
+    "angular-material-fileupload": "^3.0.2",
     "firebase": "^9.6.7",
+    "rxfire": "^6.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
-    "zone.js": "~0.11.4",
-    "rxfire": "^6.0.0"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.1.3",

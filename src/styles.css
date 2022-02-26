@@ -1,12 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-body {
-    
+body { 
+    padding: 0px;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue",
+    sans-serif;
     background: url('./assets/ebook-3089013_1920.jpg') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-     background-size: cover;
-} 
+    background-size: cover;
+}

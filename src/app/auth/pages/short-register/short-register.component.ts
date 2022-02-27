@@ -8,10 +8,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './short-register.component.html',
   styleUrls: ['./short-register.component.css']
 })
-export class ShortRegisterComponent {
-
-  
-
+export class ShortRegisterComponent { 
  
   emailPattern:string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 
@@ -23,9 +20,7 @@ export class ShortRegisterComponent {
   },{ 
     validator: ConfirmedValidator('passwd1', 'passwd2')
   })
-  constructor(private fb: FormBuilder, private authservice:AuthService) { }
-
-  
+  constructor(private fb: FormBuilder, private authservice:AuthService) { }  
 
   validezCampo(campo: string){
     return this.registerForm.controls[campo].errors && this.registerForm.controls[campo].touched

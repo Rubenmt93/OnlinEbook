@@ -26,10 +26,10 @@
                     <mat-icon matPrefix> lock </mat-icon> 
                     Contraseña
                 </mat-label>
-                <input  [type]="hide ? 'password' : 'text'" 
+                <input  [type]="showPasswd ? 'password' : 'text'" 
                         formControlName='passwd' 
                         matInput> 
-                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>        
+                <mat-icon matSuffix (click)="showPasswd = !showPasswd">{{showPasswd ? 'visibility_off' : 'visibility'}}</mat-icon>        
                 <mat-error *ngIf="validezCampo('passwd')">Campo requerido</mat-error>
             </mat-form-field>
             <button mat-raised-button 

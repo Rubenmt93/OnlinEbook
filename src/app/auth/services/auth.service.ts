@@ -5,34 +5,37 @@ import {first} from 'rxjs/operators'
 @Injectable()
 export class AuthService {
 
-  constructor(private fireBaseAuth:AngularFireAuth ) { }
+  constructor(public fireBaseAuth:AngularFireAuth ) { }
 
   async login( email:string,passwd:string){
-
-    try{
-      console.log('banana');
-      
-       return await this.fireBaseAuth.signInWithEmailAndPassword(email,passwd);
-       
+    try{     
+       return await this.fireBaseAuth.signInWithEmailAndPassword(email,passwd);       
     }catch (err){
       console.log("Error en el login", err);
       return null
     } 
   }
-  logout(){}
+  async logout(){
+    try{
+      await this.fireBaseAuth.signOut();
+    }
+    catch  (err){
+      console.log("Error en el logout", err);
+    }
+    
+  }
   
   async register( email:string,passwd:string){
-
-    try{
-      console.log('banana registrada');
-      
+    try{       
       return await this.fireBaseAuth.createUserWithEmailAndPassword(email,passwd)
     }catch (err){
       console.log("Error en el register", err);
       return null
     } 
   }
-   getCurrentuser(){
+
+  getCurrentuser(){
     return  this.fireBaseAuth.authState.pipe(first()).toPromise();
   }
+
 }

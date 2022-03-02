@@ -9,10 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { AuthModule } from './auth/auth.module';
-// import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-// import { environment } from '../environments/environment';
-// import { provideAuth,getAuth } from '@angular/fire/auth';
-//import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+
 import { LandingPageModule } from './landing-page/landing-page.module';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 
@@ -29,9 +26,7 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     AuthModule,
     LandingPageModule,
     AngularMaterialModule,
-    // provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    // provideAuth(() => getAuth()),
-    // provideFirestore(() => getFirestore())
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

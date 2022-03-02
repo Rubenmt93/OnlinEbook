@@ -5,8 +5,7 @@
         <div class="header">
             <h2>Inicio sesion</h2>
         </div>       
-        <form   autocomplete="off"
-                [formGroup]="loginForm"
+        <form   [formGroup]="loginForm"
                 (ngSubmit)="login()">    
             <mat-form-field class="example-full-width">
                 <mat-label> 
@@ -17,11 +16,10 @@
                        matInput
                        formControlName='email'                        
                        placeholder="example@example.com">         
-                <mat-error *ngIf="validezCampo('email')">Introducir un correo valido</mat-error>
+                <mat-error *ngIf="validezCampo('email')"><mat-icon>help</mat-icon>Introducir un correo valido</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="example-full-width">
-                
+            <mat-form-field class="example-full-width">                
                 <mat-label> 
                     <mat-icon matPrefix> lock </mat-icon> 
                     Contraseña
@@ -30,14 +28,16 @@
                         formControlName='passwd' 
                         matInput> 
                 <mat-icon matSuffix (click)="showPasswd = !showPasswd">{{showPasswd ? 'visibility_off' : 'visibility'}}</mat-icon>        
-                <mat-error *ngIf="validezCampo('passwd')">Campo requerido</mat-error>
+                <mat-error *ngIf="validezCampo('passwd')"><mat-icon>help</mat-icon>Campo requerido</mat-error>
             </mat-form-field>
+               
             <button mat-raised-button 
                     color="primary"
                     type="submit"
                     [disabled]="loginForm.invalid">
                         Acceder
             </button>
+            <span (click)="forgotPasswd()">  ¿Has olvidado la contraseña? </span>
             <span>  ¿No tienes cuenta?<a routerLink='/auth/register'> Registrate</a></span>
         </form>
     </div>

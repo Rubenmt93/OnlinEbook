@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Recupera tu cuenta</h1>
+<div mat-dialog-content>
+    Introduce tu correo electrónico
+    <form   [formGroup]="passwdForm"
+            (ngSubmit)="forgotPasswd()"> 
+        <mat-form-field class="example-full-width">
+        <mat-label> 
+            <mat-icon matPrefix> email </mat-icon> 
+            Correo electrónico
+        </mat-label>
+        <input type="email"                 
+               matInput
+               formControlName='email'                        
+               placeholder="example@example.com">         
+        </mat-form-field>
+        
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button           
+            color="warn"
+            type="submit"
+            (click)="forgotPasswd()">
+        Enviar correo 
+    </button>
+</div>

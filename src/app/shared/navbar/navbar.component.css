@@ -4,5 +4,11 @@
       color: white;
       text-decoration: none;
       margin: 20px;
-      align-self:flex-end;
+      
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  mat-toolbar{
+    position: fixed;
   }

@@ -6,8 +6,7 @@
         </div>  
         
 
-        <form   autocomplete="off"
-                [formGroup]="registerForm"
+        <form   [formGroup]="registerForm"
                 (ngSubmit)="register()">   
             <div class="formGrid">
                 <div class="div1">
@@ -33,30 +32,21 @@
                             Correo electrónico
                         </mat-label>
                         <input  type="email" 
-                                formControlName=email              
-                                matInput                                                 
-                                placeholder="example@example.com">         
+                                formControlName=email  
+                                autocomplete="on"            
+                                matInput>         
                         <mat-error *ngIf="validezCampo('email')">Introducir un correo valido</mat-error>
                     </mat-form-field>
     
-                    <mat-form-field class="example-full-width">                
-                        <mat-label> 
-                            <mat-icon matPrefix> person </mat-icon> 
-                            Nombre
-                        </mat-label>
-                        <input  type="text"
-                                formControlName='name' 
-                                matInput> 
-                        <mat-error *ngIf="validezCampo('name')">Campo requerido</mat-error>
-                         
-                    </mat-form-field>
+                    
                     <mat-form-field class="example-full-width">                
                         <mat-label> 
                             <mat-icon matPrefix> person_outline </mat-icon> 
                             Nombre de usuario
                         </mat-label>
                         <input  type="text"
-                                formControlName='username' 
+                                formControlName='username'
+                                autocomplete="on" 
                                 matInput>  
                         <mat-error *ngIf="validezCampo('username')">Campo requerido</mat-error>                     
                     </mat-form-field>              
@@ -64,27 +54,19 @@
 
 
                 <div class= "div3">                    
-                    <mat-form-field class="example-full-width">
-                        <mat-label> 
-                            <mat-icon matPrefix> date_range </mat-icon> 
-                            edad
-                        </mat-label>
-                        <input  type="number"    
-                                formControlName='age'              
-                                matInput>         
-                        <mat-error *ngIf="validezCampo('age')">Campo requerido</mat-error>
-
-                    </mat-form-field>
+                    
         
                     <mat-form-field class="example-full-width">                
                         <mat-label> 
                             <mat-icon matPrefix> lock </mat-icon> 
                             Contraseña
                         </mat-label>
-                        <input  type="password"
-                                formControlName='passwd1'  
+                        <input   [type]="showPasswd ? 'password' : 'text'" 
+                                formControlName='passwd'  
+                                autocomplete="on"
                                 matInput> 
-                        <mat-error *ngIf="validezCampo('passwd1')">Campo requerido</mat-error>                                         
+                        <mat-icon matSuffix (click)="showPasswd = !showPasswd">{{showPasswd ? 'visibility_off' : 'visibility'}}</mat-icon>        
+                        <mat-error *ngIf="validezCampo('passwd')">Campo requerido</mat-error>                                         
                     </mat-form-field>
                     
                     <mat-form-field class="example-full-width">                
@@ -92,10 +74,12 @@
                             <mat-icon matPrefix> lock </mat-icon> 
                             Repetir Contraseña
                         </mat-label>
-                        <input  type="password"
-                                formControlName='passwd2'   
-                                matInput>                          
-                        <mat-error *ngIf="validezCampo('passwd2')">Campo requerido</mat-error>   
+                        <input  [type]="showPasswd ? 'password' : 'text'" 
+                                autocomplete="on"
+                                formControlName='passwdConfirm'   
+                                matInput>
+                        <mat-icon matSuffix (click)="showPasswd = !showPasswd">{{showPasswd ? 'visibility_off' : 'visibility'}}</mat-icon>        
+                        <mat-error *ngIf="validezCampo('passwdConfirm')">Campo requerido</mat-error>   
                     </mat-form-field>
 
                     <mat-error *ngIf="matchPasswd()">Las contraseñas deben coincidir</mat-error> 
@@ -106,7 +90,12 @@
                         type="submit"
                         color="primary"
                         [disabled]="registerForm.invalid">
-                        Acceder
+                    Registrarse en OnlinEbook
+                </button>
+                <button mat-raised-button                
+                        color="basic"
+                        type="button">
+                    Acceder con Google
                 </button>
                 
 

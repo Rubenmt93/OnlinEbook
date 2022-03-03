@@ -11,7 +11,7 @@ import { VerifyemailComponent } from './pages/verifyemail/verifyemail.component'
 
 import { AngularFireModule } from '@angular/fire/compat'
 import { environment } from '../../environments/environment';
-import { AuthService } from './services/auth.service';
+import { AuthService } from '../services/auth.service';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 

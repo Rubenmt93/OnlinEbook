@@ -20,7 +20,9 @@
                             Subir imagen
                     </button>
                     <input  hidden                             
-                            #fileInput type="file" 
+                            #fileInput
+                            (change)="uploadFile($event)"                             
+                            type="file" 
                             id="file"> 
                     
                     
@@ -61,7 +63,7 @@
                             <mat-icon matPrefix> lock </mat-icon> 
                             Contraseña
                         </mat-label>
-                        <input   [type]="showPasswd ? 'password' : 'text'" 
+                        <input  [type]="showPasswd ? 'password' : 'text'" 
                                 formControlName='passwd'  
                                 autocomplete="on"
                                 matInput> 
@@ -92,12 +94,12 @@
                         [disabled]="registerForm.invalid">
                     Registrarse en OnlinEbook
                 </button>
-                <button mat-raised-button                
+                <!-- <button mat-raised-button                
                         color="basic"
                         type="button">
                     Acceder con Google
                 </button>
-                
+                 -->
 
             </div>
             <span> ¿Ya tienes una cuenta? <a routerLink='/auth/login'>Inicia sesión</a></span>

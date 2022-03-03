@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthService } from 'src/app/auth/services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -12,9 +12,22 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class NavbarComponent{
   
-  userEmail:string = ''
+  userName:string = ''
+  userLogged:boolean=false;
   constructor(private authService:AuthService,
-              private router:Router,) {} 
+              private router:Router,) {                
+                this.authService.userStateObs().subscribe(user =>{
+                  if (user) {                    
+                    this.userName=user.displayName!
+                    this.userLogged=true;
+                    console.log('flag');
+                    
+                  }else{
+                    this.userName!=''
+                    this.userLogged=false;
+                  }
+                });
+              } 
     
   logout(){
        this.authService.SignOut()
@@ -24,13 +37,7 @@ export class NavbarComponent{
 
       
    }
-   isLogged(){    
-    if( this.authService.isLoggedIn){
-      this.userEmail=this.authService.getUserName()
-      return true
-    }
-    return false
-   }
+   
    goHome(){
     this.router.navigate(['/'])
    }

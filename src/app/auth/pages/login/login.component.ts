@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -27,13 +27,10 @@ export class LoginComponent  {
       if (user) {                    
          if(!user.emailVerified){
            this.router.navigate(['/auth/verifyEmail'])
-        }else{
-          console.log (user)
-          this.router.navigate(['/'])
-        }
+          }else{          
+            this.router.navigate(['/'])
+          }
        
-      }else{
-        
       }
     });
   }
@@ -77,7 +74,7 @@ export class DialogPasswd {
     email: ['',[Validators.required,Validators.pattern(this.emailPattern)]],   
   })
   forgotPasswd(){
-    console.log('Banderita')
+    
     const email=this.passwdForm.controls['email'].value;
     this.authservice.ForgotPassword(email)
   }

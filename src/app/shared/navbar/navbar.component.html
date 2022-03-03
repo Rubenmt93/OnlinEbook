@@ -1,12 +1,15 @@
  <mat-toolbar>
-  <mat-icon (click)=goHome() style="cursor: pointer;">home</mat-icon>
-  <span><a routerLink='/'> Inicio </a></span>      
+ 
+  <span><a routerLink='/'> Inicio </a></span>  
+  <span><a routerLink='/catalog'> Catalogo </a></span>    
+  <div *ngIf="userLogged" >
+    <span><a routerLink='/mylibrary'> Mi biblioteca </a></span>   
+  </div>     
   
   <span class="example-spacer"></span>  
     
-  <div *ngIf="isLogged(); else notLogged" >
-    <span><a href="#" (click)="logout()">Logout</a></span>
-    <span> {{this.userEmail}}</span>
+  <div *ngIf="userLogged; else notLogged" >
+    <span><a routerLink='/profile'> {{this.userName}}</a></span>  
   </div>
   <ng-template #notLogged>
     <span><a routerLink='/auth/login'> Login</a></span>      

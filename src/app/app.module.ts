@@ -12,6 +12,8 @@ import { AuthModule } from './auth/auth.module';
 
 import { LandingPageModule } from './landing-page/landing-page.module';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { MylibraryModule } from './mylibrary/mylibrary.module';
+import { CatalogModule } from './catalog/catalog.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     AuthModule,
     LandingPageModule,
     AngularMaterialModule,
+    MylibraryModule,
+  
    
   ],
   providers: [],

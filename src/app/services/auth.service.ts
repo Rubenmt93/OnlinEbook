@@ -8,27 +8,21 @@ import firebase from 'firebase/compat';
 @Injectable()
 export class AuthService {
   userState: any;
-  constructor(
-    //public afs: AngularFirestore,
-    public afAuth: AngularFireAuth,
-    public router: Router,    
-  ) {
+  constructor( public afAuth: AngularFireAuth,
+               public router: Router,) {
     this.userStateObs().subscribe(user => {
       if (user) {
         this.userState = user;
-        localStorage.setItem('user', JSON.stringify(this.userState));
-        JSON.parse(localStorage.getItem('user')!); /// Linea rara
+        localStorage.setItem('userOnlinebook', JSON.stringify(this.userState));
+         JSON.parse(localStorage.getItem('userOnlinebook')!); /// Linea rara
       } else {
-        localStorage.removeItem('user')
-        JSON.parse(localStorage.getItem('user')!);
+        localStorage.removeItem('userOnlinebook')
+         JSON.parse(localStorage.getItem('userOnlinebook')!);
       }
     });
   }
   userStateObs(){
      return this.afAuth.authState
-  }
-  getUserName(){
-    return this.userState.displayName
   }
 
   SignIn(email:string, password:string): Promise<void> {
@@ -60,15 +54,12 @@ export class AuthService {
 
   }
   SignOut() {
-    return this.afAuth.signOut().then(() => {
-      localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
+    return this.afAuth.signOut()
+    .then(() => {
+      localStorage.removeItem('userOnlinebook');
+      this.router.navigate(['/auth/login']);
     })
-  }
-  get isLoggedIn(): boolean {  
-    const user = JSON.parse(localStorage.getItem('user')!);
-    return (user !== null) ? true : false;
-  }
+  }  
   SendVerificationMail() {
       return this.afAuth.currentUser.then(u => u!.sendEmailVerification())
       .then(() => {
@@ -77,10 +68,10 @@ export class AuthService {
   }    
 
   ForgotPassword(passwordResetEmail:string) {
-    console.log('Banderita')
+    
     return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
     .then(() => {
-      window.alert('Password reset email sent, check your inbox.');
+      window.alert('Enviado correo de recuperacion de cuenta');
     }).catch((error) => {
       window.alert(error)
     })

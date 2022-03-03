@@ -6,7 +6,8 @@ import { MylibraryHomeComponent } from './pages/mylibrary-home/mylibrary-home.co
 
 @NgModule({
   declarations: [
-    MylibraryHomeComponent
+    MylibraryHomeComponent,
+   
   ],
   imports: [
     CommonModule

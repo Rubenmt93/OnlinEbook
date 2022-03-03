@@ -14,6 +14,7 @@ import { LandingPageModule } from './landing-page/landing-page.module';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { MylibraryModule } from './mylibrary/mylibrary.module';
 import { CatalogModule } from './catalog/catalog.module';
+import { Error404Module } from './404-error/404-error.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CatalogModule } from './catalog/catalog.module';
     FooterComponent
   ],
   imports: [
+    Error404Module,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

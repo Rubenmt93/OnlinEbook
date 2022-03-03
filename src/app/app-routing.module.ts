@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { Error404Component } from './404-error/error404/error404.component';
 import { CatalogHomeComponent } from './catalog/pages/catalog-home/catalog-home.component';
 import { HomeComponent } from './landing-page/pages/home/home.component';
 import { MylibraryHomeComponent } from './mylibrary/pages/mylibrary-home/mylibrary-home.component';
@@ -30,7 +31,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component:HomeComponent
+    component:Error404Component
   }
 
 

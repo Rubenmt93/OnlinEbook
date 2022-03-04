@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 
@@ -68,14 +68,22 @@ export class LoginComponent  {
 })
 export class DialogPasswd {
   constructor(private fb: FormBuilder,
-              private authservice:AuthService, ) {}
-  emailPattern:string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+              private authservice:AuthService,
+              public dialogRef: MatDialogRef<DialogPasswd>,
+              ) {}
+  
+              emailPattern:string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  
   passwdForm: FormGroup = this.fb.group({
     email: ['',[Validators.required,Validators.pattern(this.emailPattern)]],   
   })
+
+
   forgotPasswd(){
     
     const email=this.passwdForm.controls['email'].value;
-    this.authservice.ForgotPassword(email)
+    this.authservice.ForgotPassword(email).then(resp =>{
+      this.dialogRef.close();
+    })
   }
 }

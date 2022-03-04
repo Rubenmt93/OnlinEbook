@@ -29,7 +29,7 @@ export class RegisterComponent{
                 
     this.authservice.userStateObs().subscribe(user =>{
       if (user) {                    
-         if(!user.emailVerified){
+         if(!user.emailVerified){ 
            this.router.navigate(['/auth/verifyEmail'])
         }else{
           console.log (user)

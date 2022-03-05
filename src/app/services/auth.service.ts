@@ -24,6 +24,9 @@ export class AuthService {
   userStateObs(){
      return this.afAuth.authState
   }
+  getUser(){
+    return this.userState
+  }
 
   SignIn(email:string, password:string): Promise<void> {
     return this.afAuth.signInWithEmailAndPassword(email, password)

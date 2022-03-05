@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ProfileHomeComponent implements OnInit {
   user:string="";
+  prueba:string=""
   constructor(private authService:AuthService,
               private router:Router ) {
                 this.authService.userStateObs().subscribe(user =>{
@@ -16,6 +17,9 @@ export class ProfileHomeComponent implements OnInit {
                     this.user=user.displayName!                                    
                   }
                 });
+
+                
+              
                } 
  
   

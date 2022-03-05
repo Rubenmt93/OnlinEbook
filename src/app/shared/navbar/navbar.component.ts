@@ -41,5 +41,7 @@ export class NavbarComponent{
    goHome(){
     this.router.navigate(['/'])
    }
+   
+  
   
   }

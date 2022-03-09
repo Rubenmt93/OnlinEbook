@@ -15,6 +15,7 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
 import { MylibraryModule } from './mylibrary/mylibrary.module';
 import { CatalogModule } from './catalog/catalog.module';
 import { Error404Module } from './404-error/404-error.module';
+import { ProfileModule } from './profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { Error404Module } from './404-error/404-error.module';
     LandingPageModule,
     AngularMaterialModule,
     MylibraryModule,
-  
+    ProfileModule  
    
   ],
   providers: [],

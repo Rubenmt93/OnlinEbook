@@ -1,20 +1,20 @@
  <mat-toolbar>
  
-  <span><a routerLink='/'> Inicio </a></span>  
-  <span><a routerLink='/catalog'> Catalogo </a></span>    
+  <span><a routerLink='/'><mat-icon>home</mat-icon> Inicio </a></span>  
+  <span><a routerLink='/catalog'><mat-icon>store</mat-icon> Catalogo </a></span>    
    
   <div *ngIf="userLogged" >
-    <span><a routerLink='/mylibrary'> Mi biblioteca </a></span>   
+    <span><a routerLink='/mylibrary'><mat-icon>class</mat-icon> Mi biblioteca </a></span>   
    
   </div>     
   
   <span class="example-spacer"></span>  
     
   <div *ngIf="userLogged; else notLogged" >
-    <span><a routerLink='/profile'> {{this.userName}}</a></span>  
+    <span><a routerLink='/profile'><mat-icon>settings</mat-icon> Perfil</a></span>  
   </div>
   <ng-template #notLogged>
-    <span><a routerLink='/auth/login'> Login</a></span>      
-    <span><a routerLink='/auth/register'> Register</a></span>    
+    <span><a routerLink='/auth/login'><mat-icon> person</mat-icon>Login</a></span>      
+    <span><a routerLink='/auth/register'><mat-icon>how_to_reg</mat-icon> Register</a></span>    
   </ng-template>    
 </mat-toolbar> 

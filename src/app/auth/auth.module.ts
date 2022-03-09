@@ -21,7 +21,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     LoginComponent,
     RegisterComponent,
     VerifyemailComponent,
-    DialogPasswd
+    DialogPasswd,
   ],
   imports: [
     CommonModule,

@@ -11,7 +11,7 @@ export class VerifyemailComponent implements OnInit {
   constructor(public authService: AuthService) {
     this.authService.userStateObs().subscribe(user =>{
       if (user) {          
-        console.log(user)
+        
       }
     });
    }

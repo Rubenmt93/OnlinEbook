@@ -12,13 +12,14 @@ import { Router } from '@angular/router';
 export class RegisterComponent{
   emailPattern:string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   showPasswd :boolean = true;
+  imgURL:any= "../../../../assets/avatar-placeholder.png"
   files:File[] = []
   registerForm: FormGroup = this.fb.group({
-    file: ['',],
+    file: [this.imgURL],
     email: ['',[Validators.required,Validators.pattern(this.emailPattern)]],
-    passwd: ['',[Validators.required,Validators.minLength(6)]],
-    passwdConfirm: ['',[Validators.required,Validators.minLength(6)]],   
-    username: ['',[Validators.required,Validators.minLength(3)]],
+    passwd: ['123456',[Validators.required,Validators.minLength(6)]],
+    passwdConfirm: ['123456',[Validators.required,Validators.minLength(6)]],   
+    username: ['nombrePrueba',[Validators.required,Validators.minLength(3)]],
     
   },{ 
     validator: ConfirmedValidator('passwd', 'passwdConfirm')
@@ -27,52 +28,46 @@ export class RegisterComponent{
               private authservice:AuthService,
               private router:Router) { 
                 
-    this.authservice.userStateObs().subscribe(user =>{
-      if (user) {                    
-         if(!user.emailVerified){ 
-           this.router.navigate(['/auth/verifyEmail'])
-        }else{
-          console.log (user)
-          this.router.navigate(['/'])
-        }
-       
-      }
-    });
-  }
-
-  
+    // this.authservice.userStateObs().subscribe(user =>{
+    //   if (user) {                    
+    //     if(!user.emailVerified){ 
+    //       this.router.navigate(['/auth/verifyEmail'])
+    //     }else{         
+    //       this.router.navigate(['/'])
+    //     }       
+    //   }
+    // });
+  }  
 
   validezCampo(campo: string){
     return this.registerForm.controls[campo].errors && this.registerForm.controls[campo].touched
 
   }
   matchPasswd(){
-      if (this.registerForm.controls['passwd'].value !== this.registerForm.controls['passwdConfirm'].value 
-            &&  this.registerForm.controls['passwd'].touched && this.registerForm.controls['passwd'].touched){
-              return true
-      }
-      return false
-  }
-  
-  uploadFile(event: Event) {
-    const element = event.currentTarget as HTMLInputElement;
-    let fileList: FileList | null = element.files;
-    if (fileList) {
-      console.log("FileUpload -> files", fileList[0]);
+    if (this.registerForm.controls['passwd'].value !== this.registerForm.controls['passwdConfirm'].value 
+        &&  this.registerForm.controls['passwd'].touched && this.registerForm.controls['passwd'].touched){
+      return true
     }
+    return false
   }
-  register(){
   
+  uploadFile(event: any) {     
+    let fileList = event.target.files;
+    let reader = new FileReader();
+    reader.readAsDataURL(fileList[0]);
+    reader.onloadend=() => {
+      this.imgURL=reader.result
+    }
     
+  }
+   register(){     
     const email=this.registerForm.controls['email'].value;
     const passwd=this.registerForm.controls['passwd'].value;  
     const name=this.registerForm.controls['username'].value;   
-    this.authservice.SignUp(email,passwd,name)
+    this.authservice.SignUp(email,passwd,name,this.imgURL).then(resp =>{
+      this.router.navigate(['/auth/verifyEmail']);
+    })
 
-
-    
   }
-
-
 
 }

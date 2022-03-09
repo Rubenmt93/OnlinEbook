@@ -12,18 +12,13 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class NavbarComponent{
   
-  userName:string = ''
   userLogged:boolean=false;
   constructor(private authService:AuthService,
               private router:Router,) {                
                 this.authService.userStateObs().subscribe(user =>{
-                  if (user) {                    
-                    this.userName=user.displayName!
-                    this.userLogged=true;
-                    console.log('flag');
-                    
-                  }else{
-                    this.userName!=''
+                  if (user) {                           
+                    this.userLogged=true;                                  
+                  }else{                    
                     this.userLogged=false;
                   }
                 });

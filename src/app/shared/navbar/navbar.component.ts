@@ -11,12 +11,13 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent{
-  
+  userObject:any
   userLogged:boolean=false;
   constructor(private authService:AuthService,
               private router:Router,) {                
                 this.authService.userStateObs().subscribe(user =>{
-                  if (user) {                           
+                  if (user) {             
+                    this.userObject= JSON.parse( localStorage.getItem('userOnlinEbook')!   )           
                     this.userLogged=true;                                  
                   }else{                    
                     this.userLogged=false;
@@ -25,11 +26,11 @@ export class NavbarComponent{
               } 
     
   logout(){
-       this.authService.SignOut()
-       .then((error)=>{
-         this.router.navigate(['/auth/login'])
-       } )
-
+      //  this.authService.SignOut()
+      //  .then((error)=>{
+      //    this.router.navigate(['/auth/login'])
+      //  } )
+    console.log(this.userObject.email)
        
    }
    

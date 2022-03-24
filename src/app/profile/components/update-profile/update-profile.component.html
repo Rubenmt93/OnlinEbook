@@ -1,0 +1,77 @@
+<div class="componentcontainer">
+    <div class="container">       
+        
+        <div class="header">
+            <h2>Actualizar perfil</h2>
+        </div>  
+        <!-- [formGroup]="registerForm" -->
+
+        <form   [formGroup]="updateProfileForm"
+                (ngSubmit)="updateProfile()">   
+            <div class="formGrid">
+                <div class="div1">
+                    <img src="{{ this.imgURL }}" alt="User Placeholder" >
+                   
+                    <button type="button" 
+                            mat-raised-button 
+                            color="primary"
+                            (click)="fileInput.click()">
+                            <mat-icon matPrefix> image </mat-icon> 
+                            Subir imagen
+                    </button>
+                    <input  hidden                             
+                            #fileInput
+                            (change)="uploadFile($event)"                             
+                            type="file" 
+                            id="file"> 
+                    
+                    
+                </div>
+                <div class="div2">
+                    <mat-form-field class="example-full-width">
+                        <mat-label> 
+                            <mat-icon matPrefix> email </mat-icon> 
+                            Correo electrónico
+                        </mat-label>
+                        <input  type="email" 
+                                formControlName=email  
+                                autocomplete="on"            
+                                matInput>         
+                        <mat-error *ngIf="validezCampo('email')">Introducir un correo valido</mat-error>
+                    </mat-form-field>
+    
+                    
+                    <mat-form-field class="example-full-width">                
+                        <mat-label> 
+                            <mat-icon matPrefix> person_outline </mat-icon> 
+                            Nombre de usuario
+                        </mat-label>
+                        <input  type="text"
+                                formControlName='username'
+                                autocomplete="on" 
+                                matInput>  
+                        <mat-error *ngIf="validezCampo('username')">Campo requerido</mat-error>                     
+                    </mat-form-field>              
+                </div>
+
+
+               
+            </div>
+            <div>
+                <button mat-raised-button 
+                        type="submit"
+                        color="primary"
+                        [disabled]="updateProfileForm.invalid || !updateProfileForm.touched">
+                    Actualizar Perfil
+                </button>
+               
+
+            </div>
+           
+            
+        </form>
+       
+    </div>
+
+     
+</div>

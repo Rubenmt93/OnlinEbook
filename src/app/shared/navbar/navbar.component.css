@@ -12,8 +12,9 @@ mat-icon {
   a{
       color: white;
       text-decoration: none;
-      margin: 10px;     
-      font-size:x-large ; 
+      margin: 10px;  
+      font-size:x-large;   
+      
   }
   mat-icon{
     display: inline-block;

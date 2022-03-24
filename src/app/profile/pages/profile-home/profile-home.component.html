@@ -1,8 +1,69 @@
- <p style="font-size: 50px; color: white;">  {{userName}}</p>
-<p style="font-size: 50px; color: white;">  {{userEmail}}</p>
-<img src="{{userPhoto}}" alt="img-not-found" style="border-radius:100px; max-width:200px;max-height:200px;">
-<br>
-<hr> 
+<div class="componentcontainer">  
+
+        
+  <mat-sidenav-container class="profile-container" *ngIf="true" autosize>
+    
+    <mat-sidenav #sidenav class="sidenav" mode="side" [(opened)]="opened">
+      <mat-icon class="closeSidenav movileElement" (click)="opened=!opened"> close </mat-icon>
+        
+      <mat-nav-list role="list">
+        <mat-list-item role="listitem">          
+          <img src="{{this.userObject.photoURL}}" alt="">
+          <span> {{this.userObject.displayName}}</span>
+        </mat-list-item>
+        <hr>               
+        <a routerLink='./info'>  
+          <mat-list-item role="listitem" >  
+            <div><mat-icon> info</mat-icon> <span> Información  </span> </div> 
+          </mat-list-item>
+        </a>      
+        
+        <a routerLink='./updateProfile'>
+          <mat-list-item role="listitem">
+            <mat-icon> settings</mat-icon> <span>Actualizar perfil</span>  
+          </mat-list-item>
+        </a>       
+
+        <a routerLink='./changePasswd'> 
+          <mat-list-item role="listitem">
+            <mat-icon> lock</mat-icon> <span>Cambiar contraseña</span>  
+          </mat-list-item>
+        </a>              
+       
+        
+        
+           <a href="#" (click)="logout()">
+            <mat-list-item  role="listitem">
+              <mat-icon>cancel</mat-icon>   <span>Cerrar Sesion</span>
+            </mat-list-item>
+           </a>              
+        
+        
+      </mat-nav-list>     
+      
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <button type="button" 
+              mat-raised-button 
+              color="basic" 
+              class="viewSidenav movileElement"
+              (click)="opened=!opened"
+              *ngIf="!opened"> 
+              
+              <mat-icon>menu</mat-icon>
+      </button>
+      <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 
 
-<button mat-raised-button color="primary" (click)="logout()"> Logout</button>
+  
+  
+  
+    
+</div>
+ 
+
+

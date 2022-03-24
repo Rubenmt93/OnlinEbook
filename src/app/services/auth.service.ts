@@ -70,8 +70,8 @@ export class AuthService {
       localStorage.removeItem('userOnlinebook');     
     })
   }  
-  SendVerificationMail() {
-      return this.afAuth.currentUser.then(u => u!.sendEmailVerification())
+  async SendVerificationMail() {
+      return await this.afAuth.currentUser.then(u => u!.sendEmailVerification())
       .then(() => {
        
       }).catch()
@@ -96,24 +96,61 @@ export class AuthService {
         return null
       }
     }
-
-
   
+  async UpdateUserInfo(newEmail:any, newName:any, file: any){
+    try{
+      if(newEmail){
+        this.UpdateEmail(newEmail)
+      }
+      if(newName){
+        this.UpdateUserName(newName)
+      }
+      if(file){
+        this.UpdateUserImage(file)
+      }
+    }catch (err){
+      console.log(err)
+    }
+
+  }
+
+  UpdateEmail(newEmail:string){
+    return this.afAuth.currentUser.then(u => u!.updateEmail(newEmail)).then(u=>
+      this.SendVerificationMail().catch( err => console.log(err)))
+  }
+
+  UpdateUserName(newName:string){
+   this.afAuth.currentUser.then( user=> {           
+        user?.updateProfile({ displayName:newName }).then(resp => {
+          if (user) {
+            this.userState = user;
+              localStorage.setItem('userOnlinebook', JSON.stringify(this.userState));
+            }     
+          })
+      })
   
-
-  // GoogleAuth() {
-  //   return this.AuthLogin(new auth.GoogleAuthProvider());
-  // }
-
-  // AuthLogin(provider: firebase.auth.AuthProvider) {
-  //   return this.afAuth.signInWithPopup(provider)
-  //   .then((result) => {
-       
+   
+  }
+  UpdateUserImage(img64:string){
+  
+    this.afAuth.currentUser.then( user=> {                  
+          this.SubirImagen(user?.uid!,img64)
+          .then(imgUrl => {
+            user?.updateProfile({ photoURL:imgUrl })           
+            .then(resp => {
+              if (user) {
+                this.userState = user;
+                localStorage.setItem('userOnlinebook', JSON.stringify(this.userState));
+              }     
+            })        
+          })       
+      }).catch((error) => {
+         window.alert(error.message)
      
-  //   }).catch((error) => {
-  //     window.alert(error)
-  //   })
-  // }
+      });
+    
+  }
+  
 
 
 

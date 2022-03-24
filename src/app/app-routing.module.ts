@@ -6,6 +6,9 @@ import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './landing-page/pages/home/home.component';
 import { MylibraryHomeComponent } from './mylibrary/pages/mylibrary-home/mylibrary-home.component';
 import { ProfileHomeComponent } from './profile/pages/profile-home/profile-home.component';
+import { InfoComponent } from './profile/components/info/info.component';
+import { UpdateProfileComponent } from './profile/components/update-profile/update-profile.component';
+import { ChangePasswdComponent } from './profile/components/change-passwd/change-passwd.component';
 
 
 const routes: Routes = [
@@ -26,12 +29,26 @@ const routes: Routes = [
     path: 'mylibrary',
     component: MylibraryHomeComponent,
     canLoad:[AuthGuard],
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
 
   },  
   {
     path: 'profile',
     component:ProfileHomeComponent,
+    children:[
+      {
+        path:'info',
+        component:InfoComponent,
+      },
+      {
+        path:'updateProfile',
+        component:UpdateProfileComponent,
+      },
+      {
+        path:'changePasswd',
+        component:ChangePasswdComponent,
+      }
+    ],
     canLoad:[AuthGuard],
     canActivate:[AuthGuard]
   },

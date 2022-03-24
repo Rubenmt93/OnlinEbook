@@ -24,15 +24,17 @@ import { ProfileModule } from './profile/profile.module';
     FooterComponent
   ],
   imports: [
-    Error404Module,
+    
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+
     AuthModule,
     LandingPageModule,
     AngularMaterialModule,
     MylibraryModule,
-    ProfileModule  
+    ProfileModule,
+    Error404Module, 
    
   ],
   providers: [],

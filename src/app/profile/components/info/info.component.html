@@ -1,0 +1,40 @@
+<div class="componentcontainer">
+    <div class="container">       
+        <div class="header">
+            <h2>Información del Perfil</h2>
+        </div>       
+        <div class="container-content">
+            <div class="img-container">
+                <img src="{{user.photoURL}}" alt="">
+            </div>
+            <table>                
+                <tr>
+                    <td><b>Nombre:</b></td>                
+                    <td>{{user.displayName}}</td>
+                </tr>
+               
+                <tr>                
+                    <td><b>Correo:</b> </td>                
+                    <td>{{user.email}}</td>
+                </tr>
+                <tr>                
+                    <td><b>Te uniste:</b> </td>                
+                    <td>{{user.createdAt |date:"shortDate" }}</td>
+                </tr>
+                <tr>                
+                    <td><b>Verificado:</b> </td>                
+                    <td *ngIf="user.emailVerified; else loggedOut"><mat-icon class="icon-green">check_circle_outline </mat-icon></td>
+                    <ng-template #loggedOut>
+                      <td>  <mat-icon class="icon-red">  highlight_off </mat-icon> </td>
+                    </ng-template>
+                   
+                  
+                </tr>
+            </table>
+            
+        </div>
+    </div>
+   
+
+     
+</div>

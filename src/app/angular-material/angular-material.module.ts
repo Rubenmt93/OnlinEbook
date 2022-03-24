@@ -10,7 +10,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatTableModule} from '@angular/material/table';
 
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     MatSidenavModule,
     MatNativeDateModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatListModule,
+    MatTableModule
     
   ],
   

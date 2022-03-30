@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth} from '@angular/fire/compat/auth'; 
 import { Router } from '@angular/router';
+import { updatePassword } from '@firebase/auth';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
 import { environment } from 'src/environments/environment';
@@ -31,7 +32,7 @@ export class AuthService {
 
   SignIn(email:string, password:string): Promise<void> {
     return this.afAuth.signInWithEmailAndPassword(email, password)
-      .then((result) => {     
+      .then(function() {     
         //aqui pon el localstorsage
         
       })
@@ -98,19 +99,32 @@ export class AuthService {
     }
   
   async UpdateUserInfo(newEmail:any, newName:any, file: any){
-    try{
+    
       if(newEmail){
-        this.UpdateEmail(newEmail)
+        try{
+          await this.UpdateEmail(newEmail)
+        }catch (err){
+          return 1
+        }
+        
       }
       if(newName){
-        this.UpdateUserName(newName)
+        try{
+          await  this.UpdateUserName(newName)
+        }catch (err){
+          return 2
+        }
+       
       }
       if(file){
-        this.UpdateUserImage(file)
+        try{
+          await  this.UpdateUserImage(file)
+        }catch (err){
+          return 3
+        }
+       
       }
-    }catch (err){
-      console.log(err)
-    }
+      return 0
 
   }
 
@@ -120,7 +134,7 @@ export class AuthService {
   }
 
   UpdateUserName(newName:string){
-   this.afAuth.currentUser.then( user=> {           
+   return  this.afAuth.currentUser.then( user=> {           
         user?.updateProfile({ displayName:newName }).then(resp => {
           if (user) {
             this.userState = user;
@@ -133,7 +147,7 @@ export class AuthService {
   }
   UpdateUserImage(img64:string){
   
-    this.afAuth.currentUser.then( user=> {                  
+    return this.afAuth.currentUser.then( user=> {                  
           this.SubirImagen(user?.uid!,img64)
           .then(imgUrl => {
             user?.updateProfile({ photoURL:imgUrl })           
@@ -151,10 +165,47 @@ export class AuthService {
     
   }
   
-
-
-
+  async reautenticateUser(passwd:string){
+    try{
+      var user= await this.afAuth.currentUser
+    }catch (err){    
+      return false
+    }
+     var credential = firebase.auth.EmailAuthProvider.credential(user?.email!, passwd);
+    try{
+      await user?.reauthenticateWithCredential(credential)
+    }catch (err){
+      
+      return false
+      
+    }
+    return true
+  }
+  async updatePasswd(myPasswd:string,newPasswd:string){
+    try{
+      var user= await this.afAuth.currentUser
+    }catch (err){
     
+      return false
+    }
+     var credential = firebase.auth.EmailAuthProvider.credential(user?.email!, myPasswd);
+    try{
+      await user?.reauthenticateWithCredential(credential)
+    }catch (err){
+      
+      return false
+      
+    }
+    try{
+      await updatePassword(user!,newPasswd)
+    }catch(err){
+      
+      return false
+    }
+    return true
+    
+ 
+}
     
 }
   

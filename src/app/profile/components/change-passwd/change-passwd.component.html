@@ -1,1 +1,76 @@
-<p>change-passwd works!</p>
+<div class="componentcontainer">
+    <div class="container">       
+        
+        <div class="header">
+            <h2>Cambiar contraseña</h2>
+        </div>  
+        
+
+        <form   [formGroup]="changePasswdForm"
+                (ngSubmit)="changePasswd()">   
+               
+            <div class="formGrid">
+                 
+                    <mat-form-field class="example-full-width">                
+                        <mat-label> 
+                            <mat-icon matPrefix> lock </mat-icon> 
+                            Contraseña actual
+                        </mat-label>
+                        <input  [type]="showPasswd ? 'password' : 'text'" 
+                                formControlName='originalPasswd' 
+                                matInput
+                                autocomplete="current-password"
+                                > 
+                      <mat-icon matSuffix (click)="showPasswd = !showPasswd">{{showPasswd ? 'visibility_off' : 'visibility'}}</mat-icon>        
+                        <mat-error *ngIf="validezCampo('originalPasswd')"><mat-icon>help</mat-icon>Campo requerido</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">                
+                        <mat-label> 
+                            <mat-icon matPrefix> lock </mat-icon> 
+                            Nueva contraseña
+                        </mat-label>
+                        <input  [type]="showPasswd ? 'password' : 'text'" 
+                                formControlName='newPasswd' 
+                                matInput
+                                autocomplete="new-password"> 
+                        <mat-icon matSuffix (click)="showPasswd = !showPasswd">{{showPasswd ? 'visibility_off' : 'visibility'}}</mat-icon>        
+                        <mat-error *ngIf="validezCampo('newPasswd')"><mat-icon>help</mat-icon>Campo requerido</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">                
+                        <mat-label> 
+                            <mat-icon matPrefix> lock </mat-icon> 
+                            Repetir nueva contraseña
+                        </mat-label>
+                        <input  [type]="showPasswd ? 'password' : 'text'" 
+                                formControlName='newPasswdConfirm' 
+                                matInput
+                                autocomplete="new-password"> 
+                        <mat-icon matSuffix (click)="showPasswd = !showPasswd">{{showPasswd ? 'visibility_off' : 'visibility'}}</mat-icon>        
+                        <mat-error *ngIf="validezCampo('newPasswdConfirm')"><mat-icon>help</mat-icon>Campo requerido</mat-error>
+                    </mat-form-field>
+                    <mat-error *ngIf="matchPasswd()">Las contraseñas deben coincidir</mat-error> 
+
+                
+
+
+               
+            </div>
+            <div>
+                <button mat-raised-button 
+                        type="submit"
+                        color="primary"
+                        [disabled]="changePasswdForm.invalid || !changePasswdForm.touched">
+                    Actualizar Perfil
+                </button>
+               
+
+            </div>
+           
+            
+        </form>
+       
+    </div>
+
+     
+</div>

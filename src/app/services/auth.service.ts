@@ -74,6 +74,7 @@ export class AuthService {
   async SendVerificationMail() {
       return await this.afAuth.currentUser.then(u => u!.sendEmailVerification())
       .then(() => {
+       console.log("se envia");
        
       }).catch()
   }    

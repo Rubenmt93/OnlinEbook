@@ -18,9 +18,9 @@ export class ChangePasswdComponent {
 
   
   changePasswdForm: FormGroup = this.fb.group({
-    originalPasswd: ['123456',[Validators.required,Validators.minLength(6)]],
-    newPasswd: ['123456',[Validators.required,Validators.minLength(6)]],
-    newPasswdConfirm: ['123456',[Validators.required,Validators.minLength(6)]],      
+    originalPasswd: ['',[Validators.required,Validators.minLength(6)]],
+    newPasswd: ['',[Validators.required,Validators.minLength(6)]],
+    newPasswdConfirm: ['',[Validators.required,Validators.minLength(6)]],      
     
   },{ 
     validator: ConfirmedValidator('newPasswd', 'newPasswdConfirm')  

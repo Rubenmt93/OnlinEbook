@@ -40,7 +40,7 @@
                     <mat-form-field class="example-full-width">                
                         <mat-label> 
                             <mat-icon matPrefix> lock </mat-icon> 
-                            Repetir nueva contraseña
+                            Repetir contraseña
                         </mat-label>
                         <input  [type]="showPasswd ? 'password' : 'text'" 
                                 formControlName='newPasswdConfirm' 
@@ -51,7 +51,7 @@
                     </mat-form-field>
                     <mat-error *ngIf="matchPasswd()">Las contraseñas deben coincidir</mat-error> 
 
-                
+                    
 
 
                

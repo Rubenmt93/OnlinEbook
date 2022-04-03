@@ -1,0 +1,13 @@
+
+.infogram-container{
+    
+    background-color: white;
+    border-radius: 0 0 50%  50%;
+}
+.infogram-container img{
+    min-width: 100%;
+    margin-bottom: 5%;
+}
+img{
+    width: 100%;
+}

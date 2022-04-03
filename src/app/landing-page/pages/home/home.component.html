@@ -1,7 +1,14 @@
-<div style="display: flex; justify-content: center;">
-    <h1 style="color: white;font-size:50px;">HOME PAGE</h1>
-
-
+<div class="main-container">
+    <div class="content-conatiner">
+        <app-carrousel class="carrousel-container" [style]=styleborder></app-carrousel>
+        <app-login-action *ngIf="!logged"></app-login-action>
+        
+        <app-catalog-info></app-catalog-info>
+        <app-infogram></app-infogram>
+       
+       <app-writer-action></app-writer-action>
+    </div>
+    
+   
     
 </div>
-<img src="../../../../assets/Logo2.svg" alt="">

@@ -1,0 +1,65 @@
+<div class="writer-container">
+    <h1>¿Eres escritor?</h1>
+    <h4>Publica en OnlinEbook y maneja los derechos de tus obras ajustados a tus necesidades</h4>
+    <div class="writer-container-content" >
+        <div class="writer-container-content-form">
+            <div class="container">  
+                <div class="header">
+                    <h2>Contacta con nosotros</h2>
+                </div>       
+                <form   [formGroup]="SendMailForm"
+                        (ngSubmit)="enviarMsg()"  >    
+                    <mat-form-field class="example-full-width">
+                        <mat-label> 
+                            <mat-icon matPrefix> email </mat-icon> 
+                            Correo electrónico
+                        </mat-label>
+                        <input type="email"                 
+                               matInput
+                               formControlName='email'                        
+                               placeholder="example@example.com">         
+                        <mat-error><mat-icon>help</mat-icon>Introducir un correo valido</mat-error>
+                    </mat-form-field>
+        
+                    <mat-form-field class="example-full-width">                
+                        <mat-label> 
+                            <mat-icon matPrefix>email</mat-icon> 
+                            Mensaje
+                        </mat-label>
+                        <textarea matInput
+                        cdkTextareaAutosize
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="1"
+                        formControlName='text'    
+                        cdkAutosizeMaxRows="5"></textarea>
+                       
+                    </mat-form-field>
+                       
+                    <button mat-raised-button 
+                            color="primary"
+                            type="submit"
+                            [disabled]=false>
+                                Acceder
+                    </button>
+                    
+                </form>
+            </div>
+           
+        </div>
+        <div class="writer-container-content-info">
+            <div class="writer-info-item">
+                <img src="../../../../assets/custom-icon/gift_icon.svg" alt=""><h3>Ofrece obras gratuitamente</h3>
+            </div>  
+            <div class="writer-info-item" >
+                <img src="../../../../assets/custom-icon/money_icon.svg" alt=""><h3>Monetiza tus obras</h3>
+            </div>
+            <div class="writer-info-item">
+                <img src="../../../../assets/custom-icon/lock_icon.svg" alt=""><h3>Conserva tus derechos de publicación</h3>
+            </div>
+            
+            
+            
+        </div>
+        
+    </div>
+</div>

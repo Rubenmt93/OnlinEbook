@@ -1,0 +1,123 @@
+
+
+h1,h4{
+    color: white;
+}
+h1{
+    font-size: 400%;
+    margin: 1rem;
+}
+h4{
+    margin: 3rem;
+    font-size: xx-large;
+}
+h3{
+    font-size: xx-large;
+    align-self: center;
+    margin: auto;
+}
+
+
+.writer-container{
+    
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+.writer-container-content{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;        
+}
+.writer-container-content-form{
+    grid-area: 1 / 2 / 3 / 3;
+    margin-top: 30%;
+}
+.writer-container-content-info{
+    
+    grid-area: 1 / 4 / 3 / 6;
+}
+
+
+.writer-info-item{
+    border-radius: 20rem ;
+    background-color:white;
+    padding:2%;
+    margin: 1rem;
+    margin-right:3rem ;
+    display: flex;    
+    align-self: flex-end;
+    -webkit-box-shadow: 13px 13px 11px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: 13px 13px 11px -11px rgba(0,0,0,0.75);
+    box-shadow: 13px 13px 11px -11px rgba(0,0,0,0.75);
+}
+
+
+
+
+.container{
+    background: white;
+    border-radius: 8px;          
+    -webkit-box-shadow: 13px 13px 11px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: 13px 13px 11px -11px rgba(0,0,0,0.75);
+    box-shadow: 13px 13px 11px -11px rgba(0,0,0,0.75);
+    display: flex;        
+    justify-content: center;    
+    flex-direction: column;    
+    padding-top: 0;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+}
+.header{
+    background-color: #e6692f;
+    width: 100%;
+    padding-top: 4%;
+    border-radius: 8px 8px 0 0;
+    display: flex;        
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+::ng-deep .mat-focused .mat-label .mat-form-field-label {
+    /*change color of label*/
+    color: #1a1a1a !important;
+}
+::ng-deep.mat-form-field-underline {
+  background-color: #1a1a1a !important;
+}   
+::ng-deep.mat-form-field-ripple {   
+   background-color:#e6692f !important;;
+}
+mat-label{
+    color: black;
+}
+.mat-raised-button.mat-button-disabled {
+
+    color: #cac9c9 !important;
+    background-color:#b8897b !important;  
+}
+      
+ 
+mat-form-field{
+    margin-bottom: 10px;
+}
+
+.formGrid {
+    display: flex;
+    flex-direction: column;    
+    margin-bottom: 5%;
+}
+.mat-raised-button{
+    background-color: #e6692f;
+}
+
+img{
+    max-width:6rem;
+}

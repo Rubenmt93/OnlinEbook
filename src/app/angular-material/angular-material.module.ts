@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatTableModule} from '@angular/material/table';
 
 import {MatListModule} from '@angular/material/list';
+import {TextFieldModule} from '@angular/cdk/text-field';
 
 
 @NgModule({
@@ -28,7 +29,9 @@ import {MatListModule} from '@angular/material/list';
     MatNativeDateModule,
     MatToolbarModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    TextFieldModule
+
     
   ],
   

@@ -1,0 +1,69 @@
+
+.catalog-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 3%; 
+    max-width: 100%;
+}
+.catalog-container-grid{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}   
+.catalog-container h2{
+    font-size: xx-large;
+    color: white;        
+    justify-self: center;  
+    margin:auto 
+     
+}
+.catalog-container-info{    
+    grid-area: 1 / 5 / 3 / 8; 
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.catalog-window{
+    grid-area: 1 / 1 / 3 / 4;     
+    width: 100%;   
+    margin: 2%;   
+ 
+}
+iframe{
+    border-radius:2%;
+    
+}
+h3{
+    font-size: x-large;
+    text-align: center;   
+}
+
+.catalog-container-info-item{
+    
+    border-radius: 20rem 0px 0px 20rem;
+    background-color:white;
+    padding:7%;
+    margin: 1rem;
+    margin-right: 0;
+    float:right;
+    align-self: flex-end;
+    -webkit-box-shadow: 13px 13px 11px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: 13px 13px 11px -11px rgba(0,0,0,0.75);
+    box-shadow: 13px 13px 11px -11px rgba(0,0,0,0.75);
+}
+.transicionLanding{
+    min-width: 100%;
+    min-height: 200px;
+    background:url("../../../../assets/transicion-landing1.svg") no-repeat center center ;
+}
+
+h1{
+    font-size: 400%;
+    margin: 1rem;
+    color: white;
+}

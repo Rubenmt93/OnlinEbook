@@ -1,0 +1,25 @@
+.main-container{
+    display: flex;     
+    justify-content: center; 
+    align-self: center;
+    width: 100%;    
+    padding-top:3% ;
+    
+}
+
+.content-conatiner{
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    width: 90%;    
+    background-color: #3f51b5ff;
+    border-radius: 2rem;
+}
+app-writer-action{
+    margin-bottom: 3rem;
+}
+
+.carrousel-container{
+    overflow: hidden;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,30 @@
+.landing-login-container{
+    background:url("../../../../assets/pexels-andrea(3).jpg") no-repeat center center ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0 0 0 40%  ;
+   
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;    
+    padding: 2%;
+}
+img{
+    max-width: 300px;
+}
+
+.div2 { 
+    grid-area: 2 / 1 / 5 / 2;
+    justify-content: center;
+    align-items: center;
+   
+ }
+
+.div3 { grid-area:  2 / 6 / 5 / 7; }
+.div1 { grid-area: 1 / 4 / 2 / 7;
+        color: #3f51b5ff
+}
+.div1 h2{
+    font-size:xx-large
+}

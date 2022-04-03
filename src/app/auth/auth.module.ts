@@ -32,6 +32,9 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     
   ],
+  exports:[
+    LoginComponent
+  ],
   providers: [
     AuthService
   ]

@@ -9,7 +9,7 @@ export class WriterActionComponent {
   emailPattern:string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   //failLoginflag:boolean=false
   SendMailForm: FormGroup = this.fb.group({
-    email: ['zegreo@gmail.com',[Validators.required,Validators.pattern(this.emailPattern)]],
+    email: ['',[Validators.required,Validators.pattern(this.emailPattern)]],
     text: ['',Validators.required]
   })
   constructor(private fb: FormBuilder, ) { }

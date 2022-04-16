@@ -17,9 +17,6 @@ export class CatalogInfoComponent implements OnInit {
       this.heigth = screen.height * 0.5
     }
     
-    
-    console.log(this.width);
-    console.log(this.heigth)
    }
 
   ngOnInit(): void {

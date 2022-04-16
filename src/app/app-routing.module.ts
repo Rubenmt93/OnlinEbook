@@ -9,6 +9,7 @@ import { ProfileHomeComponent } from './profile/pages/profile-home/profile-home.
 import { InfoComponent } from './profile/components/info/info.component';
 import { UpdateProfileComponent } from './profile/components/update-profile/update-profile.component';
 import { ChangePasswdComponent } from './profile/components/change-passwd/change-passwd.component';
+import { BookPageComponent } from './book-page/book-page/book-page.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'catalog',
     component: CatalogHomeComponent
+  }, 
+  {
+    path: 'book/:id',
+    component: BookPageComponent
   },  
   {
     path: 'mylibrary',

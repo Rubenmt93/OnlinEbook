@@ -1,0 +1,95 @@
+
+  main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+    width: 200px;
+    -webkit-box-shadow: 15px 14px 24px 1px rgba(0,0,0,0.44);
+-moz-box-shadow: 15px 14px 24px 1px rgba(0,0,0,0.44);
+box-shadow: 15px 14px 24px 1px rgba(0,0,0,0.44);
+    
+  }
+  .bookCard {
+    margin-top: 0;
+   
+    padding: 0px;
+    border-radius: 10px 10px 0 0 ;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+  .bookCard-cover {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    margin: 0 auto 0px auto;
+    perspective: 1000px;
+  }
+  .bookCard_book {
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: all 250ms ease;
+  }
+  .bookCard_book-front {
+    position: absolute;
+    height: 100%;
+  }
+  
+  .bookCard_bookSide {
+    position: absolute;
+    top: 5px;
+    bottom: 2px;
+    right: -29px;
+    width: 40px;
+    background-size: 5px;
+    background-color: #e1e1e1;
+    background-image: linear-gradient(to right, #ccc 35%, #e1e1e1 35%);
+    opacity: 0;
+    transform: rotate3d(0, 1, 0, 90deg);
+  }
+  .bookCard_img {
+    width: 100%;
+    height: 100%;
+    background-color: #e1e1e1;
+  }
+  .bookCard_title {
+   
+    font-size: 1.5em;
+    margin-bottom: 8px;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .bookCard_author {
+    color: #757575;
+    font-size: 1em;
+    text-align: center;
+  }
+  .bookCard:hover .bookCard_book {
+    transform: rotate3d(0, -1, 0, 30deg) translate(-15px, -30px);
+  }
+  .bookCard:hover .bookCard-img {
+    border-radius: 0;
+  }
+ 
+  .bookCard:hover .bookCard_bookSide {
+    opacity: 1;
+  }
+  .bookCard_info{
+    background-color: rgb(255, 255, 255);
+    margin-top: 0;
+    padding: 3%;
+    border-radius:  0  0 10px 10px;
+    width: 94%;
+   
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+
+  
+  .bookCard-img{
+    width: 200px;
+    height: 300px;
+    background-size: 100% 100%;
+    border-radius: 10px 10px 0 0 ;
+  }

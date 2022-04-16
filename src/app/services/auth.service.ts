@@ -16,7 +16,7 @@ export class AuthService {
       if (user) {
         this.userState = user;
         localStorage.setItem('userOnlinebook', JSON.stringify(this.userState));
-         JSON.parse(localStorage.getItem('userOnlinebook')!); /// Linea rara
+         JSON.parse(localStorage.getItem('userOnlinebook')!); 
       } else {
         localStorage.removeItem('userOnlinebook')
          JSON.parse(localStorage.getItem('userOnlinebook')!);

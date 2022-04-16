@@ -16,12 +16,15 @@ import { MylibraryModule } from './mylibrary/mylibrary.module';
 import { CatalogModule } from './catalog/catalog.module';
 import { Error404Module } from './404-error/404-error.module';
 import { ProfileModule } from './profile/profile.module';
+import { BookPageModule } from './book-page/book-page.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+   
   ],
   imports: [
     
@@ -35,6 +38,8 @@ import { ProfileModule } from './profile/profile.module';
     MylibraryModule,
     ProfileModule,
     Error404Module, 
+    CatalogModule,
+    BookPageModule
    
   ],
   providers: [],

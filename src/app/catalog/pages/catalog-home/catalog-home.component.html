@@ -1,1 +1,12 @@
-<p>catalog-home works!</p>
+<div class="catalogContainer">
+    <div  class="catalog-grid" >
+    
+        <div class= "catalog-item" *ngFor="let item of items">        
+            <app-bookcard class= "feature" 
+                          [book]="item"
+                         >  
+            </app-bookcard>
+        </div>
+    </div>
+
+</div>

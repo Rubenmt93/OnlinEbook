@@ -1,0 +1,20 @@
+.catalog-grid{
+    display: grid;
+    gap: 2rem;    
+    grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));
+    background-color: rgba(255, 255, 255, 0.553);    
+    width: 90%;
+    margin: auto;
+    margin-top:3%;
+    padding: 2%;
+    border-radius: 2rem;
+}
+.catalog-item{
+  
+  margin: auto;
+  margin-top: 0;
+}
+.feature{
+    grid-column: span 2;
+    
+}

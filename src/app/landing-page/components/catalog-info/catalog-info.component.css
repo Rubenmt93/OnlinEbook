@@ -12,7 +12,7 @@
     flex-direction: column;
 }
 .catalog-container h2{
-    font-size: large;
+    font-size: large; 
     color: white;        
     justify-self: center;  
     margin:auto 

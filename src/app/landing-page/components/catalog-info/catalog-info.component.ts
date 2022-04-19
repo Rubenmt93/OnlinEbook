@@ -13,7 +13,7 @@ export class CatalogInfoComponent implements OnInit {
       this.width = screen.width * 0.50
       this.heigth = screen.height * 0.5
     }else{
-      this.width = screen.width * 0.8
+      this.width = screen.width * 0.6
       this.heigth = screen.height * 0.5
     }
     

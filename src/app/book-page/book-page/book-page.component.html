@@ -17,11 +17,24 @@
         <div class="book-page-abstract">
             <h3>{{book.abstract}}</h3>
         </div>
+       
         <div class="book-page-buttons">
-            <button mat-raised-button>Añadir a favorito <mat-icon>favorite_border</mat-icon> </button>
-            <button mat-raised-button (click) ="goPdf()">Leer libro <mat-icon>book</mat-icon></button>
-            
+            <div *ngIf="!this.userLogged; else showButtons">
+                Inicie sesión para ver más opciones
+            </div>
+            <ng-template #showButtons>
+                <div *ngIf="this.bought; else buyButtons">
+                    <button mat-raised-button>Añadir a favorito <mat-icon>star</mat-icon> </button>
+                    <button mat-raised-button (click) ="goPdf()">Leer libro <mat-icon>book</mat-icon></button>         
+                </div>
+                <ng-template #buyButtons>
+                    <button mat-raised-button (click) ="buy()">Comprar <mat-icon>shop</mat-icon> </button>
+                    <button mat-raised-button> Añadir a a lista deseo<mat-icon>favorite_border</mat-icon></button>         
+                </ng-template>
+            </ng-template>
+        
+              
         </div>
     </div>    
-
+    
 </div>

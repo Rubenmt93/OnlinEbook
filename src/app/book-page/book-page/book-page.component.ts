@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/interfaces/book';
+import { AuthService } from 'src/app/services/auth.service';
 import { BookService } from '../../services/book.service';
 
 @Component({
@@ -25,12 +26,24 @@ export class BookPageComponent {
 
   }
   id!:string
+  userLogged!:boolean| string
+  bought:boolean=false
+
   constructor(private bookService:BookService,
-              private activatedRoute:ActivatedRoute) { 
+              private activatedRoute:ActivatedRoute,
+              private authservice:AuthService) { 
     this.activatedRoute.params.subscribe(({id})=> this.id=id)
     this.bookService.getBookById(this.id).subscribe(result =>{
       this.book=result as Book      
     })
+
+    this.authservice.userStateObs().subscribe(user =>{
+      if (user) {             
+          this.userLogged=user.uid                    
+      }else{                    
+          this.userLogged=false
+      }
+    });
    
   }
 
@@ -40,5 +53,7 @@ export class BookPageComponent {
     window.location.href = this.book.link!;
 
   }
-
+  buy(){
+    this.bought=!this.bought
+  }
 }

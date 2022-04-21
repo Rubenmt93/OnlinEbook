@@ -5,13 +5,16 @@ import { updatePassword } from '@firebase/auth';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
 import { environment } from 'src/environments/environment';
+import { UserService } from './user.service';
+import { User } from '../interfaces/user';
 firebase.initializeApp(environment.firebaseConfig)
 @Injectable()
 export class AuthService {
   userState: any;
   storageRef=firebase.app().storage().ref()
-  constructor( public afAuth: AngularFireAuth,
-               public router: Router,) {
+  constructor(  public afAuth: AngularFireAuth,
+                public userService:UserService,
+                public router: Router,) {
     this.userStateObs().subscribe(user => {
       if (user) {
         this.userState = user;
@@ -49,6 +52,7 @@ export class AuthService {
         .then( user => {     
           this.SubirImagen(user?.uid!,img64)
           .then(imgUrl => {
+            this.userService.createUserTable(user!.uid,imgUrl!,name,user!.email!)
             user?.updateProfile({ displayName:name, photoURL:imgUrl })           
             .then(resp => {
               if (user) {

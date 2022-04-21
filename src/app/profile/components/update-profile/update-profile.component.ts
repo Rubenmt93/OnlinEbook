@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-update-profile',
@@ -27,6 +28,7 @@ export class UpdateProfileComponent  {
   })
   constructor(private fb: FormBuilder,
               private authservice:AuthService,
+              private UserService:UserService,
               private router:Router,
               public dialog: MatDialog) { 
                 this.user = JSON.parse( localStorage.getItem('userOnlinebook')!   )      
@@ -67,8 +69,11 @@ export class UpdateProfileComponent  {
     }
     
     var result=  await this.authservice.UpdateUserInfo(email,userName,file)
+    
     switch(result){
-      case 0: {
+      case 0:{
+        console.log(this.user.uid!)
+        this.UserService.updateUser(this.user.uid!,this.imgURL,this.updateProfileForm.controls['username'].value    ,this.updateProfileForm.controls['email'].value);
         this.dialog.open(DialogUpdateProfile);
         break
       } 

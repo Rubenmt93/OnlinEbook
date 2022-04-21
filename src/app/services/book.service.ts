@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { Book } from '../interfaces/book';
 firebase.initializeApp(environment.firebaseConfig)
 
-
+ 
 @Injectable({
   providedIn: 'root'
 })
@@ -45,6 +45,10 @@ export class BookService {
   getBookById(id:string){
     
     return this.firestore.collection('book').doc(id).valueChanges()
+  }
+  bougth(userId:string,bookId:string){
+    return this.firestore.collection('acquired').add({user:userId,book:bookId});
+
   }
 }
 

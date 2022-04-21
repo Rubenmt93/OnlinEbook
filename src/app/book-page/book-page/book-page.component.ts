@@ -25,15 +25,15 @@ export class BookPageComponent {
     abstract:       "",
 
   }
-  id!:string
-  userLogged!:boolean| string
+  bookId!:string
+  userLogged:string=""
   bought:boolean=false
 
   constructor(private bookService:BookService,
               private activatedRoute:ActivatedRoute,
               private authservice:AuthService) { 
-    this.activatedRoute.params.subscribe(({id})=> this.id=id)
-    this.bookService.getBookById(this.id).subscribe(result =>{
+    this.activatedRoute.params.subscribe(({id})=> this.bookId=id)
+    this.bookService.getBookById(this.bookId).subscribe(result =>{
       this.book=result as Book      
     })
 
@@ -41,19 +41,19 @@ export class BookPageComponent {
       if (user) {             
           this.userLogged=user.uid                    
       }else{                    
-          this.userLogged=false
+          this.userLogged=""
       }
     });
    
   }
 
-  goPdf(){
-   console.log("estoy");
+  goPdf(){  
    
     window.location.href = this.book.link!;
 
   }
   buy(){
     this.bought=!this.bought
+    this.bookService.bougth(this.userLogged,this.bookId)
   }
 }

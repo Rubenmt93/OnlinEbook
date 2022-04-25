@@ -25,15 +25,7 @@ export class NavbarComponent{
                 });
               } 
     
-  logout(){
-      //  this.authService.SignOut()
-      //  .then((error)=>{
-      //    this.router.navigate(['/auth/login'])
-      //  } )
-    console.log(this.userObject.email)
-       
-   }
-   
+  
    goHome(){
     this.router.navigate(['/'])
    }

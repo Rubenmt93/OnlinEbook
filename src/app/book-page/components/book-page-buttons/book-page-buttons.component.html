@@ -1,0 +1,18 @@
+<div class="book-page-buttons">
+    <div *ngIf="!this.userId; else showButtons">
+       <p>Inicie sesión para ver más opciones</p> 
+        <p (click)="navigateLogin()">Iniciar sesión</p>
+    </div>
+    <ng-template #showButtons>
+        <div *ngIf="this.acquired; else buyButtons">
+            <button mat-raised-button>Añadir a favorito <mat-icon>star</mat-icon> </button>
+            <button mat-raised-button (click) ="goPdf()">Leer libro <mat-icon>book</mat-icon></button>         
+        </div>
+        <ng-template #buyButtons>
+            <button mat-raised-button (click) ="buy()">Comprar <mat-icon>shop</mat-icon> </button>
+            <button mat-raised-button (click) ="goPdf()"> Añadir a a lista deseo<mat-icon>favorite_border</mat-icon></button>         
+        </ng-template>
+    </ng-template>
+
+      
+</div>

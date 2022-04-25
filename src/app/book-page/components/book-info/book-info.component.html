@@ -1,0 +1,20 @@
+<div class="book-info-container" *ngIf="book">
+    <div class="book-page-tittle"> <h1>{{book.name}}</h1></div>
+    <div class="book-page-img">
+        <img src={{book.img}} alt="img-book">            
+    </div>
+    <div class="book-page-info">
+        <span> <b>Autor:</b> {{book.author}}</span>
+        <span> <b>Isbn:</b> {{book.isbn}}</span>
+        <span><b>Year:</b>{{book.year}}</span>
+        <span><b>Categorias:</b></span>
+        <div class="book-page-categories-item" *ngFor="let item of book.categories">
+                {{item|titlecase}}
+        </div>
+        <span><b>Precio:</b>{{book.price}}</span>
+    </div>
+    <div class="book-page-abstract">
+        <h3>{{book.abstract}}</h3>
+    </div>
+</div>  
+    

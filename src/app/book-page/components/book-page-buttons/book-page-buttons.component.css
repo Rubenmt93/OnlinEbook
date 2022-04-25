@@ -1,0 +1,9 @@
+.book-page-buttons{
+   
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+.book-page-buttons button{
+    margin: 1rem;
+}

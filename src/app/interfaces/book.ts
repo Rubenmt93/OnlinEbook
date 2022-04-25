@@ -1,5 +1,5 @@
 export interface Book {
-    eventId?:       string
+    eventId:       string
     active:         boolean
     author:         string
     categories?:    string[]

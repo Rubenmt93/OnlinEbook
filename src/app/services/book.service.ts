@@ -50,5 +50,10 @@ export class BookService {
     return this.firestore.collection('acquired').add({user:userId,book:bookId});
 
   }
+
+  getAcquiredBook(UserId:string,BookId:string){
+    return this.firestore.collectionGroup('acquired', ref =>ref.where('user','==',UserId)).valueChanges()
+
+  }
 }
 

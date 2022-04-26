@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { Book } from '../interfaces/book';
+import { map } from 'rxjs/operators';
 firebase.initializeApp(environment.firebaseConfig)
 
  
@@ -17,13 +18,14 @@ export class BookService {
 
   constructor( private firestore: AngularFirestore) {
     this.items= firestore.collection('book').valueChanges({ idField: 'eventId' });
+    
   }
   motodo(){
    return this.items
   }
 
   searh(){
-    return this.firestore.collectionGroup('book', ref =>ref.where('name','>=','')).valueChanges()
+    return this.firestore.collectionGroup('book', ref =>ref.where('name','==','Harry Potter y la camara secreta')).valueChanges()
     
   }
 
@@ -52,8 +54,20 @@ export class BookService {
   }
 
   getAcquiredBook(UserId:string,BookId:string){
-    return this.firestore.collectionGroup('acquired', ref =>ref.where('user','==',UserId)).valueChanges()
+    
+    return this.firestore.collectionGroup('acquired' ,ref =>  ref.where("user", ">=", UserId).where("book","==",BookId)).valueChanges()
+  }
 
+  addFavoriteBook(userId:string,bookId:string){
+    return this.firestore.collection('favorites').add({user:userId,book:bookId});
+
+  }
+  getFavoriteBook(UserId:string,BookId:string){
+    return this.firestore.collectionGroup('favorites' ,ref =>  ref.where("user", ">=", UserId).where("book","==",BookId)).valueChanges()
+
+  }
+  removeFavoriteBook(FavId:string){
+    this.firestore.collection("comments").doc(FavId).delete()
   }
 }
 

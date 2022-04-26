@@ -7,3 +7,15 @@
 .book-page-buttons button{
     margin: 1rem;
 }
+#favButton:hover{
+    background-color: rgb(211, 153, 66);
+}
+#readButton:hover{
+    background-color: rgb(230, 44, 44);
+}
+#wantedButton:hover{
+    background-color: rgb(230, 44, 44);
+}
+#buyButton:hover{
+    background-color: rgb(55, 60, 204);
+}

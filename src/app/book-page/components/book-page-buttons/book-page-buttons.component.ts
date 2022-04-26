@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/interfaces/book';
 import { Relation } from 'src/app/interfaces/relation';
 import { AuthService } from 'src/app/services/auth.service';
 import { BookService } from '../../../services/book.service';
+import { User } from 'src/app/interfaces/user';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-book-page-buttons',
@@ -12,44 +14,81 @@ import { BookService } from '../../../services/book.service';
 })
 export class BookPageButtonsComponent {
   acquired:boolean = false
-  userId:string=""
-  @Input('book') book!:Book
+  favorite:boolean = true
+  user!:User
+  bookId:string=""
+  favId:string=""
   constructor(private bookService:BookService,
               private authService:AuthService,
-              private router:Router,) {                
-
-    this.authService.userStateObs().subscribe(user =>{
-      if (user) {             
-        this.userId=user.uid                    
-      }else{                    
-        this.userId=""
-      }
-      
-      });
+              private activatedRoute:ActivatedRoute,
+              private router:Router) {                
+      this.activatedRoute.params.subscribe(({id})=> {this.bookId=id})                  
+      var aux=  localStorage.getItem('userOnlinebook');
+      this.user= JSON.parse(aux!) as User            
+      this.bookAcquired();
+      this.checkFavorite();
       
   }
+  
  
-
-
-  goPdf(){  
-    
-
-    this.bookService.getAcquiredBook(this.userId,this.book.eventId)
-      .subscribe(result =>{
-        console.log(result);
+   
+  bookAcquired(){
+    this.bookService.getAcquiredBook(this.user.uid,this.bookId)
+    .subscribe(result => {
+      console.log('Tengo el libro',result);
+      
+      if(result.length==1){
+        this.acquired=true
+        console.log("TENGO EL PUTO LIBRO");
         
+      }
     })
-    // window.location.href = this.book.link!;
+  }
+  checkFavorite(){
+    // this.bookService.getFavoriteBook(this.user.uid,this.bookId)
+    // .subscribe(result => {
+    //   // this.favId=result[0].eventId
+    //   console.log("Favorite-->", result);
+      
+    //   if(result.length==1){        
+    //     this.favorite=true
+    //   }
+    // })
+    this.bookService.getFavoriteBook(this.user.uid,this.bookId)
+    .subscribe(result => {
+      console.log('fav',result);
+      
+      if(result.length==1){
+        console.log("TENGO EL PUTO LIBRO EN FAV");
+        
+        this.favorite=false
+      } 
+    })
+  }
 
+  goPdf(){      
+    this.bookService.getBookById(this.bookId).subscribe(result => {
+      var aux= result as Book 
+      window.location.href = aux.link!;
+    }) 
   }
-  buy(){
-    this.acquired=!this.acquired
-    //this.bookService.bougth(this.userLogged,this.bookId)
+  buy(){    
+    this.bookService.bougth(this.user.uid,this.bookId)
   }
-  checkBook(book:any){
-    console.log(book);
+  
+  addFavorite(){
+    this.bookService.addFavoriteBook(this.user.uid,this.bookId)
+  }
+  removeFavorite(){
+    this.bookService.removeFavoriteBook(this.favId)
     
   }
+  
+  
+
+
+
+
   navigateLogin(){
     this.router.navigate(['/auth/login'])
   }

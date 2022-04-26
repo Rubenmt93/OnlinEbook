@@ -71,11 +71,7 @@ export class BookPageButtonsComponent {
   removeFavorite(){
     this.bookService.removeFavoriteBook(this.favoriteRelation[0].eventId!).then(result=>{
       this.favorite= !this.favorite
-    })
-
-    console.log(this.favoriteRelation[0]);
-    
-    
+    }) 
   }
   
   

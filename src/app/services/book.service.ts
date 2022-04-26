@@ -63,11 +63,11 @@ export class BookService {
 
   }
   getFavoriteBook(UserId:string,BookId:string){
-    return this.firestore.collectionGroup('favorites' ,ref =>  ref.where("user", ">=", UserId).where("book","==",BookId)).valueChanges()
+    return this.firestore.collectionGroup('favorites' ,ref =>  ref.where("user", ">=", UserId).where("book","==",BookId)).valueChanges({idField: 'eventId'} )
 
   }
   removeFavoriteBook(FavId:string){
-    this.firestore.collection("comments").doc(FavId).delete()
+   return this.firestore.collection("favorites").doc(FavId).delete()
   }
 }
 

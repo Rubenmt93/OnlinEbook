@@ -11,7 +11,7 @@
                         
             </div> 
             <ng-template #deleteFav>
-                <button mat-raised-button id="favButton"> Eliminar de Favorito<mat-icon>favorite_border</mat-icon></button>         
+                <button mat-raised-button id="favButton" (click)="removeFavorite()"> Eliminar de Favorito<mat-icon>favorite_border</mat-icon></button>         
 
             </ng-template>
             <button mat-raised-button id="readButton" (click) ="goPdf()">Leer libro <mat-icon>book</mat-icon></button>         

@@ -5,7 +5,6 @@ import { Relation } from 'src/app/interfaces/relation';
 import { AuthService } from 'src/app/services/auth.service';
 import { BookService } from '../../../services/book.service';
 import { User } from 'src/app/interfaces/user';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-book-page-buttons',
@@ -17,7 +16,7 @@ export class BookPageButtonsComponent {
   favorite:boolean = true
   user!:User
   bookId:string=""
-  favId:string=""
+  favoriteRelation!:Relation[]
   constructor(private bookService:BookService,
               private authService:AuthService,
               private activatedRoute:ActivatedRoute,
@@ -34,33 +33,23 @@ export class BookPageButtonsComponent {
    
   bookAcquired(){
     this.bookService.getAcquiredBook(this.user.uid,this.bookId)
-    .subscribe(result => {
-      console.log('Tengo el libro',result);
-      
+    .subscribe(result => {          
       if(result.length==1){
-        this.acquired=true
-        console.log("TENGO EL PUTO LIBRO");
+        this.acquired=true     
         
       }
     })
   }
   checkFavorite(){
-    // this.bookService.getFavoriteBook(this.user.uid,this.bookId)
-    // .subscribe(result => {
-    //   // this.favId=result[0].eventId
-    //   console.log("Favorite-->", result);
-      
-    //   if(result.length==1){        
-    //     this.favorite=true
-    //   }
-    // })
+    
     this.bookService.getFavoriteBook(this.user.uid,this.bookId)
     .subscribe(result => {
-      console.log('fav',result);
+      this.favoriteRelation = result as Relation[]   
+   
       
-      if(result.length==1){
-        console.log("TENGO EL PUTO LIBRO EN FAV");
-        
+      
+      
+      if(result.length==1){       
         this.favorite=false
       } 
     })
@@ -80,7 +69,12 @@ export class BookPageButtonsComponent {
     this.bookService.addFavoriteBook(this.user.uid,this.bookId)
   }
   removeFavorite(){
-    this.bookService.removeFavoriteBook(this.favId)
+    this.bookService.removeFavoriteBook(this.favoriteRelation[0].eventId!).then(result=>{
+      this.favorite= !this.favorite
+    })
+
+    console.log(this.favoriteRelation[0]);
+    
     
   }
   

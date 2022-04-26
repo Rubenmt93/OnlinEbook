@@ -1,1 +1,67 @@
-<p>mylibrary-home works!</p>
+<div class="componentcontainer">  
+
+        
+    <mat-sidenav-container class="profile-container">
+      
+      <mat-sidenav #sidenav class="sidenav" mode="side" [(opened)]="opened">
+        <mat-icon class="closeSidenav movileElement" (click)="opened=!opened"> close </mat-icon>
+          
+        <mat-nav-list role="list">
+          <mat-list-item role="listitem">          
+            <img src="{{this.userObject.photoURL}}" alt="">
+            <span> {{this.userObject.displayName}}</span>
+          </mat-list-item>
+          <hr>               
+          <a routerLink='./info'>  
+            <mat-list-item role="listitem" >  
+              <div><mat-icon> book</mat-icon> <span> Mis Libros  </span> </div> 
+            </mat-list-item>
+          </a>      
+          
+          <a routerLink='./updateProfile'>
+            <mat-list-item role="listitem">
+              <mat-icon> star</mat-icon> <span> Libros Favoritos</span>  
+            </mat-list-item>
+          </a>       
+  
+          <a routerLink='./changePasswd'> 
+            <mat-list-item role="listitem">
+              <mat-icon> alarm</mat-icon> <span> Libros Pendientes </span>  
+            </mat-list-item>
+          </a>              
+         
+          
+          
+             <a href="#" (click)="logout()">
+              <mat-list-item  role="listitem">
+                <mat-icon>attach_money</mat-icon>   <span>Mis publicaciones</span>
+              </mat-list-item>
+             </a>              
+          
+          
+        </mat-nav-list>     
+        
+      </mat-sidenav>
+    
+      <mat-sidenav-content>
+        <button type="button" 
+                mat-raised-button 
+                color="basic" 
+                class="viewSidenav movileElement"
+                (click)="opened=!opened"
+                *ngIf="!opened"> 
+                
+                <mat-icon>menu</mat-icon>
+        </button>
+       
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  
+  
+    
+    
+    
+      
+  </div>
+   
+  

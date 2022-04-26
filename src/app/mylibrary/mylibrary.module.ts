@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MylibraryHomeComponent } from './pages/mylibrary-home/mylibrary-home.component';
+import { AngularMaterialModule } from '../angular-material/angular-material.module';
 
 
 
@@ -10,7 +11,8 @@ import { MylibraryHomeComponent } from './pages/mylibrary-home/mylibrary-home.co
    
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AngularMaterialModule
   ]
 })
 export class MylibraryModule { }

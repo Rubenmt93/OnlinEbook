@@ -60,6 +60,7 @@ box-shadow: 15px 14px 24px 1px rgba(0,0,0,0.44);
     margin: auto;
     margin-top: 10px;
     text-align: center;
+    color: black;
   }
   .bookCard_author {
     color: #757575;

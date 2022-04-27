@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { Book } from '../interfaces/book';
 import { map } from 'rxjs/operators';
+import { Relation } from '../interfaces/relation';
 firebase.initializeApp(environment.firebaseConfig)
 
  
@@ -46,7 +47,7 @@ export class BookService {
   }
   getBookById(id:string){
     
-    return this.firestore.collection('book').doc(id).valueChanges()
+    return this.firestore.collection('book').doc(id).valueChanges({idField: 'eventId'})
   }
   bougth(userId:string,bookId:string){
     return this.firestore.collection('acquired').add({user:userId,book:bookId});
@@ -68,6 +69,24 @@ export class BookService {
   }
   removeFavoriteBook(FavId:string){
    return this.firestore.collection("favorites").doc(FavId).delete()
+  }
+
+  getMyBooks(UserId:string){
+    var booksArray:Book[]=[]
+     this.firestore.collectionGroup('acquired' ,ref =>  ref.where("user", "==", UserId)).valueChanges({idField: 'eventId'}).subscribe(result =>{
+      result.forEach(book  => {
+        var aux = book as Relation
+       
+        this.getBookById(aux.book!).subscribe(book =>{
+          
+          booksArray.push(book as Book)
+          
+        })
+
+      })
+      
+    })
+   return booksArray
   }
 }
 

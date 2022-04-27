@@ -10,6 +10,10 @@ import { InfoComponent } from './profile/components/info/info.component';
 import { UpdateProfileComponent } from './profile/components/update-profile/update-profile.component';
 import { ChangePasswdComponent } from './profile/components/change-passwd/change-passwd.component';
 import { BookPageComponent } from './book-page/book-page/book-page.component';
+import { MybooksComponent } from './mylibrary/components/mybooks/mybooks.component';
+import { MyfavoritesComponent } from './mylibrary/components/myfavorites/myfavorites.component';
+import { MyslopesComponent } from './mylibrary/components/myslopes/myslopes.component';
+import { MypublishedbooksComponent } from './mylibrary/components/mypublishedbooks/mypublishedbooks.component';
 
 
 const routes: Routes = [
@@ -33,6 +37,29 @@ const routes: Routes = [
   {
     path: 'mylibrary',
     component: MylibraryHomeComponent,
+    children:[
+      {
+        path:'myBooks',
+        component:MybooksComponent,
+      },
+      {
+        path:'myFavorites',
+        component:MyfavoritesComponent,
+      },
+      {
+        path:'mySlopes',
+        component:MyslopesComponent,
+      },
+      {
+        path:'myPublishedBooks',
+        component:MypublishedbooksComponent,
+      },
+      {
+        path: '**',
+        component:MybooksComponent
+      }
+
+    ],
     canLoad:[AuthGuard],
     canActivate:[AuthGuard],
 

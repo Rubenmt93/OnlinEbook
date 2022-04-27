@@ -15,6 +15,9 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     AngularMaterialModule,
     RouterModule
+  ],
+  exports:[
+    BookcardComponent
   ]
 })
 export class CatalogModule { }

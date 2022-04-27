@@ -1,5 +1,6 @@
 .pagesContent{
     height: 90%;
+    margin-bottom: 20px;
 }
 mat-icon {
     vertical-align: middle;

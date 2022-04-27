@@ -12,32 +12,33 @@
             <span> {{this.userObject.displayName}}</span>
           </mat-list-item>
           <hr>               
-          <a routerLink='./info'>  
+          <a routerLink='./myBooks'>  
             <mat-list-item role="listitem" >  
               <div><mat-icon> book</mat-icon> <span> Mis Libros  </span> </div> 
             </mat-list-item>
           </a>      
           
-          <a routerLink='./updateProfile'>
+          <a routerLink='./myFavorites'>
             <mat-list-item role="listitem">
               <mat-icon> star</mat-icon> <span> Libros Favoritos</span>  
             </mat-list-item>
           </a>       
   
-          <a routerLink='./changePasswd'> 
+          <a routerLink='./mySlopes'> 
             <mat-list-item role="listitem">
               <mat-icon> alarm</mat-icon> <span> Libros Pendientes </span>  
             </mat-list-item>
           </a>              
          
+          <a routerLink='./myPublishedBooks'> 
+            <mat-list-item role="listitem">
+              <mat-icon> attach_money</mat-icon>  <span>Mis publicaciones</span>  
+            </mat-list-item>
+          </a>              
+         
           
-          
-             <a href="#" (click)="logout()">
-              <mat-list-item  role="listitem">
-                <mat-icon>attach_money</mat-icon>   <span>Mis publicaciones</span>
-              </mat-list-item>
-             </a>              
-          
+                        
+             
           
         </mat-nav-list>     
         
@@ -53,8 +54,9 @@
                 
                 <mat-icon>menu</mat-icon>
         </button>
-       
+        <router-outlet></router-outlet>
       </mat-sidenav-content>
+     
     </mat-sidenav-container>
   
   

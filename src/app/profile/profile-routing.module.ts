@@ -10,7 +10,7 @@ const routes:Routes = [
   {
     path:'',
     children:[
-      {
+      { 
         path:'info',
         component:InfoComponent,
         outlet: 'outledProfile'

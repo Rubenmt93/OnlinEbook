@@ -9,7 +9,8 @@ import { MyslopesComponent } from './components/myslopes/myslopes.component';
 
 import { RouterModule } from '@angular/router';
 import { CatalogModule } from '../catalog/catalog.module';
-
+import { AppModule } from '../app.module';
+import { MywantedComponent } from './components/mywanted/mywanted.component';
 
 @NgModule({
   declarations: [
@@ -18,9 +19,11 @@ import { CatalogModule } from '../catalog/catalog.module';
     MypublishedbooksComponent,
     MyfavoritesComponent,
     MyslopesComponent,
+    MywantedComponent,
    
   ],
   imports: [
+   
     CommonModule,
     AngularMaterialModule,
     RouterModule,

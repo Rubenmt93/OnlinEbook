@@ -4,18 +4,19 @@ import { User } from 'src/app/interfaces/user';
 import { BookService } from 'src/app/services/book.service';
 
 @Component({
-  selector: 'app-myfavorites',
-  templateUrl: './myfavorites.component.html',
-  styleUrls: ['./myfavorites.component.css']
+  selector: 'app-mywanted',
+  templateUrl: './mywanted.component.html',
+  styleUrls: ['./mywanted.component.css']
 })
-export class MyfavoritesComponent  {
+export class MywantedComponent  {
+
   user:User
   items:  Book[]= []
  
   constructor( private bookService:BookService) {
     var aux=  localStorage.getItem('userOnlinebook');
     this.user= JSON.parse(aux!) as User            
-    this.items=  this.bookService.getMyFavorites(this.user.uid) 
+    this.items=  this.bookService.getMyWanted(this.user.uid) 
    // console.log(this.items);
     
     

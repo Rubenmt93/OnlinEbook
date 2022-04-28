@@ -43,6 +43,6 @@ import { BookPageModule } from './book-page/book-page.module';
    
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

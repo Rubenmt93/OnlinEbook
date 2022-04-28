@@ -45,11 +45,13 @@ export class BookService {
     }
     return this.firestore.collection('book').add(book);
   }
+  ////////////////////////////////////////////////////////
   getBookById(id:string){
     
     return this.firestore.collection('book').doc(id).valueChanges({idField: 'eventId'})
   }
-  bougth(userId:string,bookId:string){
+  ////////////////////CRUD Acquired///////////////////////
+  addAcquiredBook(userId:string,bookId:string){
     return this.firestore.collection('acquired').add({user:userId,book:bookId});
 
   }
@@ -58,7 +60,7 @@ export class BookService {
     
     return this.firestore.collectionGroup('acquired' ,ref =>  ref.where("user", ">=", UserId).where("book","==",BookId)).valueChanges()
   }
-
+  /////////////////// CRUD Favorites//////////////////////
   addFavoriteBook(userId:string,bookId:string){
     return this.firestore.collection('favorites').add({user:userId,book:bookId});
 
@@ -68,25 +70,83 @@ export class BookService {
 
   }
   removeFavoriteBook(FavId:string){
-   return this.firestore.collection("favorites").doc(FavId).delete()
-  }
+    return this.firestore.collection("favorites").doc(FavId).delete()
+   }
+  ///////////////////CRUD Slopes////////////////////////
+  addSlopesBook(userId:string,bookId:string){
+    return this.firestore.collection('slopes').add({user:userId,book:bookId});
 
+  }
+  getSlopesBook(UserId:string,BookId:string){
+    return this.firestore.collectionGroup('slopes' ,ref =>  ref.where("user", ">=", UserId).where("book","==",BookId)).valueChanges({idField: 'eventId'} )
+
+  }
+  removeSlopeBook(FavId:string){
+    return this.firestore.collection("slopes").doc(FavId).delete()
+   }
+    ////////////////WANTED////////////////////////////
+  addWantedBook(userId:string,bookId:string){
+    return this.firestore.collection('wanted').add({user:userId,book:bookId});
+
+  }
+  getWantedBook(UserId:string,BookId:string){
+    return this.firestore.collectionGroup('wanted' ,ref =>  ref.where("user", ">=", UserId).where("book","==",BookId)).valueChanges({idField: 'eventId'} )
+
+  }
+  removeWantedBook(FavId:string){
+    return this.firestore.collection("wanted").doc(FavId).delete()
+   }
+  ///////////////////Mis listas/////////////////////////
+ 
+  
   getMyBooks(UserId:string){
     var booksArray:Book[]=[]
      this.firestore.collectionGroup('acquired' ,ref =>  ref.where("user", "==", UserId)).valueChanges({idField: 'eventId'}).subscribe(result =>{
       result.forEach(book  => {
-        var aux = book as Relation
-       
-        this.getBookById(aux.book!).subscribe(book =>{
-          
-          booksArray.push(book as Book)
-          
+        var aux = book as Relation       
+        this.getBookById(aux.book!).subscribe(book =>{          
+          booksArray.push(book as Book)          
         })
-
-      })
-      
+      })      
     })
    return booksArray
   }
+  getMyFavorites(UserId:string){
+    var booksArray:Book[]=[]
+     this.firestore.collectionGroup('favorites' ,ref =>  ref.where("user", "==", UserId)).valueChanges({idField: 'eventId'}).subscribe(result =>{
+      result.forEach(book  => {
+        var aux = book as Relation       
+        this.getBookById(aux.book!).subscribe(book =>{          
+          booksArray.push(book as Book)          
+        })
+      })      
+    })
+   return booksArray
+  }
+  getMySlopes(UserId:string){
+    var booksArray:Book[]=[]
+     this.firestore.collectionGroup('slopes' ,ref =>  ref.where("user", "==", UserId)).valueChanges({idField: 'eventId'}).subscribe(result =>{
+      result.forEach(book  => {
+        var aux = book as Relation       
+        this.getBookById(aux.book!).subscribe(book =>{          
+          booksArray.push(book as Book)          
+        })
+      })      
+    })
+   return booksArray
+  }
+  getMyWanted(UserId:string){
+    var booksArray:Book[]=[]
+     this.firestore.collectionGroup('wanted' ,ref =>  ref.where("user", "==", UserId)).valueChanges({idField: 'eventId'}).subscribe(result =>{
+      result.forEach(book  => {
+        var aux = book as Relation       
+        this.getBookById(aux.book!).subscribe(book =>{          
+          booksArray.push(book as Book)          
+        })
+      })      
+    })
+   return booksArray
+  }
+ 
 }
 

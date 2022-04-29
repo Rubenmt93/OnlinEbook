@@ -15,11 +15,11 @@
 
             </ng-template>
             <div  *ngIf="this.slopes; else deleteSlopes">
-                <button mat-raised-button id="favButton" (click) ="addSlopes()">Añadir a pendientes <mat-icon>alarm</mat-icon> </button>
+                <button mat-raised-button id="slopeButton" (click) ="addSlopes()">Añadir a pendientes <mat-icon>alarm</mat-icon> </button>
                         
             </div> 
             <ng-template #deleteSlopes>
-                <button mat-raised-button id="favButton" (click)="removeSlope()"> Eliminar de pendientes<mat-icon>alarm</mat-icon></button>         
+                <button mat-raised-button id="slopeButton" (click)="removeSlope()"> Eliminar de pendientes<mat-icon>alarm</mat-icon></button>         
 
             </ng-template>
             <button mat-raised-button id="readButton" (click) ="goPdf()">Leer libro <mat-icon>book</mat-icon></button>         
@@ -32,7 +32,7 @@
                         
             </div> 
             <ng-template #deleteWanted>
-                <button mat-raised-button id="favButton" (click)="removeWanted()"> Eliminar de lista de deseo<mat-icon>alarm</mat-icon></button>         
+                <button mat-raised-button id="wantedButton" (click)="removeWanted()"> Eliminar de lista de deseo<mat-icon>alarm</mat-icon></button>         
 
             </ng-template>
         </ng-template>

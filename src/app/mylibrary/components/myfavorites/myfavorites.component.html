@@ -3,7 +3,7 @@
 </div>
 
 <div class="catalogContainer">
-    <div  class="catalog-grid" >
+    <div  class="catalog-grid" *ngIf="items.length > 0; else emptyList"  >
     
         <div class= "catalog-item" *ngFor="let item of items">        
             <app-bookcard class= "feature" 
@@ -12,5 +12,11 @@
             </app-bookcard>
         </div>
     </div>
+    <ng-template #emptyList>
+       
+        <div  class="emptyListClass">
+            <h1> No hay libros favoritos   </h1>
+        </div>  
+     </ng-template>
 
 </div> 

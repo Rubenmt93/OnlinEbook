@@ -54,8 +54,7 @@ export class LoginComponent  {
     this.authservice.SignIn( email, passwd )
     .then((result) => {        
             
-    }).catch((error) => {
-      console.log('el .catch')
+    }).catch((error) => {   
       
     })    
   

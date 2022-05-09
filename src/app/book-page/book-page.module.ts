@@ -4,6 +4,11 @@ import { BookPageComponent } from './book-page/book-page.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { BookInfoComponent } from './components/book-info/book-info.component';
 import { BookPageButtonsComponent } from './components/book-page-buttons/book-page-buttons.component';
+import { ComentariosContainerComponent } from './components/comentarios-container/comentarios-container.component';
+import { ComentariosListComponent } from './components/comentarios-list/comentarios-list.component';
+import { ComentariosNewCommentComponent } from './components/comentarios-new-comment/comentarios-new-comment.component';
+import { ComentarioComponent, ReportDialog } from './components/comentario/comentario.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -11,11 +16,17 @@ import { BookPageButtonsComponent } from './components/book-page-buttons/book-pa
   declarations: [
     BookPageComponent,
     BookInfoComponent,
-    BookPageButtonsComponent
+    BookPageButtonsComponent,
+    ComentariosContainerComponent,
+    ComentariosListComponent,
+    ComentariosNewCommentComponent,
+    ComentarioComponent,
+    ReportDialog
   ],
   imports: [
     CommonModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    ReactiveFormsModule,
   ]
 })
 export class BookPageModule { }

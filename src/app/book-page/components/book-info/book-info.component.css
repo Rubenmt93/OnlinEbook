@@ -4,13 +4,14 @@
     grid-template-rows: repeat(50px, 1fr,1fr,20px);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-
+    background:url("../../../../assets/backgroundBookPage.svg") no-repeat center center ;
+    border-radius:20px 20px 0 0 ;
 } 
 .book-page-tittle{
     grid-area: 1 / 1 / 2 / 3; 
     display: flex;
     justify-content: center;
-    height: 100px;
+    margin-top:20px ;
 }
 .book-page-tittle h1{
     text-align: center;

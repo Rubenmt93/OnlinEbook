@@ -11,6 +11,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatTableModule} from '@angular/material/table';
+import {MatSelectModule} from '@angular/material/select';
 
 import {MatListModule} from '@angular/material/list';
 import {TextFieldModule} from '@angular/cdk/text-field';
@@ -30,7 +31,8 @@ import {TextFieldModule} from '@angular/cdk/text-field';
     MatToolbarModule,
     MatListModule,
     MatTableModule,
-    TextFieldModule
+    TextFieldModule,
+    MatSelectModule
 
     
   ],

@@ -1,0 +1,104 @@
+.comment_container{
+  width: 90%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+.comment_header{
+  display:flex;
+  flex-direction: row;  
+  justify-content: space-between;
+  background-color: rgb(181, 184, 188);
+  padding: 7px;  
+  margin:auto;
+  border-radius: 10px 10px 0 0;
+}
+.comment_header_userInfo{
+  display:flex;
+  flex-direction: row;  
+  margin-left: 10px;
+}
+.comment_header img{
+    border-radius: 50%;
+    max-width: 50px;
+    max-height: 50px;
+}
+.comment_header h1{
+   color: rgb(255, 255, 255);
+   margin:10px;
+
+}
+
+.comment_msg{
+  border: 3px solid   rgb(181, 184, 188);
+  padding: 20px;
+ 
+}
+.comment_msg span{
+  margin-left:20px;
+}
+
+.comment_footer{
+  background-color: rgb(181, 184, 188);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;  
+  border-radius:0 0 10px 10px ;
+}
+.respuestasDiv{
+  color: white;
+  display: flex;
+  
+}
+.comment_footer_icons{
+  display: flex;
+  flex-direction: row;
+  padding: 2px;
+}
+.respuestasDiv span{
+  margin: auto;
+  margin-right: 10px;
+  
+}
+.comment_footer_icons mat-icon{
+  color: white;
+  margin-left: 20px;
+  display: flex;
+}
+#likes{
+display: flex;
+flex-direction: row;
+cursor: pointer;
+}
+#likes h4{
+  vertical-align: middle;
+  margin: auto;
+  margin-left: 5px;
+  color: white;
+  
+}
+.reportForm{
+  display: flex;
+  flex-direction: column;
+}
+.reportFormList{
+  color: white;
+}
+.reportFormList:focus{
+  color: white;
+
+}
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: rgb(255, 255, 255);
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: rgb(255, 255, 255);
+}
+
+::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow{
+  color: rgb(255, 255, 255);
+}
+
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled){
+  color: rgb(255, 255, 255);
+}

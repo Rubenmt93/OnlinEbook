@@ -21,8 +21,7 @@ export class BookPageButtonsComponent {
   favoriteRelation!:Relation[]
   slopesRelation!:Relation[]
   wantedRelation!:Relation[]
-  constructor(private bookService:BookService,
-              private authService:AuthService,
+  constructor(private bookService:BookService,              
               private activatedRoute:ActivatedRoute,
               private router:Router) {                
       this.activatedRoute.params.subscribe(({id})=> {this.bookId=id})                  
@@ -52,9 +51,7 @@ export class BookPageButtonsComponent {
   checkSlopes(){
     this.bookService.getSlopesBook(this.user.uid,this.bookId)
     .subscribe(result => {
-      this.slopesRelation = result as Relation[]   
-      console.log(this.slopesRelation);
-           
+      this.slopesRelation = result as Relation[]               
       if(result.length>=1){     
         this.slopes=false
       } 
@@ -63,12 +60,8 @@ export class BookPageButtonsComponent {
   checkWanted(){
     this.bookService.getWantedBook(this.user.uid,this.bookId)
     .subscribe(result => {
-      this.wantedRelation = result as Relation[]   
-      console.log(this.slopesRelation);
-           
+      this.wantedRelation = result as Relation[]       
       if(result.length>=1){       
-        console.log("PRUEBRITA");
-        
         this.wanted=false
       } 
     })

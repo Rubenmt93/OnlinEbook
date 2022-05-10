@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BookService } from '../../../services/book.service';
 import { UserService } from '../../../services/user.service';
 import { CommentsService } from '../../../services/comments.service';
@@ -22,40 +22,36 @@ export class ComentarioComponent {
   mylike:boolean = false                      
   localuser!:User
   like!:Like[]
-  constructor(private bookService:BookService,
-              private userService:UserService,            
+  @Input () commentId: string="prueba";
+  constructor(private userService:UserService,            
               private commentsService:CommentsService,
               public dialog: MatDialog,
-              public reportService:ReportService) { 
-        this.commentsService.getCommentsBook('AYPfF5WnDRxr1JqdfnJ2').subscribe(respuesta =>{
-          this.comment= respuesta[0] as Comment   
-          this.commentsService.getLikes(this.comment.eventId).subscribe(respuesta =>{
-            
-            this.likesCounter=respuesta.length
-            
-          })   
-          this.commentLiked(this.comment.eventId)  
-          this.userService.getUserById(this.comment.userId).subscribe(user=>{         
-            this.user=  user as User  
+              public reportService:ReportService,) {                  
               
-          })    
-           
-        }) 
-        this.localuser = JSON.parse(localStorage.getItem('userOnlinebook')!)
-        
-        
-        
+                       
+             
+  }
+
+  ngOnChanges() {
+    this.commentsService.getCommentById(this.commentId).subscribe(result =>{
+      this.comment= result as Comment
+      this.commentsService.getLikes(this.comment.eventId).subscribe(respuesta =>{            
+          this.likesCounter=respuesta.length            
+      })
+      this.commentLiked(this.comment.eventId) 
+      this.userService.getUserById(this.comment.userId).subscribe(user=>{         
+         this.user=  user as User                
+      })
+    })
+    this.localuser = JSON.parse(localStorage.getItem('userOnlinebook')!)
   }
   
   addLike(){        
     this.commentsService.addlike(this.comment.eventId,this.localuser.uid)
   }
-  removeLike(){
-    
+  removeLike(){    
     this.mylike=false    
-    this.commentsService.removeLikedComment(this.like[0].eventId!)
-    
-    
+    this.commentsService.removeLikedComment(this.like[0].eventId!)       
   }
   deleteComment(){
     console.log(this.comment.userId);
@@ -80,6 +76,10 @@ export class ComentarioComponent {
      this.reportService.addReport(this.comment.eventId,this.localuser.uid,aux)
       
     });
+  }
+  metodo(){
+    console.log(this.commentId);
+    
   }
 }
 @Component({

@@ -1,0 +1,9 @@
+span{
+   margin: auto;
+   font-size: x-large;
+}
+.noComment{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}

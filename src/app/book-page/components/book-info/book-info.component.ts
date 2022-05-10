@@ -9,26 +9,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./book-info.component.css']
 })
 export class BookInfoComponent  {
-  @Input() book:Book 
+  @Input() book!:Book 
   
   
  
   constructor() {
-   this.book={
-    eventId:       "",
-    active:         true,
-    author:         "Author",
-    categories:    [""],
-    img:            "https://galapagos-pro.com/wp-content/uploads/2021/03/book-placeholder.jpg",
-    isbn:          "000000000000",
-    link:         "",
-    name:           "Book name",
-    price:         0,
-    userOwner:     "",
-    year:          9999,
-    abstract:       "",
-
-  }
+  
   
     
   }

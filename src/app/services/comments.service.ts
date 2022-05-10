@@ -31,7 +31,9 @@ export class CommentsService {
     return this.firestore.collectionGroup('likes' ,ref =>  ref.where("user", "==", uid).where("comment","==",commentId)).valueChanges({idField: 'eventId'} )
 
   }
-
+  getCommentById(commentId:string){
+    return this.firestore.collection('comments').doc(commentId).valueChanges({idField: 'eventId'})
+  }
   removeLikedComment(likedId:string){     
     return this.firestore.collection("likes").doc(likedId).delete()
   }
@@ -42,6 +44,9 @@ export class CommentsService {
   }
   getReports(commentId:string){
     return this.firestore.collectionGroup('report' ,ref =>  ref.where("comment","==",commentId)).valueChanges({idField: 'eventId'} )
+  }
+  addComment(bookId:string,msg:string, userId:string){
+    return this.firestore.collection('comments').add({userId:userId,bookId:bookId,msg:msg});
   }
   removeComment(commentId:string){
     this.firestore.collection("comments").doc(commentId).delete()
@@ -63,5 +68,5 @@ export class CommentsService {
       })
     })
 
-   }
+  }
 }

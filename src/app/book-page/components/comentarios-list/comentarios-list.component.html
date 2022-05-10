@@ -1,1 +1,15 @@
-<app-comentario></app-comentario>
+<div class="noComment"*ngIf="commentsList.length == 0, else showComments">
+
+    <span>No hay comentarios todavia </span>
+ 
+</div>
+<ng-template #showComments>
+    
+<div *ngFor="let comment of commentsList">
+    <app-comentario [commentId]=comment.eventId ></app-comentario>
+</div>
+</ng-template>
+
+
+
+

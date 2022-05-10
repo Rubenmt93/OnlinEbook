@@ -3,15 +3,35 @@
     <div class="book-page-img">
         <img src={{book.img}} alt="img-book">            
     </div>
-    <div class="book-page-info">
-        <span> <b>Autor:</b> {{book.author}}</span>
-        <span> <b>Isbn:</b> {{book.isbn}}</span>
-        <span><b>Year:</b>{{book.year}}</span>
-        <span><b>Categorias:</b></span>
-        <div class="book-page-categories-item" *ngFor="let item of book.categories">
-                {{item|titlecase}}
-        </div>
-        <span><b>Precio:</b>{{book.price}}</span>
+    <div class="book-page-info">        
+        <table class="table-info">
+            <tr>  
+                <td><b>Autor:</b></td>
+                <td>{{book.author}}</td>
+            </tr>
+            <tr>  
+                <td><b>Isbn:</b></td>
+                <td>{{book.isbn}}</td>
+            </tr>
+            <tr>  
+                <td><b>Year:</b></td>
+                <td>{{book.year}}</td>
+            </tr>
+            <tr>  
+                <td><b>Categorias:</b></td>
+                <td>
+                     <div class="book-page-categories-item" *ngFor="let item of book.categories">
+                        {{item|titlecase}}
+                    </div>
+                </td>
+            </tr>
+
+            <tr>  
+                <td><b><b>Precio:</b></b></td>
+                <td>{{book.price}} €</td>
+            </tr>   
+        </table>  
+        <span class="reportBook" (click)="reportBook()"><mat-icon>report_problem</mat-icon> <h3> Reportar libro</h3>  </span>      
     </div>
     <div class="book-page-abstract">
         <h3>{{book.abstract}}</h3>

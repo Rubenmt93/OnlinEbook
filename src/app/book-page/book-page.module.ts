@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BookPageComponent } from './book-page/book-page.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
-import { BookInfoComponent } from './components/book-info/book-info.component';
+import { BookInfoComponent, ReportDialogBook } from './components/book-info/book-info.component';
 import { BookPageButtonsComponent } from './components/book-page-buttons/book-page-buttons.component';
 import { ComentariosContainerComponent } from './components/comentarios-container/comentarios-container.component';
 import { ComentariosListComponent } from './components/comentarios-list/comentarios-list.component';
@@ -21,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ComentariosListComponent,
     ComentariosNewCommentComponent,
     ComentarioComponent,
-    ReportDialog
+    ReportDialog,
+    ReportDialogBook
   ],
   imports: [
     CommonModule,

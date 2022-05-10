@@ -34,8 +34,11 @@
 
 .book-page-info{
     grid-area: 2 / 2 / 3 / 3;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+grid-template-columns: 1fr;
+grid-template-rows: repeat(4, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
     font-size: larger;
 }
 .book-page-abstract{
@@ -45,4 +48,17 @@
 }
 .book-page-categories-item{
     margin-left: 1rem;
+}
+.reportBook{
+    grid-area: 4 / 1 / 5 / 2;
+    display: flex;
+    
+}
+.reportBook h3,mat-icon{
+    vertical-align: middle;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.table-info{
+     grid-area: 1 / 1 / 3 / 2; 
 }

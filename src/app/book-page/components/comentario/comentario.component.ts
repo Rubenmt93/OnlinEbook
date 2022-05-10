@@ -73,7 +73,7 @@ export class ComentarioComponent {
     dialogRef.afterClosed().subscribe(result => {
      var aux:string[] = result as string[]
      console.log(result);
-     this.reportService.addReport(this.comment.eventId,this.localuser.uid,aux)
+     this.reportService.addReportComment(this.comment.eventId,this.localuser.uid,aux)
       
     });
   }
@@ -89,7 +89,6 @@ export class ComentarioComponent {
 })
 export class ReportDialog {
   constructor(private fb: FormBuilder,
-              private authservice:AuthService,
               public dialogRef: MatDialogRef<ReportDialog>,
               ) {}  
   

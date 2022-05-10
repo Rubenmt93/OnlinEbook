@@ -16,13 +16,14 @@ export class ReportService {
 
   
   
-  addReport(commentId:string, uid:string,reason:string[]){    
-    console.log("---------------");
-    console.log(commentId);
-    console.log(uid);
-    console.log(reason);
+  addReportComment(commentId:string, uid:string,reason:string[]){       ;
     
     return this.firestore.collection('report').add({user:uid,comment:commentId,reason:reason});
+ 
+  }
+  addReportBook(bookId:string, uid:string,reason:string[]){       ;
+    
+    return this.firestore.collection('report').add({user:uid,book:bookId,reason:reason});
  
   }
 }

@@ -1,0 +1,23 @@
+<h3>Selecciona el motivo del Reporte</h3>
+<form   [formGroup]="reportForm"
+        (ngSubmit)="sendReport()">  
+    <div class="reportForm">
+        <mat-form-field 
+            appearance="fill"
+            class="reportFormList">
+            
+            <mat-label class="reportFormList">Motivos de Reporte</mat-label>
+            <mat-select                 
+                formControlName='list'
+                multiple>
+                <mat-option *ngFor="let reason of reasonList" [value]="reason">{{reason}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-raised-button 
+            color="warn"
+            type="submit"
+            [mat-dialog-close]="reportForm.controls['list'].value">
+            Reportar
+        </button>
+    </div>
+</form>

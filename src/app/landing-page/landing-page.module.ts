@@ -10,6 +10,7 @@ import { WriterActionComponent } from './components/writer-action/writer-action.
 import { ReactiveFormsModule } from '@angular/forms';
 import { CarrouselComponent } from './components/carrousel/carrousel.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { CatalogModule } from '../catalog/catalog.module';
 
 
 
@@ -28,7 +29,8 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     AngularMaterialModule,
     AuthModule,
     ReactiveFormsModule,
-    IvyCarouselModule
+    IvyCarouselModule,
+    CatalogModule
   ],
   exports:[
     HomeComponent

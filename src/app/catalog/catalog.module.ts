@@ -17,7 +17,8 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ],
   exports:[
-    BookcardComponent
+    BookcardComponent,
+    CatalogHomeComponent
   ]
 })
 export class CatalogModule { }

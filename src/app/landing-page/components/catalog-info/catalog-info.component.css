@@ -10,12 +10,15 @@
 .catalog-container-grid{
     display: flex;
     flex-direction: column;
+    width:100%;
 }
+::-webkit-scrollbar {display: none;}
 .catalog-container h2{
     font-size: large; 
     color: white;        
     justify-self: center;  
-    margin:auto 
+    margin:auto ;
+    width:100%;
      
 }
 h1{
@@ -27,7 +30,9 @@ h1{
     grid-area: 1 / 1 / 3 / 4;     
     width: 100%;   
     margin: 2%;   
- 
+    height: 500px;
+    width: 100%;
+    overflow: scroll;
 }
 iframe{
     border-radius:2%;

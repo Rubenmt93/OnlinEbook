@@ -93,8 +93,8 @@ export class BookService {
     return this.firestore.collectionGroup('wanted' ,ref =>  ref.where("user", ">=", UserId).where("book","==",BookId)).valueChanges({idField: 'eventId'} )
 
   }
-  removeWantedBook(FavId:string){
-    return this.firestore.collection("wanted").doc(FavId).delete()
+  removeWantedBook(wantedId:string){
+    return this.firestore.collection("wanted").doc(wantedId).delete()
    }
   ///////////////////Mis listas/////////////////////////
  

@@ -34,6 +34,13 @@ export class BookPageButtonsComponent {
   }
   buy(){    
     this.bookService.addAcquiredBook(this.user.uid,this.bookId)
+    this.bookService.getWantedBook(this.user.uid,this.bookId).subscribe(wanted => {
+      if(wanted[0]){
+        var aux:Relation= wanted[0] as Relation
+        this.bookService.removeWantedBook(aux.eventId!)
+      } 
+      
+    })
   }
   bookAcquired(){
     this.bookService.getAcquiredBook(this.user.uid,this.bookId)

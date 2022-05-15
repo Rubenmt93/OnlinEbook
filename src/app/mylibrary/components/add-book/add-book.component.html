@@ -1,0 +1,163 @@
+<div class="componentcontainer">
+    <div class="container">       
+        
+        <div class="header">
+            <h2>Subir nuevo libro</h2>
+        </div>  
+        
+
+        <form   [formGroup]="publiForm"
+                (ngSubmit)="addBook()">   
+            <div class="formGrid">
+                <div class="div1">
+                    <img src="{{ this.PortadaURL }}" alt="Book Placeholder" >
+                   
+                    <button type="button" 
+                            mat-raised-button 
+                            color="primary"
+                            (click)="imgInput.click()">
+                            <mat-icon matPrefix> image </mat-icon> 
+                            Subir Portada
+                    </button>
+                    <input  hidden                             
+                            #imgInput
+                            (change)="uploadImg($event)"                             
+                            type="file" 
+                            >      
+                            
+                    <button type="button" 
+                            mat-raised-button 
+                            color="primary"
+                            (click)="fileInput.click()">
+                            <mat-icon matPrefix> picture_as_pdf </mat-icon> 
+                            Subir Pdf
+                    </button>
+                    <input  hidden                             
+                            #fileInput
+                            (change)="uploadPdf($event)"                             
+                            type="file" 
+                            >         
+                </div>
+                <div class="div2">
+                    <mat-form-field class="example-full-width">
+                        <mat-label> 
+                            <mat-icon matPrefix> book </mat-icon> 
+                             Titulo
+                        </mat-label>
+                        <input  type="text" 
+                                formControlName=name  
+                                autocomplete="on"            
+                                matInput>         
+                        <mat-error *ngIf="validezCampo('name')">Campo requerido</mat-error>
+                    </mat-form-field>
+    
+                    
+                    <mat-form-field class="example-full-width">                
+                        <mat-label> 
+                            <mat-icon matPrefix> person_outline </mat-icon> 
+                            Autor
+                        </mat-label>
+                        <input  type="text"
+                                formControlName='author'
+                                autocomplete="on" 
+                                matInput>  
+                        <mat-error *ngIf="validezCampo('author')">Campo requerido</mat-error>                     
+                    </mat-form-field>  
+                    <mat-form-field class="example-full-width">                
+                        <mat-label> 
+                            <mat-icon matPrefix> code </mat-icon> 
+                            Isbn
+                        </mat-label>
+                        <input  type="text"
+                                formControlName='isbn'
+                                autocomplete="on" 
+                                matInput>  
+                        <mat-error *ngIf="validezCampo('isbn')">Campo requerido</mat-error>                     
+                    </mat-form-field>        
+                               
+                </div>
+
+                <div class= "div3">   
+                    <mat-form-field class="example-full-width">                
+                        <mat-label> 
+                            <mat-icon matPrefix>calendar_today </mat-icon> 
+                            Año de publicación
+                        </mat-label>
+                        <input  type="number"
+                                formControlName='year'
+                                autocomplete="on" 
+                                matInput>  
+                        <mat-error *ngIf="validezCampo('year')">Campo requerido</mat-error>                     
+                    </mat-form-field>  
+                   <!-- //////////////////////////////////////////////////////////// -->
+                       
+                    <mat-form-field class="example-full-width">
+                        <mat-label >
+                            <mat-icon matPrefix> check_box</mat-icon>
+                            Categorias
+                        </mat-label>
+                        <mat-select 
+                                    autocomplete="on"                                    
+                                    matInput          
+                                    formControlName='categories'
+                                    multiple>
+                            <mat-option *ngFor="let categoria of categoriasList" [value]="categoria">{{categoria}}</mat-option>
+                        </mat-select>
+                        
+                        <mat-error *ngIf="validezCampo('list')">Campo requerido</mat-error>     
+                    </mat-form-field>
+
+                    <!-- //////////////////////////////////////////////////////////// -->
+                    <mat-form-field class="example-full-width">                
+                        <mat-label> 
+                            <mat-icon matPrefix> attach_money </mat-icon> 
+                            Precio
+                        </mat-label>
+                        <input  type="number"
+                                formControlName='price'
+                                autocomplete="on" 
+                                matInput>  
+                        <mat-error *ngIf="validezCampo('price')">Campo requerido</mat-error>                     
+                    </mat-form-field>  
+        
+                    
+
+                    
+                </div>
+                <div class="div4">
+                    <mat-form-field class="abstract-textArea" >
+                        <mat-label>
+                            <mat-icon  matPrefix> border_color</mat-icon>
+                            Resumen
+                        </mat-label>
+                        <textarea   class="textArea"
+                                    matInput                                    
+                                    formControlName='abstract'
+                                    autocomplete="on">
+                        </textarea>
+                        <mat-error *ngIf="validezCampo('isbn')">Campo requerido</mat-error>     
+                      </mat-form-field>
+                </div>
+            </div>
+            <div>
+                <button mat-raised-button 
+                        type="submit"
+                        color="primary"
+                        >
+                    Publicar en OnlinEbook
+                </button>
+                <!-- <button mat-raised-button                
+                        color="basic"
+                        type="button">
+                    Acceder con Google
+                </button>
+                 -->
+
+            </div>
+            
+        </form>
+       
+    </div>
+
+     
+</div>

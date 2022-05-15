@@ -1,5 +1,5 @@
 <div class="book-info-container" *ngIf="book">
-    <div class="book-page-tittle"> <h1>{{book.name}}</h1></div>
+    <div class="book-page-tittle"> <h1>{{book.name | titlecase}} </h1></div>
     <div class="book-page-img">
         <img src={{book.img}} alt="img-book">            
     </div>
@@ -25,6 +25,10 @@
                     </div>
                 </td>
             </tr>
+            <tr>  
+                <td><b>Ventas:</b></td>
+                <td> {{downloadCount}} adquisiciones</td>
+            </tr>
 
             <tr>  
                 <td><b><b>Precio:</b></b></td>
@@ -34,6 +38,7 @@
         <span class="reportBook" (click)="reportBook()"><mat-icon>report_problem</mat-icon> <h3> Reportar libro</h3>  </span>      
     </div>
     <div class="book-page-abstract">
+        <p><b>Resumen:</b></p>
         <h3>{{book.abstract}}</h3>
     </div>
 </div>  

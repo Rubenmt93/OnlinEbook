@@ -1,9 +1,14 @@
 span{
    margin: auto;
    font-size: x-large;
+   margin-bottom: 10px;
 }
 .noComment{
     display: flex;
     justify-content: center;
     width: 100%;
+   
+}
+hr{
+    width: 90%;
 }

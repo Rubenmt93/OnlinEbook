@@ -65,6 +65,9 @@ h3{
     min-height: 100px;
     background:url("../../../../assets/transicion-landing1.svg") no-repeat center center ;
 }
+app-catalog-home{
+    border-radius: 5%;
+}
 @media (min-width: 750px) {
     .catalog-container-grid{
         display: grid;

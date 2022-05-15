@@ -4,8 +4,9 @@
         <p (click)="navigateLogin()">Iniciar sesión</p>
     </div>
     <ng-template #showButtons>
+        <!-- //Libro adquirido -->
         <div style="display:flex"*ngIf="this.acquired; else buyButtons">
-           
+            
             <div  *ngIf="this.favorite; else deleteFav">
                 <button mat-raised-button id="favButton" (click) ="addFavorite()">Añadir a favorito <mat-icon>star</mat-icon> </button>
                         
@@ -22,8 +23,10 @@
                 <button mat-raised-button id="slopeButton" (click)="removeSlope()"> Eliminar de pendientes<mat-icon>alarm</mat-icon></button>         
 
             </ng-template>
+
             <button mat-raised-button id="readButton" (click) ="goPdf()">Leer libro <mat-icon>book</mat-icon></button>         
         </div>
+        <!-- //Libro no adquirido -->
         <ng-template #buyButtons>
             <button mat-raised-button id="buyButton" (click) ="buy()">Comprar <mat-icon>shop</mat-icon> </button>
              

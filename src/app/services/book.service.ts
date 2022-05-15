@@ -4,18 +4,20 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { Book } from '../interfaces/book';
-import { map } from 'rxjs/operators';
-import { Relation } from '../interfaces/relation';
-firebase.initializeApp(environment.firebaseConfig)
 
- 
+import 'firebase/compat/storage';
+import { Relation } from '../interfaces/relation';
+import { lookup } from 'dns';
+firebase.initializeApp(environment.firebaseConfig) 
 @Injectable({
   providedIn: 'root'
 })
+
 export class BookService {
  items: Observable<any[]>;
  book!:Book
-  
+ storageRef=firebase.app().storage().ref()
+
 
   constructor( private firestore: AngularFirestore) {
     this.items= firestore.collection('book').valueChanges({ idField: 'eventId' });
@@ -29,21 +31,47 @@ export class BookService {
     return this.firestore.collectionGroup('book', ref =>ref.where('name','==','Harry Potter y la camara secreta')).valueChanges()
     
   }
-
-  createPolicy(){
-    var book = {
-      active: true,      
-      author: 'J.K. Rowling',
-      categories: ['fantasia'],
-      img:'https://imagessl5.casadellibro.com/a/l/t7/05/9788498381405.jpg',
-      isbn:'9788498387650',
-      link: "http://www.africau.edu/images/default/sample.pdf",
-      name: "Harry Potter y las reliquias de la muerte",
-      price: 0,
-      userOwner: null,
-      year:   2006
+  ////////////////////////////////////////////////////////
+  createBook(author:string, categories:string[],isbn:string, name:string,year:number,price:number,userOwner:string,img64:string,pdf:string,abstract:string){
+    this.SubirPortada(name,img64).then(imagen =>{
+     
+      this.SubirPdf(name,pdf).then(pdf => {
+        var book = {
+          active: false,      
+          author: author,
+          categories: categories,
+          img:imagen,
+          isbn:isbn,
+          link: pdf,
+          name: name,
+          price: price,
+          userOwner: userOwner,
+          year:   year,
+          abstract: abstract
+        }
+        return this.firestore.collection('book').add(book);
+        
+      })
+    })
+   
+  }
+  async SubirPortada( bookname:string, img64:any){      
+    try{
+      let respuesta = await this.storageRef.child("portadas/"+bookname).putString(img64,'data_url')
+      return await respuesta.ref.getDownloadURL()
+    }catch (error){
+      window.alert(error)
+      return null
     }
-    return this.firestore.collection('book').add(book);
+  }
+  async SubirPdf( bookname:string, pdf:any){      
+    try{
+      let respuesta = await this.storageRef.child("pdf/"+bookname).putString(pdf,'data_url')
+      return await respuesta.ref.getDownloadURL()
+    }catch (error){
+      window.alert(error)
+      return null
+    }
   }
   ////////////////////////////////////////////////////////
   getBookById(id:string){
@@ -147,6 +175,25 @@ export class BookService {
     })
    return booksArray
   }
+
+  /////////////////////Mi published////////////////////////////////
  
+  getMyPublished(UserId:string){        
+    var booksArray:Book[]=[]
+    this.firestore.collectionGroup('book', ref =>ref.where('userOwner','==',UserId)).valueChanges({idField: 'eventId'}).subscribe(result =>{
+      result.forEach(book  => {                      
+          booksArray.push(book as Book) 
+      })      
+    })
+   return booksArray
+  }
+
+  getDownloadCount(BookId:string){
+   
+    return this.firestore.collectionGroup('acquired', ref =>ref.where('book','==',BookId)).valueChanges({idField: 'eventId'})
+    
+    
+    
+  }
 }
 

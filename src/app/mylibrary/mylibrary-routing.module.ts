@@ -6,6 +6,7 @@ import { MyfavoritesComponent } from './components/myfavorites/myfavorites.compo
 import { MyslopesComponent } from './components/myslopes/myslopes.component';
 import { MypublishedbooksComponent } from './components/mypublishedbooks/mypublishedbooks.component';
 import { MywantedComponent } from './components/mywanted/mywanted.component';
+import { AddBookComponent } from './components/add-book/add-book.component';
 
 
 
@@ -38,6 +39,11 @@ const routes:Routes = [
       {
         path:'myWantedBooks',
         component:MywantedComponent,
+        outlet: 'outledMybooks'
+      },
+      {
+        path:'newBooks',
+        component:AddBookComponent,
         outlet: 'outledMybooks'
       },
       

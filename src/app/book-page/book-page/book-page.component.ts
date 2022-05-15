@@ -16,16 +16,22 @@ export class BookPageComponent {
   book!:Book
   userLogged:string=""
   bought:boolean=true
-
-  constructor(private bookService:BookService,
-              private authservice:AuthService,
+  active:boolean=false
+  constructor(private bookService:BookService,              
               private activatedRoute:ActivatedRoute,) {
                 this.activatedRoute.params.subscribe(({id})=> this.bookId=id)
                 this.bookService.getBookById(this.bookId).subscribe(result =>{
                   this.book=result as Book      
                   this.book.eventId=this.bookId
+                  this.active=this.book.active
                 })
-               }
+  }
+  goPdf(){      
+    this.bookService.getBookById(this.bookId).subscribe(result => {
+      var aux= result as Book 
+      window.location.href = aux.link!;
+    }) 
+  }
  
   
 }

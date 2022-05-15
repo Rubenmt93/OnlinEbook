@@ -12,29 +12,37 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './book-info.component.html',
   styleUrls: ['./book-info.component.css']
 })
-export class BookInfoComponent  {
+export class BookInfoComponent {
   @Input() book!:Book 
   
   bookId:string=""
   user:User
+  downloadCount:number=0
   constructor(private reportService:ReportService,
               private activatedRoute:ActivatedRoute,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              private bookService:BookService) {
   
   
     this.activatedRoute.params.subscribe(({id})=> {this.bookId=id})    
     this.user = JSON.parse(localStorage.getItem('userOnlinebook')!)
+    this.setDownloadsCount()
   }
   
   reportBook(){
     var dialogRef =this.dialog.open(ReportDialogBook);
     dialogRef.afterClosed().subscribe(result => {
-     var aux:string[] = result as string[]
-     
-     this.reportService.addReportBook(this.bookId,this.user.uid,aux)
+      var aux:string[] = result as string[]
+      if(aux){
+        this.reportService.addReportBook(this.bookId,this.user.uid,aux)
+      }    
+    });    
+  }
+  setDownloadsCount(){
+    this.bookService.getDownloadCount(this.bookId).subscribe(result => {
+      this.downloadCount=result.length
       
-    });
-    
+    })
   }
   
 

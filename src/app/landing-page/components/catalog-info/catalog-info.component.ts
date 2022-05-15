@@ -25,4 +25,5 @@ export class CatalogInfoComponent implements OnInit {
     console.log('ewswqefewf');
     
   }
+  
 }

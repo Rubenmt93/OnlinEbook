@@ -21,4 +21,23 @@ hr{
     width: 90%;
     margin-bottom: 10px;
 }
+.book-page-grid{
+    min-width: 100%;
+}
+.noValidate{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+.noValidate button{
+    max-width: 50%;
+    margin:auto ;
+    margin-bottom: 20px;
 
+}
+
+.noValidate p{
+   margin:auto ;
+   font-size: xx-large;
+   margin-bottom: 20px;
+}

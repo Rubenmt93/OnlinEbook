@@ -15,6 +15,7 @@ import { MyfavoritesComponent } from './mylibrary/components/myfavorites/myfavor
 import { MyslopesComponent } from './mylibrary/components/myslopes/myslopes.component';
 import { MypublishedbooksComponent } from './mylibrary/components/mypublishedbooks/mypublishedbooks.component';
 import { MywantedComponent } from './mylibrary/components/mywanted/mywanted.component';
+import { AddBookComponent } from './mylibrary/components/add-book/add-book.component';
 
 
 const routes: Routes = [
@@ -58,6 +59,10 @@ const routes: Routes = [
       {
         path:'myWantedBooks',
         component:MywantedComponent,
+      },
+      {
+        path:'newBook',
+        component:AddBookComponent,
       },
       {
         path: '**',

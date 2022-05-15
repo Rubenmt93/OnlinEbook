@@ -1,10 +1,29 @@
 <div class="catalogContainer">
     <div  class="catalog-grid" >
-    
+        <div>
+            <form   [formGroup]="searchForm"
+                    (ngSubmit)="search()">  
+                <div>
+                    <mat-form-field appearance="fill" class="reportFormList">                    
+                    <mat-label class="reportFormList">Motivos de Reporte</mat-label>
+                    <mat-select                 
+                        formControlName='list'
+                        multiple>
+                        <mat-option *ngFor="let reason of categoriasList" [value]="reason">{{reason}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button mat-raised-button 
+                    color="warn"
+                    type="submit">
+                   
+                    Reportar
+                </button>
+    </div>
+</form>
+        </div>
         <div class= "catalog-item" *ngFor="let item of items">        
             <app-bookcard class= "feature" 
-                          [book]="item"
-                         >  
+                          [book]="item">  
             </app-bookcard>
         </div>
     </div>

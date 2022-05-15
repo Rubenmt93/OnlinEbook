@@ -4,6 +4,7 @@ import { CatalogHomeComponent } from './pages/catalog-home/catalog-home.componen
 import { BookcardComponent } from './components/bookcard/bookcard.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -14,7 +15,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     AngularMaterialModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
   ],
   exports:[
     BookcardComponent,

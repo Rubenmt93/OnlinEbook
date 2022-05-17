@@ -17,6 +17,7 @@ import { CatalogModule } from './catalog/catalog.module';
 import { Error404Module } from './404-error/404-error.module';
 import { ProfileModule } from './profile/profile.module';
 import { BookPageModule } from './book-page/book-page.module';
+import { NgAisModule } from 'angular-instantsearch';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { BookPageModule } from './book-page/book-page.module';
     ProfileModule,
     Error404Module, 
     CatalogModule,
-    BookPageModule
+    BookPageModule,
+    NgAisModule.forRoot()
    
   ],
   providers: [],

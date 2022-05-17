@@ -1,14 +1,20 @@
+.catalogContainer{
+  background-color: rgba(255, 255, 255, 0.553);    
+  width: 90%;
+  margin: auto;
+  margin-top:3%;
+  margin-bottom:20px;
+  padding: 2%;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+}
 .catalog-grid{
     display: grid;
     gap: 2rem;    
     grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));
-    background-color: rgba(255, 255, 255, 0.553);    
-    width: 90%;
-    margin: auto;
-    margin-top:3%;
-    margin-bottom:20px;
-    padding: 2%;
-    border-radius: 2rem;
+   
+    
 }
 .catalog-item{
   
@@ -18,4 +24,39 @@
 .feature{
     grid-column: span 2;
     
+}
+.searchForm{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 70%;
+  margin: auto;
+}
+
+button{
+  margin-left: 20px;
+}
+.searchInput{
+  width: 60%;
+}
+button{
+  width: 25%;
+}
+form{
+  width: 100%;
+  margin: auto;
+}
+
+::ng-deep .mat-focused .mat-label .mat-form-field-label {
+  /*change color of label*/
+  color: #1a1a1a !important;
+}
+::ng-deep.mat-form-field-underline {
+background-color: #1a1a1a !important;
+}   
+::ng-deep.mat-form-field-ripple {   
+ background-color:#3f51b5 !important;;
+}
+mat-label {
+  color: #1a1a1a;
 }

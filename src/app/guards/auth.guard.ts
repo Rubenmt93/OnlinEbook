@@ -16,23 +16,18 @@ export class AuthGuard implements CanActivate, CanLoad {
       }
     });
   }
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean > | boolean   {
+  canActivate(): Observable<boolean> | Promise<boolean > | boolean   {
      this.user = localStorage.getItem('userOnlinebook');
      if(this.user){
       return true
      }
      return false
   }
-  canLoad(
-    route: Route,
-    segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean  {
+  canLoad(   ): Observable<boolean> | Promise<boolean> | boolean  {
       if(this.user){
         this.var=true
-    }
-        console.log('CanLoad->',this.var)
-        console.log(route);        
+      }
+             
         return this.var
   }
 }

@@ -4,10 +4,10 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { Book } from '../interfaces/book';
-
 import 'firebase/compat/storage';
 import { Relation } from '../interfaces/relation';
-import { lookup } from 'dns';
+import algoliasearch from 'algoliasearch/lite';
+
 firebase.initializeApp(environment.firebaseConfig) 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,12 @@ export class BookService {
  items: Observable<any[]>;
  book!:Book
  storageRef=firebase.app().storage().ref()
-
+ searchClient = algoliasearch(
+  'YOXBFV7TK8',
+   '9a76d971acc4ab2225df7b67d5c598e9',   
+);
+//  client = algoliasearch(this.APPLICATION_ID, this.SEARCH_API_KEY)
+//  index = client.initIndex(this.ALGOLIA_INDEX)
 
   constructor( private firestore: AngularFirestore) {
     this.items= firestore.collection('book').valueChanges({ idField: 'eventId' });
@@ -27,8 +32,8 @@ export class BookService {
    return this.items
   }
 
-  searh(){
-    return this.firestore.collectionGroup('book', ref =>ref.where('name','==','Harry Potter y la camara secreta')).valueChanges()
+  search(){
+   
     
   }
   ////////////////////////////////////////////////////////

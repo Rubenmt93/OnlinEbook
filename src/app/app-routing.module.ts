@@ -16,6 +16,8 @@ import { MyslopesComponent } from './mylibrary/components/myslopes/myslopes.comp
 import { MypublishedbooksComponent } from './mylibrary/components/mypublishedbooks/mypublishedbooks.component';
 import { MywantedComponent } from './mylibrary/components/mywanted/mywanted.component';
 import { AddBookComponent } from './mylibrary/components/add-book/add-book.component';
+import { AdminGuard } from './guards/admin.guard';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 
 
 const routes: Routes = [
@@ -72,6 +74,33 @@ const routes: Routes = [
     ],
     canLoad:[AuthGuard],
     canActivate:[AuthGuard],
+
+  },  
+  {
+    path: 'adminPanel',
+    component: AdminHomeComponent,
+    children:[
+      {
+        path:'checkBook',
+        component:MybooksComponent,
+      },
+      {
+        path:'checkCommentReport',
+        component:MyfavoritesComponent,
+      },
+      {
+        path:'checkBookReport',
+        component:MyslopesComponent,
+      },
+      
+      {
+        path: '**',
+        component:MybooksComponent
+      }
+
+    ],
+    canLoad:[AdminGuard],
+    canActivate:[AdminGuard],
 
   },  
   {

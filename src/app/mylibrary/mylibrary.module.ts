@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 import { CatalogModule } from '../catalog/catalog.module';
 import { AppModule } from '../app.module';
 import { MywantedComponent } from './components/mywanted/mywanted.component';
-import { AddBookComponent } from './components/add-book/add-book.component';
+import { AddBookComponent, AddBookDialog } from './components/add-book/add-book.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MyslopesComponent,
     MywantedComponent,
     AddBookComponent,
+    AddBookDialog
    
   ],
   imports: [

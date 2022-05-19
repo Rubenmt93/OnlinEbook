@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/app/interfaces/user';
 import { BookService } from '../../../services/book.service';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-book',
@@ -26,10 +28,12 @@ export class AddBookComponent {
     year:[,[Validators.required]],
     list: [,[Validators.required] ],
   })
-  categoriasList: string[] = ['Terror', 'Fantasia','Educativo','Peosia','Drama','Infantil','Romantica','Futurista','Otro']; 
+  categoriasList: string[] = ['Terror','Biografia','Leyendas','Thriller','Policiaca', 'Fantasia','Educativo','Peosia','Drama','Infantil','Romantica','Futurista','Otro']; 
   user:User
   constructor(private fb: FormBuilder,
-              private bookService:BookService) {               
+              public dialog: MatDialog,
+              private bookService:BookService,
+              private router:Router) {               
   this.user = JSON.parse(localStorage.getItem('userOnlinebook')!)
   }  
 
@@ -58,7 +62,8 @@ export class AddBookComponent {
     
   }
   addBook(){     
-     
+    
+
     var author = this.publiForm.controls['author'].value;
     var name = this.publiForm.controls['name'].value
     var abstract = this.publiForm.controls['abstract'].value
@@ -68,10 +73,42 @@ export class AddBookComponent {
     var year = this.publiForm.controls['year'].value
     var file= this.publiForm.controls['filePDF'].value
     
-    this.bookService.createBook(author,categories,isbn,name,year,price,this.user.uid,this.PortadaURL,file,abstract)
+    this.bookService.createBook(author,
+                                categories,
+                                isbn, 
+                                name,
+                                year,
+                                price,
+                                this.user.uid,
+                                this.PortadaURL,
+                                file,abstract).then( result => {
+                                  
+                                  
+      var dialogRef =this.dialog.open(AddBookDialog); 
+      dialogRef.afterClosed().subscribe(result => {
+        this.router.navigate(['/mylibrary/myPublishedBooks']);    
+      });    
+
+    })
 
 
 
 
   }
+}
+
+@Component({
+  selector: 'dialog-bookCreate',
+  templateUrl: './dialog-bookCreate.html',
+  styleUrls: ['./add-book.component.css']
+})
+export class AddBookDialog {
+  constructor(private fb: FormBuilder,              
+              public dialogRef: MatDialogRef<AddBookDialog>,
+              ) {}  
+  
+  
+  
+
+  sendReport(){}
 }

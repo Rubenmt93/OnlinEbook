@@ -4,6 +4,7 @@ import { BookService } from '../../../services/book.service';
 import { Book } from '../../../interfaces/book';
 import { CloseScrollStrategy } from '@angular/cdk/overlay';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { environment } from '../../../../environments/environment.prod';
 
 @Component({
   selector: 'app-catalog-home',
@@ -26,9 +27,8 @@ export class CatalogHomeComponent  {
     
     const algoliasearch = require('algoliasearch')
     this.items=[]
-    const client = algoliasearch('YOXBFV7TK8', '9a76d971acc4ab2225df7b67d5c598e9')
-    const index = client.initIndex('OnlinEbook_post')
-    const record = { objectID: 1, name: 'OnlinEbook_post' }
+    const client = algoliasearch(environment.algolia.appId, environment.algolia.apiKey)
+    const index = client.initIndex(environment.algolia.indexName)  
     index.search(query, {              
              
               "getRankingInfo": true,             

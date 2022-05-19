@@ -37,7 +37,7 @@ export class BookService {
   }
   ////////////////////////////////////////////////////////
   createBook(author:string, categories:string[],isbn:string, name:string,year:number,price:number,userOwner:string,img64:string,pdf:string,abstract:string){
-    this.SubirPortada(name,img64).then(imagen =>{
+    return this.SubirPortada(name,img64).then(imagen =>{
      
       this.SubirPdf(name,pdf).then(pdf => {
         var book = {
@@ -134,6 +134,7 @@ export class BookService {
   getMyBooks(UserId:string){
     var booksArray:Book[]=[]
      this.firestore.collectionGroup('acquired' ,ref =>  ref.where("user", "==", UserId)).valueChanges({idField: 'eventId'}).subscribe(result =>{
+      //booksArray:Book[]=[]
       result.forEach(book  => {
         var aux = book as Relation       
         this.getBookById(aux.book!).subscribe(book =>{          

@@ -165,3 +165,9 @@ mat-label {
 .textArea{
 color: #1a1a1a;
 }
+.add-dialog{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

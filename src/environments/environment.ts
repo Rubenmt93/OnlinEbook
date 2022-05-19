@@ -20,7 +20,7 @@ export const environment = {
     apiKey : '9a76d971acc4ab2225df7b67d5c598e9',
     indexName : 'OnlinEbook_post',
     
-  }
+  },
 };
 
 /*

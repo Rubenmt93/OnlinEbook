@@ -30,7 +30,7 @@ export class BookInfoComponent {
   }
   
   reportBook(){
-    var dialogRef =this.dialog.open(ReportDialogBook);
+    var dialogRef =this.dialog.open(ReportDialogBook); 
     dialogRef.afterClosed().subscribe(result => {
       var aux:string[] = result as string[]
       if(aux){

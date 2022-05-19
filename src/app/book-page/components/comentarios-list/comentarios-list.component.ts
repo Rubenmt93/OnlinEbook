@@ -14,16 +14,8 @@ export class ComentariosListComponent {
   constructor(private commentsService:CommentsService,
               private activatedRoute:ActivatedRoute,) { 
     this.activatedRoute.params.subscribe(({id})=> {this.bookId=id})      
-    this.commentsService.getCommentsBook(this.bookId).subscribe(result=>{
-      
-      this.commentsList=result as Comment[]
-      
-    })
-  
-    
-  }
-
-  
-  
-
+    this.commentsService.getCommentsBook(this.bookId).subscribe(result=>{      
+      this.commentsList=result as Comment[]      
+    })     
+  }    
 }

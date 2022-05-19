@@ -12,25 +12,21 @@ import { environment } from '../../../../environments/environment.prod';
   styleUrls: ['./catalog-home.component.css']
 })
 export class CatalogHomeComponent  {
-  items:  Book[]= []
- 
-  constructor( private bookService:BookService,
-              private fb: FormBuilder, ) {
-    this.searchAlgolia("",0)
-    
-          
-  }
+  items:  Book[]= [] 
   searchForm: FormGroup = this.fb.group({
     busqueda: ["",[Validators.required] ],  
   })
+  constructor(private fb: FormBuilder, ) {
+    this.searchAlgolia("",0)              
+  }
+  
   searchAlgolia(query:string,pag:number){
     
     const algoliasearch = require('algoliasearch')
     this.items=[]
     const client = algoliasearch(environment.algolia.appId, environment.algolia.apiKey)
     const index = client.initIndex(environment.algolia.indexName)  
-    index.search(query, {              
-             
+    index.search(query, {                          
               "getRankingInfo": true,             
               "hitsPerPage": 10,                             
               "attributesToSnippet": "*:20",                 
@@ -39,11 +35,8 @@ export class CatalogHomeComponent  {
               "numericFilters": [
                 "active=1"
                ],
-    }).then((_hits: any) =>{  
-      console.log(_hits as Book);
-      
-      this.items=_hits.hits as Book[]  
-       
+    }).then((_hits: any) =>{       
+       this.items=_hits.hits as Book[]         
     }) 
   }  
   searchResult(){

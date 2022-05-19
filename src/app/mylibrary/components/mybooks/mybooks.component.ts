@@ -10,14 +10,10 @@ import { User } from 'src/app/interfaces/user';
 })
 export class MybooksComponent {
   user:User
-  items:  Book[]= []
- 
+  items:  Book[]= [] 
   constructor( private bookService:BookService) {
     var aux=  localStorage.getItem('userOnlinebook');
     this.user= JSON.parse(aux!) as User            
-    this.items=  this.bookService.getMyBooks(this.user.uid) 
-   // console.log(this.items);
-    
-    
+    this.items=  this.bookService.getMyBooks(this.user.uid)    
   }
 }

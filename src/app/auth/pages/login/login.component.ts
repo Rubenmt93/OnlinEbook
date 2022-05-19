@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
@@ -12,7 +12,6 @@ import { AuthService } from '../../../services/auth.service';
 export class LoginComponent  {
   showPasswd :boolean = true
   emailPattern:string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
-  //failLoginflag:boolean=false
   loginForm: FormGroup = this.fb.group({
     email: ['zegreo@gmail.com',[Validators.required,Validators.pattern(this.emailPattern)]],
     passwd: ['carpediem',Validators.required]
@@ -29,8 +28,7 @@ export class LoginComponent  {
            this.router.navigate(['/auth/verifyEmail'])
           }else{          
             this.router.navigate(['/'])
-          }
-       
+          }       
       }
     });
   }
@@ -46,18 +44,10 @@ export class LoginComponent  {
     this.dialog.open(DialogPasswd);
   }
  
-  login(){      
-    
+  login(){         
     const email=this.loginForm.controls['email'].value;
     const passwd=this.loginForm.controls['passwd'].value;  
-
-    this.authservice.SignIn( email, passwd )
-    .then((result) => {        
-            
-    }).catch((error) => {   
-      
-    })    
-  
+    this.authservice.SignIn( email, passwd )         
   }
   
 }
@@ -75,10 +65,7 @@ export class DialogPasswd {
   passwdForm: FormGroup = this.fb.group({
     email: ['',[Validators.required,Validators.pattern(this.emailPattern)]],   
   })
-
-
-  forgotPasswd(){
-    
+  forgotPasswd(){    
     const email=this.passwdForm.controls['email'].value;
     this.authservice.ForgotPassword(email).then(resp =>{
       this.dialogRef.close();

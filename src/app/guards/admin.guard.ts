@@ -18,27 +18,23 @@ export class AdminGuard implements CanActivate, CanLoad {
   }
   admin:boolean=false
   constructor(private authService:AuthService,
-              private userService:UserService){
-    
-    var aux = JSON.parse(localStorage.getItem('userOnlinebook')!) as User ;
-                
-    
+              private userService:UserService){    
+    var aux = JSON.parse(localStorage.getItem('userOnlinebook')!) as User ;              
     this.userService.getUserById(aux.uid).subscribe(result => {
       this.user=result as User
     })
 
   }
-  canActivate(): Observable<boolean> | Promise<boolean > | boolean  {
-    
-   if(this.user.rol ==1){
-    return true
-   }
-   return false       
-  }
-  canLoad(   ): Observable<boolean> | Promise<boolean> | boolean  {        
+  canActivate(): Observable<boolean> | Promise<boolean > | boolean  {    
     if(this.user.rol ==1){
       return true
-     }
+    }
+    return false       
+  }
+  canLoad(): Observable<boolean> | Promise<boolean> | boolean  {        
+    if(this.user.rol ==1){
+      return true
+    }
      return false          
   }
 }

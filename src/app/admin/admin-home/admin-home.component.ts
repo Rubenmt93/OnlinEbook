@@ -14,23 +14,15 @@ export class AdminHomeComponent implements OnInit {
   constructor(private authService:AuthService,
               private router:Router ) {
     this.authService.userStateObs().subscribe(user =>{
-      if (user) {      
-                 
+      if (user) {                     
         this.userObject= user                            
       }
     });              
     if(window.matchMedia("(max-width: 700px)").matches){
       this.opened=false
     }
-} 
-ngOnInit(): void {
-  this.userObject= JSON.parse( localStorage.getItem('userOnlinebook')!   )   
-}
-logout(){
-  this.authService.SignOut()
-  .then((error)=>{
-    this.router.navigate(['/auth/login'])
-  })
-  
+  } 
+  ngOnInit(): void {
+    this.userObject= JSON.parse( localStorage.getItem('userOnlinebook')!   )   
   }
 }

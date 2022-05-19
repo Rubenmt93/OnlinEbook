@@ -1,11 +1,8 @@
 <div class="componentcontainer">
-    <div class="container">       
-        
+    <div class="container">              
         <div class="header">
             <h2>Actualizar perfil</h2>
-        </div>  
-        <!-- [formGroup]="registerForm" -->
-
+        </div>          
         <form   [formGroup]="updateProfileForm"
                 (ngSubmit)="updateProfile()">   
             <div class="formGrid">
@@ -23,9 +20,7 @@
                             #fileInput
                             (change)="uploadFile($event)"                             
                             type="file" 
-                            id="file"> 
-                    
-                    
+                            id="file">                   
                 </div>
                 <div class="div2">
                     <mat-form-field class="example-full-width">
@@ -52,10 +47,7 @@
                                 matInput>  
                         <mat-error *ngIf="validezCampo('username')">Campo requerido</mat-error>                     
                     </mat-form-field>              
-                </div>
-
-
-               
+                </div>               
             </div>
             <div>
                 <button mat-raised-button 
@@ -63,15 +55,8 @@
                         color="primary"
                         [disabled]="updateProfileForm.invalid || !updateProfileForm.touched">
                     Actualizar Perfil
-                </button>
-               
-
-            </div>
-           
-            
-        </form>
-       
-    </div>
-
-     
+                </button>               
+            </div>        
+        </form>       
+    </div>     
 </div>

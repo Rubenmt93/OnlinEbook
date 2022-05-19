@@ -11,28 +11,20 @@ export class HomeComponent   {
   styleborder:string=""
   constructor(private authservice:AuthService,) { 
     this.authservice.userStateObs().subscribe(user =>{
-      if (user) {                    
-        
-       this.logged=true
-       
+      if (user) {                
+        this.logged=true       
       }else{
         this.logged=false
       }
-      this.method()
-    });
-    
-
+      this.setStyle()
+    });    
   }
-
-  method(){
+  setStyle(){
     const element=document.getElementsByClassName("carrousel-container");
     if(this.logged){
       this.styleborder= "border-radius: 2rem 2rem 0 40%"
     }else{
       this.styleborder= "border-radius: 2rem 2rem 0 0"
     }
-  }
-
-  
-
+  }  
 }

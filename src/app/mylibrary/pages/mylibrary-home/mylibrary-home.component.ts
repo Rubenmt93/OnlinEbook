@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./mylibrary-home.component.css']
 })
 export class MylibraryHomeComponent implements OnInit {
-
   userObject:any
   opened=true
   showFiller = false;
@@ -24,15 +23,14 @@ export class MylibraryHomeComponent implements OnInit {
     if(window.matchMedia("(max-width: 700px)").matches){
       this.opened=false
     }
-} 
-ngOnInit(): void {
-  this.userObject= JSON.parse( localStorage.getItem('userOnlinebook')!   )   
-}
-logout(){
-  this.authService.SignOut()
-  .then((error)=>{
-    this.router.navigate(['/auth/login'])
-  })
-  
+  } 
+  ngOnInit(): void {
+    this.userObject= JSON.parse( localStorage.getItem('userOnlinebook')!   )   
+  }
+  logout(){
+    this.authService.SignOut()
+    .then((error)=>{
+      this.router.navigate(['/auth/login'])
+    })
   }
 }

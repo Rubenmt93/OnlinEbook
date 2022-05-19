@@ -21,14 +21,11 @@ export class BookInfoComponent {
   constructor(private reportService:ReportService,
               private activatedRoute:ActivatedRoute,
               public dialog: MatDialog,
-              private bookService:BookService) {
-  
-  
+              private bookService:BookService) {    
     this.activatedRoute.params.subscribe(({id})=> {this.bookId=id})    
     this.user = JSON.parse(localStorage.getItem('userOnlinebook')!)
     this.setDownloadsCount()
-  }
-  
+  }  
   reportBook(){
     var dialogRef =this.dialog.open(ReportDialogBook); 
     dialogRef.afterClosed().subscribe(result => {
@@ -40,8 +37,7 @@ export class BookInfoComponent {
   }
   setDownloadsCount(){
     this.bookService.getDownloadCount(this.bookId).subscribe(result => {
-      this.downloadCount=result.length
-      
+      this.downloadCount=result.length      
     })
   }
   
@@ -59,9 +55,11 @@ export class ReportDialogBook {
   
   reportForm: FormGroup = this.fb.group({
     list: ["",[Validators.required] ]
-  })
-  
-  reasonList: string[] = ['El libro es incorrecto', 'El libro vulnera los derechos de la plataforma', 'El libro es engañoso', 'Expresa intenciones de suicidio','El libro vulnera los derechos de autor de otra persona'];
-
+  })  
+  reasonList: string[] = ['El libro es incorrecto', 
+                          'El libro vulnera los derechos de la plataforma', 
+                          'El libro es engañoso', 
+                          'Expresa intenciones de suicidio',
+                          'El libro vulnera los derechos de autor de otra persona'];
   sendReport(){}
 }

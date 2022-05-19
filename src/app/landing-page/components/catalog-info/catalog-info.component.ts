@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-catalog-info',
   templateUrl: './catalog-info.component.html',
   styleUrls: ['./catalog-info.component.css']
 })
-export class CatalogInfoComponent implements OnInit {
+export class CatalogInfoComponent  {
   width:number=0
   heigth:number=0
   constructor() {
@@ -15,15 +15,6 @@ export class CatalogInfoComponent implements OnInit {
     }else{
       this.width = screen.width * 0.6
       this.heigth = screen.height * 0.5
-    }
-    
-   }
-
-  ngOnInit(): void {
-  }
-  metodo(){
-    console.log('ewswqefewf');
-    
-  }
-  
+    }    
+  }  
 }

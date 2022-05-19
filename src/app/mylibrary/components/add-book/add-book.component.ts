@@ -57,13 +57,9 @@ export class AddBookComponent {
     reader.readAsDataURL(fileList[0]);
     reader.onloadend=() => {
     this.publiForm.controls['filePDF'].setValue(reader.result)
-    }
-    
-    
+    }        
   }
-  addBook(){     
-    
-
+  addBook(){        
     var author = this.publiForm.controls['author'].value;
     var name = this.publiForm.controls['name'].value
     var abstract = this.publiForm.controls['abstract'].value
@@ -81,19 +77,12 @@ export class AddBookComponent {
                                 price,
                                 this.user.uid,
                                 this.PortadaURL,
-                                file,abstract).then( result => {
-                                  
-                                  
+                                file,abstract).then( result => {                                                           
       var dialogRef =this.dialog.open(AddBookDialog); 
       dialogRef.afterClosed().subscribe(result => {
         this.router.navigate(['/mylibrary/myPublishedBooks']);    
       });    
-
     })
-
-
-
-
   }
 }
 
@@ -103,12 +92,6 @@ export class AddBookComponent {
   styleUrls: ['./add-book.component.css']
 })
 export class AddBookDialog {
-  constructor(private fb: FormBuilder,              
-              public dialogRef: MatDialogRef<AddBookDialog>,
-              ) {}  
-  
-  
-  
-
+  constructor(public dialogRef: MatDialogRef<AddBookDialog>) {}      
   sendReport(){}
 }

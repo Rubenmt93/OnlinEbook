@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/interfaces/book';
 import { Relation } from 'src/app/interfaces/relation';
-import { AuthService } from 'src/app/services/auth.service';
 import { BookService } from '../../../services/book.service';
 import { User } from 'src/app/interfaces/user';
 

@@ -9,16 +9,11 @@ import { BookService } from 'src/app/services/book.service';
   styleUrls: ['./mywanted.component.css']
 })
 export class MywantedComponent  {
-
   user:User
-  items:  Book[]= []
- 
+  items:  Book[]= [] 
   constructor( private bookService:BookService) {
     var aux=  localStorage.getItem('userOnlinebook');
     this.user= JSON.parse(aux!) as User            
     this.items=  this.bookService.getMyWanted(this.user.uid) 
-   // console.log(this.items);
-    
-    
   }
 }

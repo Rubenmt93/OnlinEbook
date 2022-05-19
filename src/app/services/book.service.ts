@@ -35,7 +35,7 @@ export class BookService {
   desactivateBook(id:string){
     return this.firestore.collection('book').doc(id).update({active:false});
   }
-  ////////////////////////////////////////////////////////
+  /////////////////////CREATE BOOK/////////////////////////////
   createBook(author:string, categories:string[],isbn:string, name:string,year:number,price:number,userOwner:string,img64:string,pdf:string,abstract:string){
     return this.SubirPortada(name,img64).then(imagen =>{
      
@@ -181,7 +181,7 @@ export class BookService {
    return booksArray
   }
 
-  /////////////////////Mi published////////////////////////////////
+  /////////////////////Mi published////////////////////
  
   getMyPublished(UserId:string){        
     var booksArray:Book[]=[]
@@ -192,7 +192,6 @@ export class BookService {
     })
    return booksArray
   }
-
   getDownloadCount(BookId:string){
    
     return this.firestore.collectionGroup('acquired', ref =>ref.where('book','==',BookId)).valueChanges({idField: 'eventId'})

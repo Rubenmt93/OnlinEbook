@@ -10,19 +10,12 @@ import { BookService } from '../../../services/book.service';
 export class BookcardComponent implements OnInit  {
    @Input() book:Book = {} as Book
    id:string=""
-  constructor(private BookService:BookService) { 
- 
-  }
-  ngOnInit(): void {
-   
+  constructor(private BookService:BookService) {}
+  ngOnInit(): void {   
     if(this.book.eventId){
       this.id=this.book.eventId
     }else{
       this.id=this.book.objectID
-
-    }
-    
-  }
-  
-
+    }    
+  }  
 }

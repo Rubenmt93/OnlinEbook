@@ -1,14 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { CheckCommentReportComponent } from './components/check-comment-report/check-comment-report.component';
 import { CheckBookReportComponent } from './components/check-book-report/check-book-report.component';
 import { CheckBookComponent } from './components/check-book/check-book.component';
-
-
-
-
-
 const routes:Routes = [
   {
     path:'',
@@ -31,13 +25,11 @@ const routes:Routes = [
       {
         path:'**',
         redirectTo:'checkBook',
-      }
-      
+      }      
     ]
   }
 ]
-@NgModule({
-  
+@NgModule({  
   imports: [
     RouterModule.forChild( routes )
   ],

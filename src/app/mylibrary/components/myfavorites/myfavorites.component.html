@@ -7,15 +7,14 @@
     
         <div class= "catalog-item" *ngFor="let item of items">        
             <app-bookcard class= "feature" 
-                          [book]="item"
-                         >  
+                          [book]="item">  
             </app-bookcard>
         </div>
     </div>
     <ng-template #emptyList>
        
         <div  class="emptyListClass">
-            <h1> No hay libros favoritos   </h1>
+            <h1> No hay libros favoritos </h1>
         </div>  
      </ng-template>
 

@@ -10,14 +10,10 @@ import { BookService } from 'src/app/services/book.service';
 })
 export class MyslopesComponent {
   user:User
-  items:  Book[]= []
- 
+  items:  Book[]= [] 
   constructor( private bookService:BookService) {
     var aux=  localStorage.getItem('userOnlinebook');
     this.user= JSON.parse(aux!) as User            
     this.items=  this.bookService.getMySlopes(this.user.uid) 
-   // console.log(this.items);
-    
-    
   }
 }

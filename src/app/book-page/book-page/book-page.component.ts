@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Book } from 'src/app/interfaces/book';
-import { Relation } from 'src/app/interfaces/relation';
-import { AuthService } from 'src/app/services/auth.service';
 import { BookService } from '../../services/book.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';

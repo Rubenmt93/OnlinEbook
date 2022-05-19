@@ -10,14 +10,9 @@ import { AuthService } from 'src/app/services/auth.service';
 export class InfoComponent  {
   user:any;
   constructor(private authservice:AuthService) {
-   this.user = JSON.parse( localStorage.getItem('userOnlinebook')!   )  
-   
+   this.user = JSON.parse( localStorage.getItem('userOnlinebook')!)     
   }
-
   resendMail(){
     this.authservice.SendVerificationMail()
-  }
-
-  
-
+  }  
 }

@@ -27,16 +27,6 @@ export class RegisterComponent{
   constructor(private fb: FormBuilder,
               private authservice:AuthService,
               private router:Router) { 
-                
-    // this.authservice.userStateObs().subscribe(user =>{
-    //   if (user) {                    
-    //     if(!user.emailVerified){ 
-    //       this.router.navigate(['/auth/verifyEmail'])
-    //     }else{         
-    //       this.router.navigate(['/'])
-    //     }       
-    //   }
-    // });
   }  
 
   validezCampo(campo: string){
@@ -45,7 +35,7 @@ export class RegisterComponent{
   }
   matchPasswd(){
     if (this.registerForm.controls['passwd'].value !== this.registerForm.controls['passwdConfirm'].value 
-        &&  this.registerForm.controls['passwd'].touched && this.registerForm.controls['passwd'].touched){
+        &&  this.registerForm.controls['passwd'].touched && this.registerForm.controls['passwdConfirm'].touched){
       return true
     }
     return false
@@ -60,14 +50,13 @@ export class RegisterComponent{
     }
     
   }
-   register(){     
+  register(){     
     const email=this.registerForm.controls['email'].value;
     const passwd=this.registerForm.controls['passwd'].value;  
     const name=this.registerForm.controls['username'].value;   
     this.authservice.SignUp(email,passwd,name,this.imgURL).then(resp =>{
       this.router.navigate(['/auth/verifyEmail']);
     })
-
   }
 
 }

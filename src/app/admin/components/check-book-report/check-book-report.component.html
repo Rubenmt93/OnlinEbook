@@ -1,0 +1,31 @@
+<div class="catalogContainer">
+    <h1><b>Libros Reportados</b></h1>
+    <div  class="catalog-grid" *ngIf="items.length>0;else noBook">   
+        <div class= "catalog-item" *ngFor="let item of items">  
+            <app-bookcard class= "feature" 
+                          [book]="item">  
+            </app-bookcard>    
+            
+            <div class="bookReportButtons">
+                <div class="reason-display">
+                    {{item.reason}}
+                 </div>
+                <button (click)="desestimar(item.reportId!)"
+                    mat-raised-button
+                    color="primary">
+                    Desestimar
+                </button>
+                <button  (click)="eliminar(item.reportId!,item.eventId)"
+                    mat-raised-button
+                    color="warn">
+                    Eliminar
+                </button>
+
+            </div>  
+        </div>
+    </div>
+    <ng-template #noBook>
+        <span class="noBook">No hay libros reportados</span>
+    </ng-template>
+    
+</div>

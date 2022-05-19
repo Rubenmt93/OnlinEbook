@@ -28,13 +28,12 @@ export class BookService {
     this.items= firestore.collection('book').valueChanges({ idField: 'eventId' });
     
   }
-  motodo(){
-   return this.items
+  
+  activateBook(id:string){
+    return this.firestore.collection('book').doc(id).update({active:true});
   }
-
-  search(){
-   
-    
+  desactivateBook(id:string){
+    return this.firestore.collection('book').doc(id).update({active:false});
   }
   ////////////////////////////////////////////////////////
   createBook(author:string, categories:string[],isbn:string, name:string,year:number,price:number,userOwner:string,img64:string,pdf:string,abstract:string){

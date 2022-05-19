@@ -73,7 +73,7 @@ export class ComentarioComponent {
     dialogRef.afterClosed().subscribe(result => {
      var aux:string[] = result as string[]
      console.log(result);
-     this.reportService.addReportComment(this.comment.eventId,this.localuser.uid,aux)
+     this.reportService.addReportComment(this.comment.eventId,this.localuser.uid,aux,this.comment.msg)
       
     });
   }

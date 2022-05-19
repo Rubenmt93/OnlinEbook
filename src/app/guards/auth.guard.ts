@@ -7,7 +7,7 @@ import { AuthService } from '../services/auth.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanLoad {
-  user:string|null=null
+  user!:any
   var:boolean=false
   constructor(private authService:AuthService){
     this.authService.userStateObs().subscribe(user =>{
@@ -28,6 +28,6 @@ export class AuthGuard implements CanActivate, CanLoad {
         this.var=true
       }
              
-        return this.var
+      return this.var
   }
 }

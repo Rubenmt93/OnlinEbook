@@ -1,0 +1,34 @@
+<table>
+    <tr>
+      <th>ID Comentario</th>
+      <th>Razón</th>
+      <th>Mensaje</th>
+      <th>Acción</th>
+      
+    </tr>
+    
+    <tr *ngFor="let item of items">
+        <td>{{item.eventId}}</td>
+        <td>{{item.reason}}</td>
+        <td>{{item.msg}} </td>
+        <td class="buttonTd">
+            <button (click)="desestimar(item.eventId)"
+                    mat-raised-button
+                    color="primary">
+                    Desestimar
+            </button>
+        </td>
+        <td class="buttonTd">
+            <button (click)="eliminar(item.eventId,item.comment!)"
+                    mat-raised-button
+                    color="warn">
+                    Eliminar
+            </button>
+        </td>
+
+    </tr>
+        
+          
+    
+  
+</table>

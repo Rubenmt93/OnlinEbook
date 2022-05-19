@@ -4,6 +4,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { UserService } from '../../services/user.service';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-navbar',
@@ -13,22 +15,37 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class NavbarComponent{
   userObject:any
   userLogged:boolean=false;
+  admin:User={
+    rol: 0,
+    uid: '',
+    email: '',
+    userName: '',
+    img: ''
+  }
   constructor(private authService:AuthService,
-              private router:Router,) {                
+              private userService:UserService) {                
                 this.authService.userStateObs().subscribe(user =>{
                   if (user) {             
-                    this.userObject= JSON.parse( localStorage.getItem('userOnlinEbook')!   )           
+                    this.userObject= JSON.parse( localStorage.getItem('userOnlinEbook')!   )  
+                    console.log(this.userObject);
+                             
                     this.userLogged=true;                                  
                   }else{                    
                     this.userLogged=false;
                   }
+                  var aux = JSON.parse(localStorage.getItem('userOnlinebook')!) as User ;  
+                  if(aux){
+                    this.userService.getUserById(aux.uid).subscribe(result => {
+                      this.admin=result as User
+                   })
+                  } 
                 });
+                          
+               
               } 
+              
     
   
-   goHome(){
-    this.router.navigate(['/'])
-   }
    
   
   

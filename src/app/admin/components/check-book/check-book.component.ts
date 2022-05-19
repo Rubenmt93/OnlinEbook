@@ -1,18 +1,16 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
-import { BookService } from '../../../services/book.service';
-import { Book } from '../../../interfaces/book';
-import { CloseScrollStrategy } from '@angular/cdk/overlay';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Book } from 'src/app/interfaces/book';
+import { BookService } from 'src/app/services/book.service';
 
 @Component({
-  selector: 'app-catalog-home',
-  templateUrl: './catalog-home.component.html',
-  styleUrls: ['./catalog-home.component.css']
+  selector: 'app-check-book',
+  templateUrl: './check-book.component.html',
+  styleUrls: ['./check-book.component.css']
 })
-export class CatalogHomeComponent  {
-  items:  Book[]= []
- 
+export class CheckBookComponent {
+
+  items:  any[]= []
   constructor( private bookService:BookService,
               private fb: FormBuilder, ) {
     this.searchAlgolia("",0)
@@ -37,11 +35,10 @@ export class CatalogHomeComponent  {
               "page": pag,                
               "facets": ["*"],
               "numericFilters": [
-                "active=1"
+                "active=0"
                ],
     }).then((_hits: any) =>{  
-      console.log(_hits as Book);
-      
+          
       this.items=_hits.hits as Book[]  
        
     }) 

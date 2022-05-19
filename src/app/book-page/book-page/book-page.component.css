@@ -29,7 +29,7 @@ hr{
     flex-direction: column;
     margin: auto;
 }
-.noValidate button{
+#readButton{
     max-width: 50%;
     margin:auto ;
     margin-bottom: 20px;

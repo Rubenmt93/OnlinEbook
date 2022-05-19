@@ -9,33 +9,36 @@ import { UserService } from '../services/user.service';
   providedIn: 'root'
 })
 export class AdminGuard implements CanActivate, CanLoad {
-  user!:any
+  user:User ={
+    rol: 0,
+    uid: '',
+    email: '',
+    userName: '',
+    img: ''
+  }
   admin:boolean=false
   constructor(private authService:AuthService,
-            private userService:UserService){
-    this.authService.userStateObs().subscribe(user =>{       
-        if(user){
-           
-            this.userService.getUserById(user?.uid).subscribe(result=>{
-               var usuario = result as User
-               if(usuario.rol==1){
-                this.admin=true
-               }else{
-                this.admin=false
-               }
-            })
-        }else{
-            this.admin=false
-        }                                      
-     
-    });
-
+              private userService:UserService){
+    
+    var aux = JSON.parse(localStorage.getItem('userOnlinebook')!) as User ;
+                
+    
+    this.userService.getUserById(aux.uid).subscribe(result => {
+      this.user=result as User
+    })
 
   }
-  canActivate(): Observable<boolean> | Promise<boolean > | boolean   {
-     return this.admin
+  canActivate(): Observable<boolean> | Promise<boolean > | boolean  {
+    
+   if(this.user.rol ==1){
+    return true
+   }
+   return false       
   }
-  canLoad(   ): Observable<boolean> | Promise<boolean> | boolean  {
-    return this.admin
+  canLoad(   ): Observable<boolean> | Promise<boolean> | boolean  {        
+    if(this.user.rol ==1){
+      return true
+     }
+     return false          
   }
 }

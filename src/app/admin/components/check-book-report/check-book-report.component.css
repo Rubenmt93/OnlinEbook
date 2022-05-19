@@ -1,0 +1,48 @@
+.catalogContainer{
+    background-color: rgba(255, 255, 255, 0.553);    
+    width: 90%;
+    margin: auto;
+    margin-top:3%;
+    margin-bottom:20px;
+    padding: 2%;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .catalog-grid{
+      display: grid;
+      gap: 2rem;    
+      grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));
+     
+      
+  }
+  .catalog-item{
+    
+    margin: auto;
+    margin-top: 0;
+  }
+  
+  
+  
+  .bookReportButtons{
+      display: flex;
+      flex-direction: column;
+  }
+  .bookReportButtons button{
+      margin-top: 10px;
+  }
+ .reason-display{
+    max-width: 200px;
+    color: rgb(23, 23, 23);
+ }
+ .catalogContainer h1{
+    color: rgb(23, 23, 23);
+    margin: auto;
+    font-size: xx-large;
+ }
+ .noBook{
+    color: rgb(23, 23, 23);
+    margin: auto;
+    margin-top: 50px;
+    font-size: xx-large;
+ }

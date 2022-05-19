@@ -18,6 +18,9 @@ import { MywantedComponent } from './mylibrary/components/mywanted/mywanted.comp
 import { AddBookComponent } from './mylibrary/components/add-book/add-book.component';
 import { AdminGuard } from './guards/admin.guard';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { CheckBookComponent } from './admin/components/check-book/check-book.component';
+import { CheckCommentReportComponent } from './admin/components/check-comment-report/check-comment-report.component';
+import { CheckBookReportComponent } from './admin/components/check-book-report/check-book-report.component';
 
 
 const routes: Routes = [
@@ -82,20 +85,20 @@ const routes: Routes = [
     children:[
       {
         path:'checkBook',
-        component:MybooksComponent,
+        component:CheckBookComponent,
       },
       {
         path:'checkCommentReport',
-        component:MyfavoritesComponent,
+        component:CheckCommentReportComponent,
       },
       {
         path:'checkBookReport',
-        component:MyslopesComponent,
+        component:CheckBookReportComponent,
       },
       
       {
         path: '**',
-        component:MybooksComponent
+        component:CheckBookComponent
       }
 
     ],

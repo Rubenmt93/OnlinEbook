@@ -10,5 +10,8 @@ export interface Book {
     price?:         number
     userOwner?:     string
     year?:          number
-    abstract?:       string
+    abstract?:      string
+    objectID:       string
+    reason?:        string[]
+    reportId?:       string
 }

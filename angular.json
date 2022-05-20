@@ -112,7 +112,7 @@
         "deploy": {
           "builder": "@angular/fire:deploy",
           "options": {
-            "baseHref": "https://rubenmt93.github.io/OnlinEbook/",
+            "baseHref": "/OnlinEbook/",
             "prerender": false,
             "ssr": false,
             "browserTarget": "OnlinEbook:build:production",

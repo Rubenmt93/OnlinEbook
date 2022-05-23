@@ -13,7 +13,8 @@ export class MyfavoritesComponent  {
   items:  Book[]= [] 
   constructor( private bookService:BookService) {
     var aux=  localStorage.getItem('userOnlinebook');
-    this.user= JSON.parse(aux!) as User            
+    this.user= JSON.parse(aux!) as User   
+    this.items=[]         
     this.items=  this.bookService.getMyFavorites(this.user.uid) 
   }
 }

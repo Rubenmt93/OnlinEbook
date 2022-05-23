@@ -33,10 +33,13 @@ export class BookPageComponent {
                   this.book.eventId=this.bookId
                   this.active=this.book.active
                 })
-                var aux = JSON.parse(localStorage.getItem('userOnlinebook')!) as User ;              
-                this.userService.getUserById(aux.uid).subscribe(result => {
-                   this.admin=result as User
-                })
+                var aux = JSON.parse(localStorage.getItem('userOnlinebook')!) as User ; 
+                if(aux){
+                  this.userService.getUserById(aux.uid).subscribe(result => {
+                    this.admin=result as User
+                 })
+                }             
+               
 
 
   }

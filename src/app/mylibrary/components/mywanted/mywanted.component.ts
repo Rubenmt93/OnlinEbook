@@ -13,7 +13,8 @@ export class MywantedComponent  {
   items:  Book[]= [] 
   constructor( private bookService:BookService) {
     var aux=  localStorage.getItem('userOnlinebook');
-    this.user= JSON.parse(aux!) as User            
+    this.user= JSON.parse(aux!) as User  
+    this.items=[]                 
     this.items=  this.bookService.getMyWanted(this.user.uid) 
   }
 }

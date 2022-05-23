@@ -5,7 +5,7 @@
     </div>
     <ng-template #showButtons>
         <!-- //Libro adquirido -->
-        <div style="display:flex"*ngIf="this.acquired; else buyButtons">
+        <div style="display:flex" id="buttonsFlex" *ngIf="this.acquired; else buyButtons">
             
             <div  *ngIf="this.favorite; else deleteFav">
                 <button mat-raised-button id="favButton" (click) ="addFavorite()">Añadir a favorito <mat-icon>star</mat-icon> </button>
@@ -27,8 +27,9 @@
             <button mat-raised-button id="readButton" (click) ="goPdf()">Leer libro <mat-icon>book</mat-icon></button>         
         </div>
         <!-- //Libro no adquirido -->
-        <ng-template #buyButtons>
-            <button mat-raised-button id="buyButton" (click) ="buy()">Comprar <mat-icon>shop</mat-icon> </button>
+        <ng-template  #buyButtons>
+            <div id="buttonsFlex" >
+                <button mat-raised-button id="buyButton" (click) ="buy()">Comprar <mat-icon>shop</mat-icon> </button>
              
             <div  *ngIf="this.wanted; else deleteWanted">
                 <button mat-raised-button id="wantedButton" (click) ="addWanted()"> Añadir a lista deseo<mat-icon>favorite_border</mat-icon></button>        
@@ -38,6 +39,8 @@
                 <button mat-raised-button id="wantedButton" (click)="removeWanted()"> Eliminar de lista de deseo<mat-icon>alarm</mat-icon></button>         
 
             </ng-template>
+            </div>
+            
         </ng-template>
         
     </ng-template>

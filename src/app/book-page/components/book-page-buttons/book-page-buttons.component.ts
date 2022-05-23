@@ -43,7 +43,9 @@ export class BookPageButtonsComponent {
   }
   bookAcquired(){
     this.bookService.getAcquiredBook(this.user.uid,this.bookId)
-    .subscribe(result => {          
+    .subscribe(result => {         
+      console.log(result);
+       
       if(result.length==1){
         this.acquired=true     
         
@@ -82,7 +84,7 @@ export class BookPageButtonsComponent {
       } 
     })
   }
-
+ 
    
   addFavorite(){
     this.bookService.addFavoriteBook(this.user.uid,this.bookId)

@@ -90,7 +90,7 @@ export class BookService {
 
   getAcquiredBook(UserId:string,BookId:string){
     
-    return this.firestore.collectionGroup('acquired' ,ref =>  ref.where("user", ">=", UserId).where("book","==",BookId)).valueChanges()
+    return this.firestore.collectionGroup('acquired' ,ref =>  ref.where("book","==",BookId).where("user", "==", UserId)).valueChanges()
   }
   /////////////////// CRUD Favorites//////////////////////
   addFavoriteBook(userId:string,bookId:string){

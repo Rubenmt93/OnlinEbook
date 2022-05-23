@@ -1,11 +1,26 @@
-.book-page-buttons{
-   
+.book-page-buttons{   
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
 }
+
+@media (max-width: 750px) {
+  
+    .book-page-buttons{   
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+    }
+    #buttonsFlex{
+        display: flex;
+        flex-direction: column;
+    }
+}
 .book-page-buttons button{
     margin: 1rem;
+}
+#favButton{
+    width: 86%;
 }
 #favButton:hover{
     background-color: rgb(211, 153, 66);

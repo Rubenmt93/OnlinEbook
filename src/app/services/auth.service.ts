@@ -70,10 +70,9 @@ export class AuthService {
      })
 }
   SignOut() {
+    localStorage.removeItem('userOnlinebook');  
     return this.afAuth.signOut()
-    .then(() => {
-      localStorage.removeItem('userOnlinebook');     
-    })
+    
   }  
   async SendVerificationMail() {
       return await this.afAuth.currentUser.then(u => u!.sendEmailVerification())

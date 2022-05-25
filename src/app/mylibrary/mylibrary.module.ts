@@ -13,6 +13,7 @@ import { AppModule } from '../app.module';
 import { MywantedComponent } from './components/mywanted/mywanted.component';
 import { AddBookComponent, AddBookDialog } from './components/add-book/add-book.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthModule } from '../auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     AngularMaterialModule,
     RouterModule,
-    CatalogModule
+    CatalogModule,
+    AuthModule
   ]
 })
 export class MylibraryModule { }

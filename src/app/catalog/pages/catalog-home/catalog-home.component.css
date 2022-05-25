@@ -71,3 +71,14 @@ background-color: #1a1a1a !important;
 mat-label {
   color: #1a1a1a;
 }
+.paginacionDiv{
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+  justify-content: space-between;
+}
+.prePag, .nextPag{
+  font-size: large;
+  display: flex;
+  align-items: center;
+}

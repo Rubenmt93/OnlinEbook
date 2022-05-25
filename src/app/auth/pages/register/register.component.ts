@@ -55,7 +55,7 @@ export class RegisterComponent{
     const passwd=this.registerForm.controls['passwd'].value;  
     const name=this.registerForm.controls['username'].value;   
     this.authservice.SignUp(email,passwd,name,this.imgURL).then(resp =>{
-      this.router.navigate(['/auth/verifyEmail']);
+      this.router.navigate(['/']);
     })
   }
 

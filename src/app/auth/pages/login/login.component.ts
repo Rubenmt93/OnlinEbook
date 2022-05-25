@@ -23,12 +23,8 @@ export class LoginComponent  {
               private router:Router,
               public dialog: MatDialog) {
     this.authservice.userStateObs().subscribe(user =>{
-      if (user) {                    
-         if(!user.emailVerified){
-           this.router.navigate(['/auth/verifyEmail'])
-          }else{          
-            this.router.navigate(['/'])
-          }       
+      if (user) {                  
+        this.router.navigate(['/'])             
       }
     });
   }

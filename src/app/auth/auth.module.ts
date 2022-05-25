@@ -7,21 +7,21 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 
 import { LoginComponent,DialogPasswd } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { VerifyemailComponent } from './pages/verifyemail/verifyemail.component';
-
 import { AngularFireModule } from '@angular/fire/compat'
 import { environment } from '../../environments/environment';
 import { AuthService } from '../services/auth.service';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { DialogVerifyComponent, DialogVerifyDialog } from './dialog-verify/dialog-verify.component';
 
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent,
-    VerifyemailComponent,
-    DialogPasswd,
+    RegisterComponent,    
+    DialogPasswd, 
+    DialogVerifyComponent,
+    DialogVerifyDialog
   ],
   imports: [
     CommonModule,
@@ -33,7 +33,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     
   ],
   exports:[
-    LoginComponent
+    LoginComponent,
+    DialogVerifyComponent
   ],
   providers: [
     AuthService

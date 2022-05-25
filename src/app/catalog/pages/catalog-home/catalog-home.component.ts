@@ -13,11 +13,12 @@ import { environment } from '../../../../environments/environment.prod';
 })
 export class CatalogHomeComponent  {
   items:  Book[]= [] 
+  pag: number= 0
   searchForm: FormGroup = this.fb.group({
     busqueda: ["",[Validators.required] ],  
   })
   constructor(private fb: FormBuilder, ) {
-    this.searchAlgolia("",0)              
+    this.searchAlgolia("",this.pag)              
   }
   
   searchAlgolia(query:string,pag:number){
@@ -28,18 +29,35 @@ export class CatalogHomeComponent  {
     const index = client.initIndex(environment.algolia.indexName)  
     index.search(query, {                          
               "getRankingInfo": true,             
-              "hitsPerPage": 10,                             
+              "hitsPerPage": 6,                             
               "attributesToSnippet": "*:20",                 
               "page": pag,                
               "facets": ["*"],
               "numericFilters": [
                 "active=1"
                ],
-    }).then((_hits: any) =>{       
-       this.items=_hits.hits as Book[]         
+    }).then((_hits: any) =>{     
+      if(_hits.hits.length == 0){                
+        this.pag=this.pag - 1
+        this.searchAlgolia(this.searchForm.controls['busqueda'].value,this.pag)
+
+      }else{        
+        this.items=_hits.hits as Book[]   
+      }       
     }) 
   }  
   searchResult(){
     this.searchAlgolia(this.searchForm.controls['busqueda'].value,0)
   }
+  prePag(){
+    if(this.pag != 0){
+      this.pag= this.pag -1     
+      this.searchAlgolia(this.searchForm.controls['busqueda'].value,this.pag)
+    }    
+  }
+  nextPag(){
+    this.pag=this.pag +1
+    this.searchAlgolia(this.searchForm.controls['busqueda'].value,this.pag)      
+  }
 }
+

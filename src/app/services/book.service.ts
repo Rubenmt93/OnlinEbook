@@ -7,6 +7,7 @@ import { Book } from '../interfaces/book';
 import 'firebase/compat/storage';
 import { Relation } from '../interfaces/relation';
 import algoliasearch from 'algoliasearch/lite';
+import { MessagesService } from './messages.service';
 
 firebase.initializeApp(environment.firebaseConfig) 
 @Injectable({
@@ -24,13 +25,19 @@ export class BookService {
 //  client = algoliasearch(this.APPLICATION_ID, this.SEARCH_API_KEY)
 //  index = client.initIndex(this.ALGOLIA_INDEX)
 
-  constructor( private firestore: AngularFirestore) {
+  constructor( private firestore: AngularFirestore,
+               private messageService:MessagesService) {
     this.items= firestore.collection('book').valueChanges({ idField: 'eventId' });
     
   }
   
-  activateBook(id:string){
-    return this.firestore.collection('book').doc(id).update({active:true});
+  activateBook(id:string,adminId:string,userId:string){
+    var msg="Su libro con id " + id+ " ha sido añadido al catalogo"
+    return this.firestore.collection('book').doc(id).update({active:true}).then(result =>{
+      this.messageService.addmessage(adminId,userId,msg)
+    })
+    
+
   }
   desactivateBook(id:string){
     return this.firestore.collection('book').doc(id).update({active:false});

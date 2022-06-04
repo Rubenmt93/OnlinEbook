@@ -13,7 +13,7 @@ export class DialogVerifyComponent implements OnInit {
               private authservice:AuthService,) { 
     this.authservice.userStateObs().subscribe(user =>{
       if (user) {                  
-        if(user.emailVerified)  {
+        if(!user.emailVerified)  {
           this.dialog.open(DialogVerifyDialog);
         }     
       }

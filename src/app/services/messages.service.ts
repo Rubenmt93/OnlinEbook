@@ -7,20 +7,16 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class MessagesService {
   constructor( private firestore: AngularFirestore) {} 
   
-  addmessage(transmitter:string,receiver:string,msg:string){       
-    console.log(transmitter);
-    console.log(receiver);
-    console.log(msg);
-    
-    return this.firestore.collection('messages').add({transmitter:transmitter,receiver:receiver,msg:msg}); 
+  addmessage(transmitter:string,receiver:string,msg:string,subject:string){     
+    return this.firestore.collection('messages').add({mailFrom:transmitter,rcptTo:receiver,Data:msg,Subject:subject}); 
   }
   getMessages(receiver:string){
-    return this.firestore.collectionGroup('messages' ,ref =>  ref.where("receiver", "==", receiver)).valueChanges({idField: 'eventId'} )
+    return this.firestore.collectionGroup('messages' ,ref =>  ref.where("rcptTo", "==", receiver)).valueChanges({idField: 'eventId'} )
 
   }
  
   removeMessage(messageId:string){     
-    return this.firestore.collection("likes").doc(messageId).delete()
+    return this.firestore.collection("messages").doc(messageId).delete()
   }
 
  

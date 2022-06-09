@@ -44,7 +44,7 @@ export class BookPageComponent {
                 }             
                
           
-
+ 
   }
   goPdf(){      
     this.bookService.getBookById(this.bookId).subscribe(result => {
@@ -54,7 +54,7 @@ export class BookPageComponent {
   }
   activateBook(){  
     
-    this.bookService.activateBook(this.bookId,this.aux,this.book.userOwner!)
+    this.bookService.activateBook(this.bookId,this.aux,this.book )
   }
   
 }

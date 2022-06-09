@@ -21,6 +21,7 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { CheckBookComponent } from './admin/components/check-book/check-book.component';
 import { CheckCommentReportComponent } from './admin/components/check-comment-report/check-comment-report.component';
 import { CheckBookReportComponent } from './admin/components/check-book-report/check-book-report.component';
+import { MessagesComponent } from './profile/components/messages/messages.component';
 
 
 const routes: Routes = [
@@ -121,6 +122,10 @@ const routes: Routes = [
       {
         path:'changePasswd',
         component:ChangePasswdComponent,
+      },
+      {
+        path:'messagePage',
+        component:MessagesComponent,
       }
     ],
     canLoad:[AuthGuard],

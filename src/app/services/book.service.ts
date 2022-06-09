@@ -31,10 +31,11 @@ export class BookService {
     
   }
   
-  activateBook(id:string,adminId:string,userId:string){
-    var msg="Su libro con id " + id+ " ha sido añadido al catalogo"
+  activateBook(id:string,adminId:string,book:Book){
+    var msg="Su libro " + book.name + " ha sido añadido al catalogo"
+    var subject="Libro aprobado"
     return this.firestore.collection('book').doc(id).update({active:true}).then(result =>{
-      this.messageService.addmessage(adminId,userId,msg)
+      this.messageService.addmessage(adminId,book.userOwner!,msg,subject)
     })
     
 

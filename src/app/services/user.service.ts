@@ -3,6 +3,7 @@ import firebase from 'firebase/compat/app';
 import { environment } from 'src/environments/environment';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
+import { User } from '../interfaces/user';
 firebase.initializeApp(environment.firebaseConfig)
 
 @Injectable({
@@ -15,6 +16,8 @@ export class UserService {
     
     return this.firestore.collection('user').doc(id).valueChanges()
   }
+
+  
   createUserTable(uid:string,img:string,userName:string,email:string){
    
     return this.firestore.collection('user').doc(uid).set({

@@ -8,6 +8,7 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 import { RouterModule } from '@angular/router';
 import { CatalogModule } from '../catalog/catalog.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CarrouselAdminComponent } from './components/carrousel-admin/carrousel-admin.component';
 
 
 
@@ -16,7 +17,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     AdminHomeComponent,
     CheckBookComponent,
     CheckBookReportComponent,
-    CheckCommentReportComponent
+    CheckCommentReportComponent,
+    CarrouselAdminComponent,
+    
   ],
   imports: [
     CommonModule,

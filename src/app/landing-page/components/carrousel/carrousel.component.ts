@@ -1,4 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
+import { CarrouselService } from '../../../services/carrousel.service';
+import { CarrosuelItem } from '../../../interfaces/carrouselItem';
 
 @Component({
   selector: 'app-carrousel',
@@ -7,12 +9,23 @@ import { Component, ViewChild } from '@angular/core';
 })
 export class CarrouselComponent {  
   images = [
-    {path: 'https://londongratis.com/wp-content/uploads/2016/08/Harry-potter-and-the-cursed-child.jpg'},   
-    {path: 'https://m.media-amazon.com/images/S/aplus-media-library-service-media/148fc316-ee20-42ea-98bc-d9bd94d5660f.__CR0,0,970,600_PT0_SX970_V1___.jpg'},
-    {path: 'https://www.smootharkano.com/wp-content/uploads/2016/11/arkano-plantilla.png'}
+    {path: ''},   
+   
   ]
+  
+
+
   height:number=0
-  constructor(){
+  constructor( private carrouselService:CarrouselService){
+    this.carrouselService.getCarrouselItems().subscribe(result => {
+      result.forEach( item =>{
+        var aux= item as CarrosuelItem
+        this.images.push({path: aux.path})
+        console.log(aux.path);        
+      })
+    })
+    this.images.reverse().pop()
+   
     if(screen.width > 750){
       this.height= 400
     }else{

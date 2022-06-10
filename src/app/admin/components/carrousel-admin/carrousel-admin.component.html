@@ -1,0 +1,68 @@
+<div class="container"> 
+
+    <h2>Noticias del Carousel</h2>
+
+    <form   [formGroup]="carrouselForm"
+         (ngSubmit)="addItem()">   
+        <div class="formGrid">        
+            <mat-form-field class="example-full-width">
+                <mat-label> 
+                <mat-icon matPrefix> person_outline </mat-icon> 
+                    Nombre
+                </mat-label>
+                <input  type="text" 
+                        formControlName=name
+                        autocomplete="on"            
+                        matInput>         
+                
+                </mat-form-field>
+                <img src="{{ this.imgUrl }}" alt="User Placeholder" >
+            
+                <button type="button" 
+                        mat-raised-button 
+                        color="primary"
+                        (click)="fileInput.click()">
+                        <mat-icon matPrefix> image </mat-icon> 
+                        Subir imagen
+                </button>
+                <input  hidden                             
+                        #fileInput
+                        (change)="uploadFile($event)"                             
+                        type="file" 
+                        id="file">             
+        </div>
+        <div>
+            <button mat-raised-button 
+                    type="submit"
+                    color="primary"
+                    [disabled]="carrouselForm.invalid">
+                Subir
+            </button>     
+        </div>        
+    </form>
+</div>
+<div class="container">
+    <table>
+        <tr>
+            <th>Nombre</th>
+          
+            <th>Acción</th>
+            
+          </tr>
+          
+          <tr *ngFor="let item of items">
+              <td>{{item.name}}</td>
+             
+              
+              <td class="buttonTd">
+                  <button (click)="deleteItem(item.eventId)"
+                          mat-raised-button
+                          color="warn">
+                          Eliminar
+                  </button>
+              </td>
+      
+          </tr>
+    </table>
+  
+</div>

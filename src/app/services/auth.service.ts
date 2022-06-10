@@ -6,7 +6,6 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
 import { environment } from 'src/environments/environment';
 import { UserService } from './user.service';
-import { User } from '../interfaces/user';
 firebase.initializeApp(environment.firebaseConfig)
 @Injectable()
 export class AuthService {

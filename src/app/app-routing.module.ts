@@ -22,6 +22,8 @@ import { CheckBookComponent } from './admin/components/check-book/check-book.com
 import { CheckCommentReportComponent } from './admin/components/check-comment-report/check-comment-report.component';
 import { CheckBookReportComponent } from './admin/components/check-book-report/check-book-report.component';
 import { MessagesComponent } from './profile/components/messages/messages.component';
+import { CarrouselComponent } from './landing-page/components/carrousel/carrousel.component';
+import { CarrouselAdminComponent } from './admin/components/carrousel-admin/carrousel-admin.component';
 
 
 const routes: Routes = [
@@ -95,6 +97,11 @@ const routes: Routes = [
       {
         path:'checkBookReport',
         component:CheckBookReportComponent,
+      },
+      {
+        path:'carrouselAdmin',
+        component:CarrouselAdminComponent,
+
       },
       
       {

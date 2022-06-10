@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CheckCommentReportComponent } from './components/check-comment-report/check-comment-report.component';
 import { CheckBookReportComponent } from './components/check-book-report/check-book-report.component';
 import { CheckBookComponent } from './components/check-book/check-book.component';
+import { CarrouselAdminComponent } from './components/carrousel-admin/carrousel-admin.component';
 const routes:Routes = [
   {
     path:'',
@@ -20,6 +21,11 @@ const routes:Routes = [
       {
         path:'checkBookReport',
         component:CheckBookReportComponent,
+        outlet: 'outledAdmin'
+      },
+      {
+        path:'carrouselAdmin',
+        component:CarrouselAdminComponent,
         outlet: 'outledAdmin'
       },
       {

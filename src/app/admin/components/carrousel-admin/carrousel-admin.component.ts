@@ -10,7 +10,7 @@ import { CarrosuelItem } from '../../../interfaces/carrouselItem';
   styleUrls: ['./carrousel-admin.component.css']
 })
 export class CarrouselAdminComponent  {
-  imgUrl:any="../../../../assets/photo_placeholder.jpg"
+  imgUrl:any="./assets/photo_placeholder.jpg"
   carrouselForm: FormGroup = this.fb.group({
     file: [this.imgUrl,Validators.required],
     name: ['',Validators.required],  

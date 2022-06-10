@@ -1,0 +1,93 @@
+form{
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+}
+
+::ng-deep .mat-focused .mat-label .mat-form-field-label {
+    /*change color of label*/
+    color: #1a1a1a !important;
+}
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex{
+    color: #1a1a1a !important;
+}
+::ng-deep.mat-form-field-underline {
+  background-color: #1a1a1a !important;
+}   
+::ng-deep.mat-form-field-ripple {   
+   background-color:#3f51b5 !important;;
+}
+mat-label{
+    color: black;
+}
+.cdk-text-field-autofill-monitored:not(:-webkit-autofill){
+    color: #1a1a1a;
+}
+.mat-raised-button.mat-button-disabled {
+    color: #cac9c9 !important;
+    background-color:#7b84b8 !important;  
+}
+      
+
+mat-form-field{
+    margin-bottom: 10px;
+}
+
+.formGrid {
+    display: flex;
+    flex-direction: column;    
+    margin-bottom: 5%;
+}
+ img{
+    margin-bottom: 5px;
+    width:400px;
+    height:200px;
+    
+    align-self: center;
+}
+button{
+    width: 100%;
+    margin-bottom: 1%;
+}
+.container{
+    width: 70%;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.553);    
+    border-radius: 8px;          
+    -webkit-box-shadow: 13px 13px 11px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: 13px 13px 11px -11px rgba(0,0,0,0.75);
+    box-shadow: 13px 13px 11px -11px rgba(0,0,0,0.75);
+    display: flex;        
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;    
+    margin-top: 50px;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 90%;    
+    margin: 20px;
+
+  }
+  
+  td, th {
+    border: 1px solid #ffffff;
+    text-align: left;
+    padding: 8px;
+
+  }
+  
+  
+  tr:nth-child(even) {
+    background-color: #868686;
+  }
+  tr:nth-child(odd) {
+    
+    background-color: #515151;
+  }
+  h2{
+      color: #3f51b5;
+      font-size: x-large;
+      margin: 20px ;
+  }

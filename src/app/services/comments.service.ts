@@ -3,7 +3,6 @@ import firebase from 'firebase/compat/app';
 import { environment } from 'src/environments/environment';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Injectable } from '@angular/core';
-import { Comment } from '../interfaces/comment';
 firebase.initializeApp(environment.firebaseConfig)
  
 @Injectable({

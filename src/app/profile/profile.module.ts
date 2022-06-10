@@ -7,6 +7,8 @@ import { UpdateProfileComponent, DialogUpdateProfile, DialogUpdateProfileReauten
 import { ChangePasswdComponent, DialogChangePasswd, DialogChangePasswdFail } from './components/change-passwd/change-passwd.component';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthModule } from '../auth/auth.module';
+import { MessagesComponent } from './components/messages/messages.component';
 
 
 
@@ -20,13 +22,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     DialogChangePasswdFail,
     DialogUpdateProfile,
     DialogUpdateProfileReautenticate,
-    DialogUpdateProfileFailure
+    DialogUpdateProfileFailure,
+    MessagesComponent
   ],
   imports: [
     CommonModule,
     AngularMaterialModule,
     ProfileRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AuthModule
   ]
 })
 export class ProfileModule { }

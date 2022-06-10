@@ -33,7 +33,6 @@ import { AdminModule } from './admin/admin.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-
     AuthModule,
     LandingPageModule,
     AngularMaterialModule,

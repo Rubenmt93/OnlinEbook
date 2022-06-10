@@ -24,6 +24,7 @@ export class BookPageComponent {
     userName: '',
     img: ''
   }
+  aux:string=""
   constructor(private bookService:BookService,              
               private activatedRoute:ActivatedRoute,
               private userService:UserService) {
@@ -34,14 +35,16 @@ export class BookPageComponent {
                   this.active=this.book.active
                 })
                 var aux = JSON.parse(localStorage.getItem('userOnlinebook')!) as User ; 
+                
+                this.aux=aux.uid
                 if(aux){
                   this.userService.getUserById(aux.uid).subscribe(result => {
                     this.admin=result as User
                  })
                 }             
                
-
-
+          
+ 
   }
   goPdf(){      
     this.bookService.getBookById(this.bookId).subscribe(result => {
@@ -49,8 +52,9 @@ export class BookPageComponent {
       window.location.href = aux.link!;
     }) 
   }
-  activateBook(){
-    this.bookService.activateBook(this.bookId)
+  activateBook(){  
+    
+    this.bookService.activateBook(this.bookId,this.aux,this.book )
   }
   
 }

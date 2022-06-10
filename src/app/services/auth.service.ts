@@ -6,7 +6,6 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
 import { environment } from 'src/environments/environment';
 import { UserService } from './user.service';
-import { User } from '../interfaces/user';
 firebase.initializeApp(environment.firebaseConfig)
 @Injectable()
 export class AuthService {
@@ -70,10 +69,9 @@ export class AuthService {
      })
 }
   SignOut() {
+    localStorage.removeItem('userOnlinebook');  
     return this.afAuth.signOut()
-    .then(() => {
-      localStorage.removeItem('userOnlinebook');     
-    })
+    
   }  
   async SendVerificationMail() {
       return await this.afAuth.currentUser.then(u => u!.sendEmailVerification())

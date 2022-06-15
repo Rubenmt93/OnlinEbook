@@ -21,7 +21,7 @@ export class CarrouselComponent {
       result.forEach( item =>{
         var aux= item as CarrosuelItem
         this.images.push({path: aux.path})
-        console.log(aux.path);        
+            
       })
     })
     this.images.reverse().pop()

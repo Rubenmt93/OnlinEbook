@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/interfaces/book';
 import { Relation } from 'src/app/interfaces/relation';
@@ -10,7 +10,7 @@ import { User } from 'src/app/interfaces/user';
   templateUrl: './book-page-buttons.component.html',
   styleUrls: ['./book-page-buttons.component.css']
 })
-export class BookPageButtonsComponent {
+export class BookPageButtonsComponent implements OnInit {
   acquired:boolean = false
   favorite:boolean = true
   slopes:boolean = true
@@ -20,6 +20,8 @@ export class BookPageButtonsComponent {
   favoriteRelation!:Relation[]
   slopesRelation!:Relation[]
   wantedRelation!:Relation[]
+  strikeCheckout:any = null;
+  paymentHandler:any = null;
   constructor(private bookService:BookService,              
               private activatedRoute:ActivatedRoute,
               private router:Router) {                
@@ -30,6 +32,48 @@ export class BookPageButtonsComponent {
       this.checkFavorite();
       this.checkSlopes();
       this.checkWanted();
+  }
+  ngOnInit() {
+    this.stripePaymentGateway();
+  }
+  checkout(amount) {
+    const paymentHandler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_51L9pO7CRx1dyi6eWj6QNwZWGmnvJ9VU1rvzxSuseB9RUdC3ebLtiLWOpvcSAl8ly4xFPTVd7FwUz7cLTBmZ4oQDV002YjbtmYr',
+      locale: 'auto',
+      token: function (stripeToken: any) {
+        console.log(stripeToken)
+        alert('Stripe token generated!');
+      }
+    });
+   
+    paymentHandler.open({
+      name: 'Positronx',
+      description: '3 widgets',
+      amount: amount * 100
+    });
+  }
+  
+  stripePaymentGateway() {
+    if(!window.document.getElementById('stripe-script')) {
+      const script = window.document.createElement("script");
+      script.id = "stripe-script";
+      script.type = "text/javascript";
+      script.src = "https://checkout.stripe.com/checkout.js";
+      script.onload = () => {
+        this.paymentHandler = (<any>window).StripeCheckout.configure({
+          key: 'pk_test_51L9pO7CRx1dyi6eWj6QNwZWGmnvJ9VU1rvzxSuseB9RUdC3ebLtiLWOpvcSAl8ly4xFPTVd7FwUz7cLTBmZ4oQDV002YjbtmYr',
+          locale: 'auto',
+          token: function (stripeToken: any) {
+            console.log(stripeToken)
+            alert('Payment has been successfull!');
+          }
+        });
+      }
+         
+      window.document.body.appendChild(script);
+    }
+  
+ 
   }
   buy(){    
     this.bookService.addAcquiredBook(this.user.uid,this.bookId)

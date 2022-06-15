@@ -29,7 +29,7 @@
         <!-- //Libro no adquirido -->
         <ng-template  #buyButtons>
             <div id="buttonsFlex" >
-                <button mat-raised-button id="buyButton" (click) ="buy()">Comprar <mat-icon>shop</mat-icon> </button>
+                <button mat-raised-button id="buyButton" (click) ="checkout(30)">Comprar <mat-icon>shop</mat-icon> </button>
              
             <div  *ngIf="this.wanted; else deleteWanted">
                 <button mat-raised-button id="wantedButton" (click) ="addWanted()"> Añadir a lista deseo<mat-icon>favorite_border</mat-icon></button>        

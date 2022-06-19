@@ -29,6 +29,7 @@
     "angular-material-fileupload": "^3.0.2",
     "angular-responsive-carousel": "^2.1.2",
     "instantsearch.js": "^4.40.5",
+    "ngx-stripe": "^7.4.4",
     "rxfire": "^6.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",

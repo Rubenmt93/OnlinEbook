@@ -27,7 +27,6 @@ export class NavbarComponent{
                 this.authService.userStateObs().subscribe(user =>{
                   if (user) {             
                     this.userObject= JSON.parse( localStorage.getItem('userOnlinEbook')!   )  
-                    console.log(this.userObject);
                              
                     this.userLogged=true;                                  
                   }else{                    

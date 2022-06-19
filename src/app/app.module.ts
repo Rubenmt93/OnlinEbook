@@ -19,6 +19,8 @@ import { ProfileModule } from './profile/profile.module';
 import { BookPageModule } from './book-page/book-page.module';
 import { NgAisModule } from 'angular-instantsearch';
 import { AdminModule } from './admin/admin.module';
+import { NgxStripeModule } from 'ngx-stripe';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -42,7 +44,8 @@ import { AdminModule } from './admin/admin.module';
     CatalogModule,
     BookPageModule,
     AdminModule,
-    NgAisModule.forRoot()
+    NgAisModule.forRoot(),
+    HttpClientModule
    
   ],
   providers: [],

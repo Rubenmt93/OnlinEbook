@@ -3,7 +3,7 @@
        <p>Inicie sesión para ver más opciones</p> 
         <p (click)="navigateLogin()">Iniciar sesión</p>
     </div>
-    <ng-template #showButtons>
+    <ng-template #showButtons> 
         <!-- //Libro adquirido -->
         <div style="display:flex" id="buttonsFlex" *ngIf="this.acquired; else buyButtons">
             
@@ -29,17 +29,19 @@
         <!-- //Libro no adquirido -->
         <ng-template  #buyButtons>
             <div id="buttonsFlex" >
-                <button mat-raised-button id="buyButton" (click) ="checkout(30)">Comprar <mat-icon>shop</mat-icon> </button>
-             
-            <div  *ngIf="this.wanted; else deleteWanted">
-                <button mat-raised-button id="wantedButton" (click) ="addWanted()"> Añadir a lista deseo<mat-icon>favorite_border</mat-icon></button>        
+                <button mat-raised-button id="buyButton" (click) ="makePayment(book.price!*10)">Comprar <mat-icon>shop</mat-icon> </button>
+                
+                <div  *ngIf="this.wanted; else deleteWanted">
+                    <button mat-raised-button id="wantedButton" (click) ="addWanted()"> Añadir a lista deseo<mat-icon>favorite_border</mat-icon></button>        
                         
-            </div> 
-            <ng-template #deleteWanted>
-                <button mat-raised-button id="wantedButton" (click)="removeWanted()"> Eliminar de lista de deseo<mat-icon>alarm</mat-icon></button>         
+                </div> 
+                <ng-template #deleteWanted>
+                    <button mat-raised-button id="wantedButton" (click)="removeWanted()"> Eliminar de lista de deseo<mat-icon>alarm</mat-icon></button>         
 
-            </ng-template>
+                </ng-template>
             </div>
+
+          
             
         </ng-template>
         

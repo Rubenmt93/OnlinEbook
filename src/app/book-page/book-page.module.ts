@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { BookPageComponent } from './book-page/book-page.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { BookInfoComponent, ReportDialogBook } from './components/book-info/book-info.component';
-import { BookPageButtonsComponent } from './components/book-page-buttons/book-page-buttons.component';
+import { BookPageButtonsComponent, DialogStripe } from './components/book-page-buttons/book-page-buttons.component';
 import { ComentariosContainerComponent } from './components/comentarios-container/comentarios-container.component';
 import { ComentariosListComponent } from './components/comentarios-list/comentarios-list.component';
 import { ComentariosNewCommentComponent } from './components/comentarios-new-comment/comentarios-new-comment.component';
 import { ComentarioComponent, ReportDialog } from './components/comentario/comentario.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StripeErrorPipe } from './pipes/errorPipe.pipe';
 
 
 
@@ -22,7 +23,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     ComentariosNewCommentComponent,
     ComentarioComponent,
     ReportDialog,
-    ReportDialogBook
+    ReportDialogBook,
+    DialogStripe,
+    StripeErrorPipe,
+   
   ],
   imports: [
     CommonModule,

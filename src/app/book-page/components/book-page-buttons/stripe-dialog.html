@@ -1,0 +1,18 @@
+<div class="credit-card">
+    <div *ngIf="data==='success',else errorStripe" class="success">
+        <h1>Pago realizado</h1>
+        <h3>Se ha añadido el libro a su biblioteca</h3>
+
+    </div>
+    <ng-template #errorStripe class="failure">
+        <h1>Fallo en el pago</h1>
+        <h3> {{data|stripeError}}</h3>
+
+    </ng-template>
+    <button mat-raised-button
+            color="primary"
+            (click)="closeDialog()">
+            Ok
+    </button>
+   
+</div>

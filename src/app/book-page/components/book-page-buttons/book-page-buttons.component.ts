@@ -1,31 +1,50 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, NgZone, ViewChild, AfterViewInit, Inject, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/interfaces/book';
 import { Relation } from 'src/app/interfaces/relation';
 import { BookService } from '../../../services/book.service';
 import { User } from 'src/app/interfaces/user';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogPasswd } from 'src/app/auth/pages/login/login.component';
+import { StripeService } from 'src/app/services/stripe.service';
+import { BookInfoComponent } from '../book-info/book-info.component';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-book-page-buttons',
   templateUrl: './book-page-buttons.component.html',
   styleUrls: ['./book-page-buttons.component.css']
 })
-export class BookPageButtonsComponent implements OnInit {
+export class BookPageButtonsComponent  implements OnInit {
   acquired:boolean = false
   favorite:boolean = true
   slopes:boolean = true
   wanted:boolean = true
   user!:User
   bookId:string=""
+  book!:Book
   favoriteRelation!:Relation[]
   slopesRelation!:Relation[]
   wantedRelation!:Relation[]
-  strikeCheckout:any = null;
-  paymentHandler:any = null;
+  
+
+  paymentHandler: any = null;
+  success: boolean = false  
+  failure:boolean = false
+  @ViewChild('cardInfo') cardInfo!: ElementRef;
+  cardError!:string|null;
+  card:any
+  
   constructor(private bookService:BookService,              
               private activatedRoute:ActivatedRoute,
-              private router:Router) {                
-      this.activatedRoute.params.subscribe(({id})=> {this.bookId=id})                  
+              private router:Router,
+              public dialog: MatDialog,
+              private stripeService:StripeService) {                
+      this.activatedRoute.params.subscribe(({id})=> {this.bookId=id})     
+      this.bookService.getBookById(this.bookId).subscribe(result =>{
+        this.book=result as Book                
+      })          
+                   
       var aux=  localStorage.getItem('userOnlinebook');
       this.user= JSON.parse(aux!) as User            
       this.bookAcquired();
@@ -33,48 +52,82 @@ export class BookPageButtonsComponent implements OnInit {
       this.checkSlopes();
       this.checkWanted();
   }
+ 
+  
   ngOnInit() {
-    this.stripePaymentGateway();
+    this.invokeStripe();
   }
-  checkout(amount) {
+
+  makePayment(amount: number) {
     const paymentHandler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51L9pO7CRx1dyi6eWj6QNwZWGmnvJ9VU1rvzxSuseB9RUdC3ebLtiLWOpvcSAl8ly4xFPTVd7FwUz7cLTBmZ4oQDV002YjbtmYr',
-      locale: 'auto',
-      token: function (stripeToken: any) {
-        console.log(stripeToken)
-        alert('Stripe token generated!');
+      locale: 'es',
+      token: function (stripeToken: any) {       
+        paymentstripe(stripeToken);
+      },
+    });
+
+    const paymentstripe = (stripeToken: any) => {
+      
+      this.stripeService.makePayment(stripeToken,amount,this.user,this.book.name +" 1").subscribe((data: any) => {
+          console.log(data);
+             
+        if (data.data === "success") {
+          
+          this.dialog.open(DialogStripe ,{data: "success"});
+          //this.buy()
+        }
+        else {
+         
+          this.dialog.open(DialogStripe ,{data:  data.error,});
+        }
+      });
+      this.stripeService.makePayment(stripeToken,amount,this.user,this.book.name +" 2").subscribe((data: any) => {
+        console.log(data);
+           
+      if (data.data === "success") {
+        
+        this.dialog.open(DialogStripe ,{data: "success"});
+        //this.buy()
+      }
+      else {
+       
+        this.dialog.open(DialogStripe ,{data:  data.error,});
       }
     });
-   
+    };
+////////////////////////////////////////////////////////////
     paymentHandler.open({
-      name: 'Positronx',
-      description: '3 widgets',
-      amount: amount * 100
+      name: 'OnlinEbook',
+      description: this.book.name,
+      amount: this.book.price! * 100,
+      currency: 'eur'
     });
   }
-  
-  stripePaymentGateway() {
-    if(!window.document.getElementById('stripe-script')) {
-      const script = window.document.createElement("script");
-      script.id = "stripe-script";
-      script.type = "text/javascript";
-      script.src = "https://checkout.stripe.com/checkout.js";
+
+  invokeStripe() {
+    if (!window.document.getElementById('stripe-script')) {
+      const script = window.document.createElement('script');
+      script.id = 'stripe-script';
+      script.type = 'text/javascript';
+      script.src = 'https://checkout.stripe.com/checkout.js';
       script.onload = () => {
         this.paymentHandler = (<any>window).StripeCheckout.configure({
           key: 'pk_test_51L9pO7CRx1dyi6eWj6QNwZWGmnvJ9VU1rvzxSuseB9RUdC3ebLtiLWOpvcSAl8ly4xFPTVd7FwUz7cLTBmZ4oQDV002YjbtmYr',
           locale: 'auto',
           token: function (stripeToken: any) {
-            console.log(stripeToken)
-            alert('Payment has been successfull!');
-          }
+            console.log(stripeToken);
+          },
         });
-      }
-         
+      };
+
       window.document.body.appendChild(script);
     }
-  
- 
   }
+ 
+
+  
+  
   buy(){    
     this.bookService.addAcquiredBook(this.user.uid,this.bookId)
     this.bookService.getWantedBook(this.user.uid,this.bookId).subscribe(wanted => {
@@ -87,8 +140,8 @@ export class BookPageButtonsComponent implements OnInit {
   }
   bookAcquired(){
     this.bookService.getAcquiredBook(this.user.uid,this.bookId)
-    .subscribe(result => {         
-      console.log(result);
+    .subscribe(result => {       
+      
        
       if(result.length==1){
         this.acquired=true     
@@ -167,4 +220,25 @@ export class BookPageButtonsComponent implements OnInit {
   }
   
 
+}
+
+@Component({
+  selector: 'stripe-dialog',
+  templateUrl: 'stripe-dialog.html',
+  styleUrls: ['./book-page-buttons.component.css']
+})
+export class DialogStripe  {
+  
+  book!:Book
+  constructor(public dialogRef: MatDialogRef<DialogPasswd>,              
+              private bookService:BookService,
+              @Inject(MAT_DIALOG_DATA) public data:any) {      
+                console.log(data);
+                                  
+              }  
+  closeDialog(){
+    this.dialogRef.close();
+  }
+  
+  
 }

@@ -69,32 +69,19 @@ export class BookPageButtonsComponent  implements OnInit {
 
     const paymentstripe = (stripeToken: any) => {
       
-      this.stripeService.makePayment(stripeToken,amount,this.user,this.book.name +" 1").subscribe((data: any) => {
+      this.stripeService.makePayment(stripeToken,amount,this.user,this.book.name).subscribe((data: any) => {
           console.log(data);
              
         if (data.data === "success") {
           
           this.dialog.open(DialogStripe ,{data: "success"});
-          //this.buy()
+          this.buy()
         }
         else {
          
           this.dialog.open(DialogStripe ,{data:  data.error,});
         }
       });
-      this.stripeService.makePayment(stripeToken,amount,this.user,this.book.name +" 2").subscribe((data: any) => {
-        console.log(data);
-           
-      if (data.data === "success") {
-        
-        this.dialog.open(DialogStripe ,{data: "success"});
-        //this.buy()
-      }
-      else {
-       
-        this.dialog.open(DialogStripe ,{data:  data.error,});
-      }
-    });
     };
 ////////////////////////////////////////////////////////////
     paymentHandler.open({

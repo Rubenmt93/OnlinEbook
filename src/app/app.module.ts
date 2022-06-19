@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { FooterComponent } from './shared/footer/footer.component';
+import { DialogAbout, DialogContact, DialogTerms, FooterComponent } from './shared/footer/footer.component';
 import { AuthModule } from './auth/auth.module';
 
 import { LandingPageModule } from './landing-page/landing-page.module';
@@ -21,6 +21,7 @@ import { NgAisModule } from 'angular-instantsearch';
 import { AdminModule } from './admin/admin.module';
 import { NgxStripeModule } from 'ngx-stripe';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -28,7 +29,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     NavbarComponent,
     FooterComponent,
-   
+    DialogAbout,
+    DialogTerms,
+    DialogContact
   ],
   imports: [
     
@@ -45,8 +48,8 @@ import { HttpClientModule } from '@angular/common/http';
     BookPageModule,
     AdminModule,
     NgAisModule.forRoot(),
-    HttpClientModule
-   
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,3 +1,4 @@
+import { Overlay } from '@angular/cdk/overlay';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
@@ -8,12 +9,14 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(public dialog: MatDialog ) { }
+  constructor(public dialog: MatDialog,
+              private overlay:Overlay ) { }
 
   ngOnInit(): void {
   }
   dialogTerms(){
-    this.dialog.open(DialogTerms);
+    const scrollStrategy = this.overlay.scrollStrategies.reposition();
+    this.dialog.open(DialogTerms,{scrollStrategy});
   }
   dialogContact(){
     this.dialog.open(DialogContact);

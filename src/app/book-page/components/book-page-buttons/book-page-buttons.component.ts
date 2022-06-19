@@ -75,7 +75,7 @@ export class BookPageButtonsComponent  implements OnInit {
         if (data.data === "success") {
           
           this.dialog.open(DialogStripe ,{data: "success"});
-          this.buy()
+          //this.buy()
         }
         else {
          
@@ -83,6 +83,8 @@ export class BookPageButtonsComponent  implements OnInit {
         }
       });
     };
+
+    
 ////////////////////////////////////////////////////////////
     paymentHandler.open({
       name: 'OnlinEbook',

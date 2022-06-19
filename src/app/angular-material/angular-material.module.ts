@@ -32,7 +32,8 @@ import {TextFieldModule} from '@angular/cdk/text-field';
     MatListModule,
     MatTableModule,
     TextFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
 
     
   ],

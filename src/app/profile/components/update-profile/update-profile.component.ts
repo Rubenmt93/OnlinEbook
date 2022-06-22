@@ -24,7 +24,7 @@ export class UpdateProfileComponent  {
     file: [this.imgURL],
     email: ["",[Validators.required,Validators.pattern(this.emailPattern)]],    
     username: ["",[Validators.required,Validators.minLength(3)]],
-    
+    bankAcount: ["",[Validators.minLength(20)]]
   })
   constructor(private fb: FormBuilder,
               private authservice:AuthService,
@@ -57,7 +57,7 @@ export class UpdateProfileComponent  {
     var email=this.updateProfileForm.controls['email'].value
     var file=this.imgURL
     var userName=this.updateProfileForm.controls['username'].value    
-    
+    var bankAcount=this.updateProfileForm.controls['bankAcount'].value
     if(this.updateProfileForm.controls['email'].untouched){
        email=null   
     } 
@@ -67,18 +67,24 @@ export class UpdateProfileComponent  {
     if(this.updateProfileForm.controls['username'].untouched){
       userName= null
     }
+    if(this.updateProfileForm.controls['bankAcount'].untouched){
+      bankAcount= null
+    }
     
     var result=  await this.authservice.UpdateUserInfo(email,userName,file)
     
     switch(result){
       case 0:{
-        console.log(this.user.uid!)
-        this.UserService.updateUser(this.user.uid!,this.imgURL,this.updateProfileForm.controls['username'].value    ,this.updateProfileForm.controls['email'].value);
+        this.UserService.updateUser(this.user.uid!,
+                                    this.imgURL,
+                                    this.updateProfileForm.controls['username'].value,
+                                    this.updateProfileForm.controls['email'].value,
+                                    this.updateProfileForm.controls['bankAcount'].value);
         this.dialog.open(DialogUpdateProfile);
         break
       } 
       case 1:{
-        this.dialog.open(DialogUpdateProfileReautenticate,{data:{email:email,userName:userName,file:file}})
+        this.dialog.open(DialogUpdateProfileReautenticate,{data:{email:email,userName:userName,file:file, bankAcount:bankAcount}})
         break
       }
       default:{
@@ -121,10 +127,7 @@ export class DialogUpdateProfileReautenticate {
   reautenticateForm: FormGroup = this.fb.group({
     passwd: ['',[Validators.required,Validators.minLength(6)]],   
   })         
-  async confirm(){    
-    // this.dialogRef.close();    
-    //TODO: Llamada a reautenticate y a la vuelta llamo de nuevo 
-    
+  async confirm(){         
     
     var password= this.reautenticateForm.controls['passwd'].value
     if ( await this.authservice.reautenticateUser(password)){
@@ -150,7 +153,7 @@ export class DialogUpdateProfileFailure {
               
   confirm(){    
     this.dialogRef.close();    
-    //TODO: Llamada a reautenticate y a la vuelta llamo de nuevo 
+  
   }
 }
 

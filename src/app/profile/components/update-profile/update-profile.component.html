@@ -20,7 +20,8 @@
                             #fileInput
                             (change)="uploadFile($event)"                             
                             type="file" 
-                            id="file">                   
+                            id="file"
+                            accept="image/*">                   
                 </div>
                 <div class="div2">
                     <mat-form-field class="example-full-width">
@@ -46,10 +47,22 @@
                                 autocomplete="on" 
                                 matInput>  
                         <mat-error *ngIf="validezCampo('username')">Campo requerido</mat-error>                     
-                    </mat-form-field>              
+                    </mat-form-field>    
+                    
+                    <mat-form-field class="example-full-width">                
+                        <mat-label> 
+                            <mat-icon matPrefix> person_outline </mat-icon> 
+                                Cuenta bancaria
+                        </mat-label> 
+                        <input  type="text"
+                                formControlName='bankAcount'
+                                autocomplete="on" 
+                                matInput>  
+                        <mat-error *ngIf="validezCampo('username')">Campo requerido</mat-error>                     
+                    </mat-form-field>  
                 </div>               
             </div>
-            <div>
+            <div> 
                 <button mat-raised-button 
                         type="submit"
                         color="primary"

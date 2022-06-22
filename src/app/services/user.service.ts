@@ -27,12 +27,14 @@ export class UserService {
       img: img
     });
   }
-  updateUser(uid:string,img:string,userName:string,email:string){
+  updateUser(uid:string,img:string,userName:string,email:string, bankAcount:string){
     return this.firestore.collection('user').doc(uid).set({
       email: email,
       rol:0,
       userName: userName,
-      img: img
+      img: img,
+      bankAcount:bankAcount
     });
   }
 }
+ 

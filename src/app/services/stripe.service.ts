@@ -17,4 +17,8 @@ export class StripeService {
     
     return this.http.post<any>(url,{token:stripeToken, amount:amount, rcptMail : user.email, description:bookName })
   }
+
+  
+
+  
 }

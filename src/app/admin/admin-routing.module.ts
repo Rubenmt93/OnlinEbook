@@ -4,6 +4,7 @@ import { CheckCommentReportComponent } from './components/check-comment-report/c
 import { CheckBookReportComponent } from './components/check-book-report/check-book-report.component';
 import { CheckBookComponent } from './components/check-book/check-book.component';
 import { CarrouselAdminComponent } from './components/carrousel-admin/carrousel-admin.component';
+import { PaymentComponent } from './components/payment/payment.component';
 const routes:Routes = [
   {
     path:'',
@@ -26,6 +27,11 @@ const routes:Routes = [
       {
         path:'carrouselAdmin',
         component:CarrouselAdminComponent,
+        outlet: 'outledAdmin'
+      },
+      {
+        path:'paymentAdmin',
+        component:PaymentComponent,
         outlet: 'outledAdmin'
       },
       {

@@ -9,6 +9,7 @@ import { DialogPasswd } from 'src/app/auth/pages/login/login.component';
 import { StripeService } from 'src/app/services/stripe.service';
 import { BookInfoComponent } from '../book-info/book-info.component';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { ChargeService } from '../../../services/charge.service';
 
 @Component({
   selector: 'app-book-page-buttons',
@@ -39,7 +40,8 @@ export class BookPageButtonsComponent  implements OnInit {
               private activatedRoute:ActivatedRoute,
               private router:Router,
               public dialog: MatDialog,
-              private stripeService:StripeService) {                
+              private stripeService:StripeService,
+              private chargeService:ChargeService) {                
       this.activatedRoute.params.subscribe(({id})=> {this.bookId=id})     
       this.bookService.getBookById(this.bookId).subscribe(result =>{
         this.book=result as Book                
@@ -59,39 +61,45 @@ export class BookPageButtonsComponent  implements OnInit {
   }
 
   makePayment(amount: number) {
-    const paymentHandler = (<any>window).StripeCheckout.configure({
-      key: 'pk_test_51L9pO7CRx1dyi6eWj6QNwZWGmnvJ9VU1rvzxSuseB9RUdC3ebLtiLWOpvcSAl8ly4xFPTVd7FwUz7cLTBmZ4oQDV002YjbtmYr',
-      locale: 'es',
-      token: function (stripeToken: any) {       
-        paymentstripe(stripeToken);
-      },
-    });
-
-    const paymentstripe = (stripeToken: any) => {
-      
-      this.stripeService.makePayment(stripeToken,amount,this.user,this.book.name).subscribe((data: any) => {
-          console.log(data);
-             
-        if (data.data === "success") {
-          
-          this.dialog.open(DialogStripe ,{data: "success"});
-          //this.buy()
-        }
-        else {
-         
-          this.dialog.open(DialogStripe ,{data:  data.error,});
-        }
+    if(amount == 0){
+      this.dialog.open(DialogStripe ,{data: "success"});
+      this.buy()
+        
+    }else{
+      const paymentHandler = (<any>window).StripeCheckout.configure({
+        key: 'pk_test_51L9pO7CRx1dyi6eWj6QNwZWGmnvJ9VU1rvzxSuseB9RUdC3ebLtiLWOpvcSAl8ly4xFPTVd7FwUz7cLTBmZ4oQDV002YjbtmYr',
+        locale: 'es',
+        token: function (stripeToken: any) {       
+          paymentstripe(stripeToken);
+        },
       });
-    };
-
+  
+      const paymentstripe = (stripeToken: any) => {
+        
+        this.stripeService.makePayment(stripeToken,amount,this.user,this.book.name).subscribe((data: any) => {
+            console.log(data);
+               
+          if (data.data === "success") {
+            let date: string = new Date().toString();  
+            this.dialog.open(DialogStripe ,{data: "success"});
+            this.chargeService.recordCharge(this.user.uid, this.bookId,this.book.userOwner!, this.book.price!,date,this.book.name);
+            //this.buy()
+          }
+          else {
+           
+            this.dialog.open(DialogStripe ,{data:  data.error,});
+          }
+        });
+      };
+      paymentHandler.open({
+        name: 'OnlinEbook',
+        description: this.book.name,
+        amount: this.book.price! * 100,
+        currency: 'eur'
+      });
+    }
     
-////////////////////////////////////////////////////////////
-    paymentHandler.open({
-      name: 'OnlinEbook',
-      description: this.book.name,
-      amount: this.book.price! * 100,
-      currency: 'eur'
-    });
+   
   }
 
   invokeStripe() {

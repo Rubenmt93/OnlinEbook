@@ -24,6 +24,7 @@ import { CheckBookReportComponent } from './admin/components/check-book-report/c
 import { MessagesComponent } from './profile/components/messages/messages.component';
 import { CarrouselComponent } from './landing-page/components/carrousel/carrousel.component';
 import { CarrouselAdminComponent } from './admin/components/carrousel-admin/carrousel-admin.component';
+import { PaymentComponent } from './admin/components/payment/payment.component';
 
 
 const routes: Routes = [
@@ -102,6 +103,11 @@ const routes: Routes = [
         path:'carrouselAdmin',
         component:CarrouselAdminComponent,
 
+      }, 
+      {
+        path:'paymentAdmin',
+        component:PaymentComponent,
+        
       },
       
       {

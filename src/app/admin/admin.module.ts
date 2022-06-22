@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { CatalogModule } from '../catalog/catalog.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CarrouselAdminComponent } from './components/carrousel-admin/carrousel-admin.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 
 
@@ -19,6 +20,7 @@ import { CarrouselAdminComponent } from './components/carrousel-admin/carrousel-
     CheckBookReportComponent,
     CheckCommentReportComponent,
     CarrouselAdminComponent,
+    PaymentComponent,
     
   ],
   imports: [

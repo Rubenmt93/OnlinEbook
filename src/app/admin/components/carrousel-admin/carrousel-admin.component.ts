@@ -21,7 +21,6 @@ export class CarrouselAdminComponent  {
               private fb: FormBuilder,) { 
     this.carrouselService.getCarrouselItems().subscribe(result => {
       this.items=result as CarrosuelItem[]
-      console.log(result);
       
     })
 

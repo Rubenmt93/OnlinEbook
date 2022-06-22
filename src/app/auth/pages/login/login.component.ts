@@ -13,8 +13,8 @@ export class LoginComponent  {
   showPasswd :boolean = true
   emailPattern:string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   loginForm: FormGroup = this.fb.group({
-    email: ['zegreo@gmail.com',[Validators.required,Validators.pattern(this.emailPattern)]],
-    passwd: ['carpediem',Validators.required]
+    email: ['',[Validators.required,Validators.pattern(this.emailPattern)]],
+    passwd: ['',Validators.required]
   })
   
   

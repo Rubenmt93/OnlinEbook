@@ -17,8 +17,8 @@ export class RegisterComponent{
   registerForm: FormGroup = this.fb.group({
     file: [this.imgURL],
     email: ['',[Validators.required,Validators.pattern(this.emailPattern)]],
-    passwd: ['123456',[Validators.required,Validators.minLength(6)]],
-    passwdConfirm: ['123456',[Validators.required,Validators.minLength(6)]],   
+    passwd: ['',[Validators.required,Validators.minLength(6)]],
+    passwdConfirm: ['',[Validators.required,Validators.minLength(6)]],   
     username: ['nombrePrueba',[Validators.required,Validators.minLength(3)]],
     
   },{ 

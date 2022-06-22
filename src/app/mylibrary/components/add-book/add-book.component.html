@@ -23,7 +23,7 @@
                             #imgInput
                             (change)="uploadImg($event)"                             
                             type="file" 
-                            >      
+                            accept="image/png, image/jpg, image/jpeg">      
                             
                     <button type="button" 
                             mat-raised-button 
@@ -36,6 +36,7 @@
                             #fileInput
                             (change)="uploadPdf($event)"                             
                             type="file" 
+                            accept="application/pdf"
                             >         
                 </div>
                 <div class="div2">

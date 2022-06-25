@@ -89,8 +89,7 @@
                                 autocomplete="on" 
                                 matInput>  
                         <mat-error *ngIf="validezCampo('year')">Campo requerido</mat-error>                     
-                    </mat-form-field>  
-                   <!-- //////////////////////////////////////////////////////////// -->
+                    </mat-form-field>                  
                        
                     <mat-form-field class="example-full-width">
                         <mat-label >
@@ -108,7 +107,6 @@
                         <mat-error *ngIf="validezCampo('categories')">Campo requerido</mat-error>     
                     </mat-form-field>
 
-                    <!-- //////////////////////////////////////////////////////////// -->
                     <mat-form-field class="example-full-width">                
                         <mat-label> 
                             <mat-icon matPrefix> attach_money </mat-icon> 
@@ -120,10 +118,7 @@
                                 matInput>  
                                         
                     </mat-form-field>  
-                      <div *ngIf="this.errorPrice" style="color:rgb(164, 51, 51)">El precio debe ser 0, o mayor o igual a 1 €</div>     
-                    
-
-                    
+                    <div *ngIf="this.errorPrice" style="color:rgb(164, 51, 51)">El precio debe ser 0, o mayor o igual a 1 €</div>     
                 </div>
                 <div class="div4">
                     <mat-form-field class="abstract-textArea" >
@@ -147,14 +142,8 @@
                         [disabled]="publiForm.invalid"
                         >
                     Publicar en OnlinEbook
-                </button>
-           
-
-            </div>
-            
-        </form>
-       
-    </div>
-
-     
+                </button>         
+            </div>            
+        </form>       
+    </div>     
 </div>

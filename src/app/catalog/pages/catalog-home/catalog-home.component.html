@@ -25,14 +25,11 @@
         </form>
     </div>
 
-    <div  class="catalog-grid" >      
-      
-        <div class= "catalog-item" *ngFor="let item of items">  
-             
+    <div  class="catalog-grid" >    
+        <div class= "catalog-item" *ngFor="let item of items"> 
             <app-bookcard class= "feature" 
                           [book]="item">  
-            </app-bookcard>
-      
+            </app-bookcard>      
         </div>
     </div>
     <div class="paginacionDiv">

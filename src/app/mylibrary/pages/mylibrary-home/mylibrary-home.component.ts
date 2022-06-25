@@ -15,8 +15,7 @@ export class MylibraryHomeComponent implements OnInit {
   constructor(private authService:AuthService,
               private router:Router ) {
     this.authService.userStateObs().subscribe(user =>{
-      if (user) {      
-                 
+      if (user) {   
         this.userObject= user                            
       }
     });              

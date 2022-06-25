@@ -8,10 +8,6 @@ import { MypublishedbooksComponent } from './components/mypublishedbooks/mypubli
 import { MywantedComponent } from './components/mywanted/mywanted.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
 
-
-
-
-
 const routes:Routes = [
   {
     path:'',

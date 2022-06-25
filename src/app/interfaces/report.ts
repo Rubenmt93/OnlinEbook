@@ -4,5 +4,5 @@ export interface Report {
     comment?:   string
     book?:      string
     reason:     string[]
-    msg?:        string
+    msg?:       string
 }

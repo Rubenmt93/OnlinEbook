@@ -12,29 +12,22 @@
 .catalog-grid{
   display: grid;
   gap: 1rem;        
-  grid-template-columns: repeat(auto-fill, minmax(10rem,1fr));
- 
-  
+  grid-template-columns: repeat(auto-fill, minmax(10rem,1fr));  
 }
 @media (min-width: 750px) {
   .catalog-grid{
     display: grid;
     gap: 1rem;        
-    grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));
-   
-    
+    grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));       
+  }
 }
 
-}
-
-.catalog-item{
-  
+.catalog-item{  
   margin: auto;
   margin-top: 0;
 }
-.feature{
-    
-    grid-row: span 2;
+.feature{    
+  grid-row: span 2;
 }
 .searchForm{
   display: flex;
@@ -59,14 +52,13 @@ form{
 }
 
 ::ng-deep .mat-focused .mat-label .mat-form-field-label {
-  /*change color of label*/
   color: #1a1a1a !important;
 }
 ::ng-deep.mat-form-field-underline {
-background-color: #1a1a1a !important;
+  background-color: #1a1a1a !important;
 }   
 ::ng-deep.mat-form-field-ripple {   
- background-color:#3f51b5 !important;;
+  background-color:#3f51b5 !important;;
 }
 mat-label {
   color: #1a1a1a;

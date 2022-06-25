@@ -5,27 +5,20 @@ import { CarrosuelItem } from '../../../interfaces/carrouselItem';
 @Component({
   selector: 'app-carrousel',
   templateUrl: './carrousel.component.html',
-  styleUrls: ['./carrousel.component.css']
 })
 export class CarrouselComponent {  
   images = [
-    {path: ''},   
-   
-  ]
-  
-
-
+    {path: ''},    
+  ] 
   height:number=0
   constructor( private carrouselService:CarrouselService){
     this.carrouselService.getCarrouselItems().subscribe(result => {
       result.forEach( item =>{
         var aux= item as CarrosuelItem
-        this.images.push({path: aux.path})
-            
+        this.images.push({path: aux.path})            
       })
     })
-    this.images.reverse().pop()
-   
+    this.images.reverse().pop()   
     if(screen.width > 750){
       this.height= 400
     }else{

@@ -3,5 +3,5 @@ export interface Message {
     rctpTo:     string
     mailFrom:   string
     Subject:    string
-    Data:        string
+    Data:       string
 }

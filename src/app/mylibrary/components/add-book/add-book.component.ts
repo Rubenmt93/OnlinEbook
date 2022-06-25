@@ -33,11 +33,10 @@ export class AddBookComponent {
               public dialog: MatDialog,
               private bookService:BookService,
               private router:Router) {               
-  this.user = JSON.parse(localStorage.getItem('userOnlinebook')!)
+              this.user = JSON.parse(localStorage.getItem('userOnlinebook')!)
   }  
 
-  validezCampo(campo: string){
-    
+  validezCampo(campo: string){    
     return this.publiForm.controls[campo].errors && this.publiForm.controls[campo].touched
   }  
   
@@ -55,7 +54,7 @@ export class AddBookComponent {
     let reader = new FileReader();
     reader.readAsDataURL(fileList[0]);
     reader.onloadend=() => {
-    this.publiForm.controls['filePDF'].setValue(reader.result)
+      this.publiForm.controls['filePDF'].setValue(reader.result)
     }        
   }
   addBook(){ 

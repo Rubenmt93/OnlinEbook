@@ -1,15 +1,8 @@
-
-
-
-
-.writer-container{
-    
+.writer-container{    
     justify-content: center;
     align-items: center;
-    text-align: center;
-    
+    text-align: center;    
 }
-
 h1,h4{
     color: white;
 }
@@ -24,8 +17,6 @@ h4{
 .writer-container-content-form{    
     margin: 13%;
 }
-
-
 .container{
     background: white;
     width: 90%;
@@ -71,13 +62,10 @@ mat-label{
 
     color: #cac9c9 !important;
     background-color:#b8897b !important;  
-}
-      
- 
+}      
 mat-form-field{
     margin-bottom: 10px;
 }
-
 .formGrid {
     display: flex;
     flex-direction: column;    
@@ -152,7 +140,7 @@ h3{
        
     }
     .container{
-    width: 400px;
+        width: 400px;
     }
     
 }

@@ -68,22 +68,19 @@ table {
     border-collapse: collapse;
     width: 90%;    
     margin: 20px;
-
   }
   
   td, th {
     border: 1px solid #ffffff;
     text-align: left;
     padding: 8px;
-
   }
-  
-  
+    
   tr:nth-child(even) {
     background-color: #868686;
   }
-  tr:nth-child(odd) {
-    
+
+  tr:nth-child(odd) {    
     background-color: #515151;
   }
   h2{

@@ -1,19 +1,17 @@
 <div >
     <div class="comment_container">
-        <div class="comment_header">
-          
+        <div class="comment_header">          
            <h1>Nuevo comentario</h1>
         </div>
         <div class="comment_msg">
-            <form   [formGroup]="commentForm"> 
-            
-            <mat-form-field class="textArea"
-                            appearance="fill">
-                <mat-label class="textAreaPlaceholder">Introduce tu comentario</mat-label>
-                <textarea matInput
-                          formControlName='mensaje'>
-                </textarea>
-            </mat-form-field>
+            <form   [formGroup]="commentForm">             
+                <mat-form-field class="textArea"
+                                appearance="fill">
+                    <mat-label class="textAreaPlaceholder">Introduce tu comentario</mat-label>
+                    <textarea matInput
+                            formControlName='mensaje'>
+                    </textarea>
+                </mat-form-field>
             </form>
         </div>
         <div class="comment_footer">
@@ -21,12 +19,9 @@
             color="primary"
             (click)="sendComment()">
             Comentar
-        </button>
-        </div>
-           
-
-    <div>
-                
+            </button>
+        </div>          
+    <div>                
 </div>
     
     

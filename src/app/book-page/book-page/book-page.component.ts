@@ -41,10 +41,7 @@ export class BookPageComponent {
                   this.userService.getUserById(aux.uid).subscribe(result => {
                     this.admin=result as User
                  })
-                }             
-               
-          
- 
+                }           
   }
   goPdf(){      
     this.bookService.getBookById(this.bookId).subscribe(result => {
@@ -52,9 +49,7 @@ export class BookPageComponent {
       window.location.href = aux.link!;
     }) 
   }
-  activateBook(){  
-    
+  activateBook(){      
     this.bookService.activateBook(this.bookId,this.aux,this.book )
-  }
-  
+  }  
 }

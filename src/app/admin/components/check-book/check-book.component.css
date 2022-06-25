@@ -12,18 +12,15 @@
   .catalog-grid{
       display: grid;
       gap: 2rem;    
-      grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));
-     
-      
+      grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));          
   }
-  .catalog-item{
-    
+
+  .catalog-item{    
     margin: auto;
     margin-top: 0;
   }
   .feature{
-      grid-column: span 2;
-      
+      grid-column: span 2;      
   }
   .searchForm{
     display: flex;

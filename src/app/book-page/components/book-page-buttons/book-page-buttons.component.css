@@ -3,8 +3,6 @@
     display: flex;
     justify-content: center;
 }
-
-
 @media (max-width: 750px) {
   
     .book-page-buttons{   
@@ -15,8 +13,7 @@
     #buttonsFlex{
         display: flex;
         flex-direction: column;
-    }
-  
+    }  
 }
 .book-page-buttons button{
     margin: 1rem;

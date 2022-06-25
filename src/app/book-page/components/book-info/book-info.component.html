@@ -1,7 +1,4 @@
-<div class="book-info-container" *ngIf="book">
-    <div>
-        
-    </div>
+<div class="book-info-container" *ngIf="book">   
     <div class="book-page-tittle"> <h1>{{book.name | titlecase}} </h1></div>
     <div class="book-page-img">
         <img src={{book.img}} alt="img-book">            
@@ -32,7 +29,6 @@
                 <td><b>Ventas:</b></td>
                 <td> {{downloadCount}} adquisiciones</td>
             </tr>
-
             <tr>  
                 <td><b><b>Precio:</b></b></td>
                 <td>{{book.price}} €</td>

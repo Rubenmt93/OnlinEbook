@@ -28,12 +28,9 @@ export class LoginComponent  {
       }
     });
   }
-
-
   
   validezCampo(campo:string){
    return this.loginForm.controls[campo].errors && this.loginForm.controls[campo].touched
-
   }
  
   forgotPasswd(){

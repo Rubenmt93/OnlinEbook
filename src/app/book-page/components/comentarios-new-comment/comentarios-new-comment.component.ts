@@ -25,6 +25,5 @@ export class ComentariosNewCommentComponent  {
     var msg= this.commentForm.controls['mensaje'].value
     this.commentService.addComment(this.bookId,msg,this.user.uid)
     this.commentForm.reset()
-  }
-  
+  }  
 }

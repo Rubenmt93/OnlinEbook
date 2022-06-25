@@ -18,8 +18,7 @@ import {TextFieldModule} from '@angular/cdk/text-field';
 
 
 @NgModule({
-  exports: [
-    
+  exports: [    
     MatButtonModule,
     MatCardModule,
     MatDatepickerModule,
@@ -33,10 +32,7 @@ import {TextFieldModule} from '@angular/cdk/text-field';
     MatTableModule,
     TextFieldModule,
     MatSelectModule,
-    MatDialogModule,
-
-    
-  ],
-  
+    MatDialogModule,    
+  ],  
 })
 export class AngularMaterialModule { }

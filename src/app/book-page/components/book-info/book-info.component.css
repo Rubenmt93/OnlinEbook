@@ -2,8 +2,7 @@
    display: flex;
    flex-direction: column;   
     background:url("../../../../assets/backgroundBookPage-movil.svg") no-repeat;
-    border-radius:20px 20px 0 0 ;
-    
+    border-radius:20px 20px 0 0 ;    
 } 
 .book-page-info{
     grid-area: 2 / 2 / 3 / 3;
@@ -15,7 +14,6 @@
     font-size: larger;
     margin: auto;
     margin-top: 30px;
-
 }
 @media (min-width: 750px) {
     .book-info-container{  
@@ -25,7 +23,6 @@
         grid-column-gap: 0px;
         grid-row-gap: 0px;
         background:url("../../../../assets/backgroundBookPage.svg") no-repeat center center ;
-
     }
     .book-page-info{
         margin-top: 0;
@@ -68,8 +65,7 @@
 }
 .reportBook{
     grid-area: 4 / 1 / 5 / 2;
-    display: flex;
-    
+    display: flex;    
 }
 .reportBook h3,mat-icon{
     vertical-align: middle;

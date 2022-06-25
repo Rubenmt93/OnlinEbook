@@ -76,17 +76,13 @@ export class BookPageButtonsComponent  implements OnInit {
   
       const paymentstripe = (stripeToken: any) => {
         
-        this.stripeService.makePayment(stripeToken,amount,this.user,this.book.name).subscribe((data: any) => {
-            console.log(data);
-               
+        this.stripeService.makePayment(stripeToken,amount,this.user,this.book.name).subscribe((data: any) => {         
           if (data.data === "success") {
             let date: string = new Date().toString();  
             this.dialog.open(DialogStripe ,{data: "success"});
             this.chargeService.recordCharge(this.user.uid, this.bookId,this.book.userOwner!, this.book.price!,date,this.book.name);
-            //this.buy()
           }
           else {
-           
             this.dialog.open(DialogStripe ,{data:  data.error,});
           }
         });
@@ -112,19 +108,14 @@ export class BookPageButtonsComponent  implements OnInit {
         this.paymentHandler = (<any>window).StripeCheckout.configure({
           key: 'pk_test_51L9pO7CRx1dyi6eWj6QNwZWGmnvJ9VU1rvzxSuseB9RUdC3ebLtiLWOpvcSAl8ly4xFPTVd7FwUz7cLTBmZ4oQDV002YjbtmYr',
           locale: 'auto',
-          token: function (stripeToken: any) {
-            console.log(stripeToken);
+          token: function (stripeToken: any) {           
           },
         });
       };
-
       window.document.body.appendChild(script);
     }
   }
  
-
-  
-  
   buy(){    
     this.bookService.addAcquiredBook(this.user.uid,this.bookId)
     this.bookService.getWantedBook(this.user.uid,this.bookId).subscribe(wanted => {
@@ -137,12 +128,9 @@ export class BookPageButtonsComponent  implements OnInit {
   }
   bookAcquired(){
     this.bookService.getAcquiredBook(this.user.uid,this.bookId)
-    .subscribe(result => {       
-      
-       
+    .subscribe(result => {     
       if(result.length==1){
-        this.acquired=true     
-        
+        this.acquired=true            
       }
     })
   }
@@ -229,10 +217,7 @@ export class DialogStripe  {
   book!:Book
   constructor(public dialogRef: MatDialogRef<DialogPasswd>,              
               private bookService:BookService,
-              @Inject(MAT_DIALOG_DATA) public data:any) {      
-                console.log(data);
-                                  
-              }  
+              @Inject(MAT_DIALOG_DATA) public data:any) {}  
   closeDialog(){
     this.dialogRef.close();
   }

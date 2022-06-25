@@ -30,8 +30,7 @@
 
 .comment_msg{
   border: 3px solid   rgb(181, 184, 188);
-  padding: 20px;
- 
+  padding: 20px; 
 }
 .comment_msg span{
   margin-left:20px;
@@ -46,8 +45,7 @@
 }
 .respuestasDiv{
   color: white;
-  display: flex;
-  
+  display: flex;  
 }
 .comment_footer_icons{
   display: flex;
@@ -65,9 +63,9 @@
   display: flex;
 }
 #likes{
-display: flex;
-flex-direction: row;
-cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
 }
 #likes h4{
   vertical-align: middle;

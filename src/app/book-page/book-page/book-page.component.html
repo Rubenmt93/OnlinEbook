@@ -10,15 +10,10 @@
             <div class="noValidate">
                 <p> Libro pendiente de validación</p>
                 <button mat-raised-button id="readButton" (click) ="goPdf()">Leer libro <mat-icon>book</mat-icon></button>         
-               
             </div>
             <div  class="noValidate" *ngIf="admin.rol==1">
                 <button mat-raised-button id="readButton" (click) ="activateBook()">Activar Libro <mat-icon>check_circle_outline</mat-icon> </button>
-    
-            </div>
-           
-            
+            </div>         
         </ng-template>           
-    </div>    
-    
+    </div>        
 </div>

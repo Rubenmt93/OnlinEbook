@@ -3,15 +3,13 @@
         
         <div class="header">
             <h2>Registro</h2>
-        </div>  
-        
+        </div>        
 
         <form   [formGroup]="registerForm"
                 (ngSubmit)="register()">   
             <div class="formGrid">
                 <div class="div1">
-                    <img src="{{ this.imgURL }}" alt="User Placeholder" >
-                   
+                    <img src="{{ this.imgURL }}" alt="User Placeholder" >                   
                     <button type="button" 
                             mat-raised-button 
                             color="primary"
@@ -24,9 +22,7 @@
                             (change)="uploadFile($event)"                             
                             type="file" 
                             accept="image/png, image/jpg, image/jpeg"
-                            id="file"> 
-                    
-                    
+                            id="file">                       
                 </div>
                 <div class="div2">
                     <mat-form-field class="example-full-width">
@@ -54,11 +50,7 @@
                         <mat-error *ngIf="validezCampo('username')">Campo requerido</mat-error>                     
                     </mat-form-field>              
                 </div>
-
-
-                <div class= "div3">                    
-                    
-        
+                <div class= "div3">                 
                     <mat-form-field class="example-full-width">                
                         <mat-label> 
                             <mat-icon matPrefix> lock </mat-icon> 
@@ -94,15 +86,9 @@
                         color="primary"
                         [disabled]="registerForm.invalid">
                     Registrarse en OnlinEbook
-                </button>
-                
-
+                </button>             
             </div>
-            <span> ¿Ya tienes una cuenta? <a routerLink='/auth/login'>Inicia sesión</a></span>
-            
-        </form>
-       
-    </div>
-
-     
+            <span> ¿Ya tienes una cuenta? <a routerLink='/auth/login'>Inicia sesión</a></span>            
+        </form>       
+    </div>     
 </div>

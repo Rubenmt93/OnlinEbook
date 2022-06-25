@@ -39,9 +39,7 @@ export class BookInfoComponent {
     this.bookService.getDownloadCount(this.bookId).subscribe(result => {
       this.downloadCount=result.length      
     })
-  }
-  
-
+  } 
 }
 @Component({
   selector: 'dialog-report',

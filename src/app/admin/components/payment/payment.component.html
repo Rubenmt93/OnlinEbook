@@ -1,38 +1,25 @@
 <div *ngIf="list.length ===0; else payment"  class="emptyListClass">
     <h1>No hay libros por validar</h1>
 </div>      
-<ng-template #payment>
-    
-<table>
-    <tr>
-      <th>Libro</th>
-      <th>Usuario</th>
-      <th>Total</th>
-      <th>Acción</th>
-      
-      
-    </tr>
-    
-    <tr *ngFor="let item of list">
-        <td>{{item.bookName}}</td>
-        <td>{{item.userOwner}}</td>
-        <td> {{item.total * 0.8}} </td>
-        <td class="buttonTd">
-            <button (click)=payAuthor(item)
-                    mat-raised-button
-                    color="primary">
-                    Pagado
-            </button>
-        </td>
-       
-
-    </tr>
-        
-          
-    
-  
-</table>
-
-
-
+<ng-template #payment>    
+    <table>
+        <tr>
+            <th>Libro</th>
+            <th>Usuario</th>
+            <th>Total</th>
+            <th>Acción</th>            
+        </tr>        
+        <tr *ngFor="let item of list">
+            <td>{{item.bookName}}</td>
+            <td>{{item.userOwner}}</td>
+            <td> {{item.total * 0.8}} </td>
+            <td class="buttonTd">
+                <button (click)=payAuthor(item)
+                        mat-raised-button
+                        color="primary">
+                        Pagado
+                </button>
+            </td>   
+        </tr>
+    </table>
 </ng-template>

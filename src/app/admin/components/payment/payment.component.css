@@ -10,7 +10,6 @@ table {
     border: 1px solid #ffffff;
     text-align: left;
     padding: 8px;
-
   }
   .buttonTd{
       display: flex;
@@ -23,8 +22,7 @@ table {
   tr:nth-child(even) {
     background-color: #868686;
   }
-  tr:nth-child(odd) {
-    
+  tr:nth-child(odd) {    
     background-color: #515151;
   }
   .emptyListClass{

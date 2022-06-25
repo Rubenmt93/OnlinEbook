@@ -5,8 +5,7 @@
             <div  class="comment_header_userInfo" >
                 <img [src]="user.img" alt="">
                 <h1>{{user.userName}}</h1>
-            </div>
-           
+            </div>           
         </div>
         <div class="comment_msg">
             <span>{{comment.msg}}</span>
@@ -28,19 +27,7 @@
                 <div class="like-icon" *ngIf="comment.userId == localuser.uid">
                     <span id="likes" (click)="deleteComment()"> <mat-icon>delete </mat-icon> <h4>Borrar</h4></span>
                 </div>
-            </div>
-           
-
-            <!-- <div *ngIf="comment.respuesta.length > 0" class="respuestasDiv">
-                <span> Ver respuestas ({{comment.respuesta.length}})</span>  
-            </div> -->
-            <div>
-                
-            </div>
+            </div>           
         </div>
-    </div>
-   
-    
-    
-
+    </div>    
 </div>

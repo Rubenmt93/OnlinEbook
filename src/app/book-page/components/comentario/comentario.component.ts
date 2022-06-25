@@ -26,11 +26,7 @@ export class ComentarioComponent {
   constructor(private userService:UserService,            
               private commentsService:CommentsService,
               public dialog: MatDialog,
-              public reportService:ReportService,) {                  
-              
-                       
-             
-  }
+              public reportService:ReportService,) {}
 
   ngOnChanges() {
     this.commentsService.getCommentById(this.commentId).subscribe(result =>{
@@ -53,11 +49,8 @@ export class ComentarioComponent {
     this.mylike=false    
     this.commentsService.removeLikedComment(this.like[0].eventId!)       
   }
-  deleteComment(){
-    console.log(this.comment.userId);
-    console.log(this.localuser);
-    this.commentsService.removeComment(this.comment.eventId)
-    
+  deleteComment(){   
+    this.commentsService.removeComment(this.comment.eventId)    
   }
   commentLiked(commentId:string){  
     this.commentsService.getLikedComment(this.localuser.uid,commentId)
@@ -71,16 +64,12 @@ export class ComentarioComponent {
   reportComment(){
     var dialogRef =this.dialog.open(ReportDialog);
     dialogRef.afterClosed().subscribe(result => {
-     var aux:string[] = result as string[]
-     console.log(result);
-     this.reportService.addReportComment(this.comment.eventId,this.localuser.uid,aux,this.comment.msg)
+      var aux:string[] = result as string[]     
+      this.reportService.addReportComment(this.comment.eventId,this.localuser.uid,aux,this.comment.msg)
       
     });
   }
-  metodo(){
-    console.log(this.commentId);
-    
-  }
+  
 }
 @Component({
   selector: 'dialog-report',

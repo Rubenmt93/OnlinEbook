@@ -1,16 +1,12 @@
 <div class="componentcontainer">
-    <div class="container">       
-        
+    <div class="container">     
         <div class="header">
             <h2>Cambiar contraseña</h2>
-        </div>  
-        
-
+        </div>        
         <form   [formGroup]="changePasswdForm"
                 (ngSubmit)="changePasswd()">   
                
-            <div class="formGrid">
-                 
+            <div class="formGrid">                 
                     <mat-form-field class="example-full-width">                
                         <mat-label> 
                             <mat-icon matPrefix> lock </mat-icon> 
@@ -49,12 +45,7 @@
                         <mat-icon matSuffix (click)="showPasswd = !showPasswd">{{showPasswd ? 'visibility_off' : 'visibility'}}</mat-icon>        
                         <mat-error *ngIf="validezCampo('newPasswdConfirm')"><mat-icon>help</mat-icon>Campo requerido</mat-error>
                     </mat-form-field>
-                    <mat-error *ngIf="matchPasswd()">Las contraseñas deben coincidir</mat-error> 
-
-                    
-
-
-               
+                    <mat-error *ngIf="matchPasswd()">Las contraseñas deben coincidir</mat-error>                  
             </div>
             <div>
                 <button mat-raised-button 
@@ -62,15 +53,8 @@
                         color="primary"
                         [disabled]="changePasswdForm.invalid || !changePasswdForm.touched">
                     Actualizar Perfil
-                </button>
-               
-
-            </div>
-           
-            
+                </button>              
+            </div>          
         </form>
-       
-    </div>
-
-     
+     </div>
 </div>

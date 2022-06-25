@@ -36,8 +36,7 @@ export class ChargeService {
     return this.firestore.collectionGroup('sold' ,ref =>  ref.where("sold", "==", true)).valueChanges({idField: 'eventId'} )
 
   }
-  payAuthor(book:string){
-      
+  payAuthor(book:string){     
       
       this.firestore.collectionGroup('charges' ,ref =>  ref.where("book", "==", book)).valueChanges({idField: 'eventId'})
        .subscribe(result =>{

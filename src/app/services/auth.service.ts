@@ -34,13 +34,9 @@ export class AuthService {
 
   SignIn(email:string, password:string): Promise<void> {
     return this.afAuth.signInWithEmailAndPassword(email, password)
-      .then(function() {     
-        //aqui pon el localstorsage
-        
-      })
+      .then(function() {})
       .catch((error) => {
-        window.alert('Fallo en el inicio de sesion. Correo o contraseña incorreto')        
-        //AQUI SE PRODUCE EL ERROR
+        window.alert('Fallo en el inicio de sesion. Correo o contraseña incorreto')      
       })
   }
 
@@ -74,11 +70,7 @@ export class AuthService {
     
   }  
   async SendVerificationMail() {
-      return await this.afAuth.currentUser.then(u => u!.sendEmailVerification())
-      .then(() => {
-       console.log("se envia");
-       
-      }).catch()
+      return await this.afAuth.currentUser.then(u => u!.sendEmailVerification()).then(() => {}).catch()
   }    
 
   ForgotPassword(passwordResetEmail:string) {
@@ -133,7 +125,7 @@ export class AuthService {
 
   UpdateEmail(newEmail:string){
     return this.afAuth.currentUser.then(u => u!.updateEmail(newEmail)).then(u=>
-      this.SendVerificationMail().catch( err => console.log(err)))
+      this.SendVerificationMail().catch( err => {}))
   }
 
   UpdateUserName(newName:string){

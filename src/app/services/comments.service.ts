@@ -50,7 +50,6 @@ export class CommentsService {
   removeComment(commentId:string){
     this.firestore.collection("comments").doc(commentId).delete()
     this.getLikes(commentId).subscribe(result=>{
-      console.log(result);
       
       result.forEach(like =>{
         this.firestore.collection("likes").doc(like.eventId).delete()
@@ -59,7 +58,7 @@ export class CommentsService {
       })
     })
     this.getReports(commentId).subscribe(result=>{
-      console.log(result);
+      
       result.forEach(report =>{
         this.firestore.collection("report").doc(report.eventId).delete()
        

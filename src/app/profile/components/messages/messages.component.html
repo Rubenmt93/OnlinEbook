@@ -6,20 +6,17 @@
       
     </tr> 
        
-     <tr *ngFor="let item of items">
-      
-            <td>{{item.Subject}}</td>
-            <td>{{item.Data}} </td>
-            <td >
-                <button (click)="deleteMessage(item.eventId!)"
-                        mat-raised-button
-                        color="warn">
-                        Eliminar
-                </button>
-            </td>
-           
-    
-        </tr>                   
+    <tr *ngFor="let item of items">      
+        <td>{{item.Subject}}</td>
+        <td>{{item.Data}} </td>
+        <td >
+            <button (click)="deleteMessage(item.eventId!)"
+                    mat-raised-button
+                    color="warn">
+                    Eliminar
+            </button>
+        </td>
+    </tr>                   
 </table>
 <div *ngIf="items.length==0">
     <h1>No hay mensajes</h1>

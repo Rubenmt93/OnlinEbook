@@ -22,9 +22,7 @@ export class BookService {
   'YOXBFV7TK8',
    '9a76d971acc4ab2225df7b67d5c598e9',   
 );
-//  client = algoliasearch(this.APPLICATION_ID, this.SEARCH_API_KEY)
-//  index = client.initIndex(this.ALGOLIA_INDEX)
-
+ 
   constructor( private firestore: AngularFirestore,
                private messageService:MessagesService) {
     this.items= firestore.collection('book').valueChanges({ idField: 'eventId' });
@@ -43,7 +41,7 @@ export class BookService {
   desactivateBook(id:string){
     return this.firestore.collection('book').doc(id).update({active:false});
   }
-  /////////////////////CREATE BOOK/////////////////////////////
+   
   createBook(author:string, categories:string[],isbn:string, name:string,year:number,price:number,userOwner:string,img64:string,pdf:string,abstract:string){
     return this.SubirPortada(name,img64).then(imagen =>{
      
@@ -85,12 +83,12 @@ export class BookService {
       return null
     }
   }
-  ////////////////////////////////////////////////////////
+   
   getBookById(id:string){
     
     return this.firestore.collection('book').doc(id).valueChanges({idField: 'eventId'})
   }
-  ////////////////////CRUD Acquired///////////////////////
+    
   addAcquiredBook(userId:string,bookId:string){
     return this.firestore.collection('acquired').add({user:userId,book:bookId});
 
@@ -100,7 +98,7 @@ export class BookService {
     
     return this.firestore.collectionGroup('acquired' ,ref =>  ref.where("book","==",BookId).where("user", "==", UserId)).valueChanges()
   }
-  /////////////////// CRUD Favorites//////////////////////
+   
   addFavoriteBook(userId:string,bookId:string){
     return this.firestore.collection('favorites').add({user:userId,book:bookId});
 
@@ -112,7 +110,7 @@ export class BookService {
   removeFavoriteBook(FavId:string){
     return this.firestore.collection("favorites").doc(FavId).delete()
    }
-  ///////////////////CRUD Slopes////////////////////////
+   
   addSlopesBook(userId:string,bookId:string){
     return this.firestore.collection('slopes').add({user:userId,book:bookId});
 
@@ -123,8 +121,8 @@ export class BookService {
   }
   removeSlopeBook(FavId:string){
     return this.firestore.collection("slopes").doc(FavId).delete()
-   }
-    ////////////////WANTED////////////////////////////
+  }
+    
   addWantedBook(userId:string,bookId:string){
     return this.firestore.collection('wanted').add({user:userId,book:bookId});
 
@@ -135,14 +133,10 @@ export class BookService {
   }
   removeWantedBook(wantedId:string){
     return this.firestore.collection("wanted").doc(wantedId).delete()
-   }
-  ///////////////////Mis listas/////////////////////////
- 
-  
+  }    
   getMyBooks(UserId:string){
     var booksArray:Book[]=[]
      this.firestore.collectionGroup('acquired' ,ref =>  ref.where("user", "==", UserId)).valueChanges({idField: 'eventId'}).subscribe(result =>{
-      //booksArray:Book[]=[]
       result.forEach(book  => {
         var aux = book as Relation       
         this.getBookById(aux.book!).subscribe(book =>{          
@@ -188,9 +182,6 @@ export class BookService {
     })
    return booksArray
   }
-
-  /////////////////////Mi published////////////////////
- 
   getMyPublished(UserId:string){        
     var booksArray:Book[]=[]
     this.firestore.collectionGroup('book', ref =>ref.where('userOwner','==',UserId)).valueChanges({idField: 'eventId'}).subscribe(result =>{
@@ -200,12 +191,8 @@ export class BookService {
     })
    return booksArray
   }
-  getDownloadCount(BookId:string){
-   
+  getDownloadCount(BookId:string){   
     return this.firestore.collectionGroup('acquired', ref =>ref.where('book','==',BookId)).valueChanges({idField: 'eventId'})
-    
-    
-    
   }
 }
 

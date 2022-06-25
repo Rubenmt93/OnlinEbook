@@ -39,13 +39,5 @@ export class NavbarComponent{
                    })
                   } 
                 });
-                          
-               
-              } 
-              
-    
-  
-   
-  
-  
-  }
+  } 
+}

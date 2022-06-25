@@ -3,11 +3,8 @@
     display: flex;        
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-   
+    flex-direction: column;   
 }
-
-
 .container{
     background: white;
     border-radius: 8px;          
@@ -39,8 +36,7 @@ form{
     color: white;
 }
 
-::ng-deep .mat-focused .mat-label .mat-form-field-label {
-    /*change color of label*/
+::ng-deep .mat-focused .mat-label .mat-form-field-label {    
     color: #1a1a1a !important;
 }
 ::ng-deep.mat-form-field-underline {

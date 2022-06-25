@@ -1,17 +1,11 @@
- <mat-toolbar>
- 
+ <mat-toolbar> 
   <span class="hover-underline-animation" ><a routerLink='/'> Inicio </a></span>  
-  <span class="hover-underline-animation" ><a routerLink='/catalog'> Catalogo </a></span>    
-   
+  <span class="hover-underline-animation" ><a routerLink='/catalog'> Catalogo </a></span>  
   <div *ngIf="userLogged" >
     <span class="hover-underline-animation" ><a routerLink='/mylibrary'> Mi biblioteca </a></span>
-
     <span *ngIf="admin.rol" class="hover-underline-animation" ><a routerLink='/adminPanel'> Admin Panel </a></span>   
-
-  </div>     
-   
-  <span class="example-spacer"></span>  
-    
+  </div>        
+  <span class="example-spacer"></span> 
   <div *ngIf="userLogged; else notLogged" >
     <span class="hover-underline-animation"><a routerLink='/profile/info'> <mat-icon> person</mat-icon> Perfil</a></span>  
   </div>

@@ -8,7 +8,6 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-
   constructor(public dialog: MatDialog,
               private overlay:Overlay ) { }
 
@@ -24,7 +23,6 @@ export class FooterComponent implements OnInit {
   dialogAbout(){
     this.dialog.open(DialogAbout);
   }
-
 }
 
 @Component({

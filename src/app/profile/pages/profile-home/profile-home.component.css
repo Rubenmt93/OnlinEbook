@@ -22,15 +22,12 @@
 mat-icon{
   vertical-align: middle;
 }
-
 a{
   color: white;
   text-decoration: none;
   margin: 10px;     
   font-size:90% ; 
 }
-
-
 img{
   max-width: 50px;
   max-height: 50px;
@@ -49,7 +46,7 @@ img{
 }
 
 @media (min-width: 700px) {
-.movileElement{
-  display:none
-}
+  .movileElement{
+   display:none
+  }
 }

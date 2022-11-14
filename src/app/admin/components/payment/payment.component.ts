@@ -28,6 +28,7 @@ export class PaymentComponent {
             aux.forEach( x  => {
               cont += x.amount
             })        
+            
             this.list.push({ eventId: element.eventId, 
                              total: cont,  
                              userOwner:  aux[0].userOwner,

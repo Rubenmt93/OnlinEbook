@@ -81,6 +81,7 @@ export class BookPageButtonsComponent  implements OnInit {
             let date: string = new Date().toString();  
             this.dialog.open(DialogStripe ,{data: "success"});
             this.chargeService.recordCharge(this.user.uid, this.bookId,this.book.userOwner!, this.book.price!,date,this.book.name);
+            this.buy()
           }
           else {
             this.dialog.open(DialogStripe ,{data:  data.error,});

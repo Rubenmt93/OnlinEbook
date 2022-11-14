@@ -5,7 +5,7 @@ import { InfoComponent } from './components/info/info.component';
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 import { ChangePasswdComponent } from './components/change-passwd/change-passwd.component';
 import { MessagesComponent } from './components/messages/messages.component';
-
+ 
 
 const routes:Routes = [
   {

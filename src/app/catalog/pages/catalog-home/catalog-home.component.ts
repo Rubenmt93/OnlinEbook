@@ -29,7 +29,7 @@ export class CatalogHomeComponent  {
     const index = client.initIndex(environment.algolia.indexName)  
     index.search(query, {                          
               "getRankingInfo": true,             
-              "hitsPerPage": 6,                             
+              "hitsPerPage": 12,                             
               "attributesToSnippet": "*:20",                 
               "page": pag,                
               "facets": ["*"],

@@ -15,8 +15,7 @@ export class MessagesComponent  {
   constructor(private messagesService:MessagesService,
               private userService:UserService) {
     this.user = JSON.parse( localStorage.getItem('userOnlinebook')!) as User
-      this.messagesService.getMessages(this.user.uid).subscribe(result=>{
-         console.log("Mensajes",result)     
+      this.messagesService.getMessages(this.user.uid).subscribe(result=>{             
          this.items=result as Message[]    
       })
   }

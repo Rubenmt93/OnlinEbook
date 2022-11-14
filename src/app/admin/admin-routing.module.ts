@@ -33,11 +33,8 @@ const routes:Routes = [
         path:'paymentAdmin',
         component:PaymentComponent,
         outlet: 'outledAdmin'
-      },
-      {
-        path:'**',
-        redirectTo:'checkBook',
-      }      
+      }
+          
     ]
   }
 ]

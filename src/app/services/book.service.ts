@@ -30,6 +30,7 @@ export class BookService {
   }
   
   activateBook(id:string,adminId:string,book:Book){
+    console.log(book)
     var msg="Su libro " + book.name + " ha sido añadido al catalogo"
     var subject="Libro aprobado"
     return this.firestore.collection('book').doc(id).update({active:true}).then(result =>{
@@ -94,10 +95,10 @@ export class BookService {
 
   }
 
-  getAcquiredBook(UserId:string,BookId:string){
-    
+  getAcquiredBook(UserId:string,BookId:string){    
     return this.firestore.collectionGroup('acquired' ,ref =>  ref.where("book","==",BookId).where("user", "==", UserId)).valueChanges()
   }
+  
    
   addFavoriteBook(userId:string,bookId:string){
     return this.firestore.collection('favorites').add({user:userId,book:bookId});

@@ -44,8 +44,9 @@ export class CheckBookReportComponent  {
      
     var msg="Su libro " + item.name + " ha sido eliminado del catalogo"  
     this.messageService.addmessage(this.admin.uid,item.userOwner!,msg,"Libro eliminado")
-    this.reportService.removeReport( item.reportId! )
-    this.fillList()
+    this.reportService.removeReport( item.reportId! )  
+    this.bookService.desactivateBook(item.eventId)     
+   
   }  
 }
 

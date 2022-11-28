@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Book } from 'src/app/interfaces/book';
 import { BookService } from 'src/app/services/book.service';
@@ -15,8 +15,7 @@ export class CheckBookComponent {
   searchForm: FormGroup = this.fb.group({
     busqueda: ["",[Validators.required] ],  
   })
-  constructor( private bookService:BookService,
-              private fb: FormBuilder, ) {
+  constructor( private fb: FormBuilder, ) {
     this.searchAlgolia("",0)              
   }  
   searchAlgolia(query:string,pag:number){    

@@ -6,8 +6,6 @@
     flex-direction: column;
    
 }
-
-
 .container{
     background: white;
     border-radius: 8px;          
@@ -54,13 +52,10 @@ mat-label{
 .mat-raised-button.mat-button-disabled {
     color: #cac9c9 !important;
     background-color:#7b84b8 !important;  
-}
-      
-
+}     
 mat-form-field{
     margin-bottom: 10px;
 }
-
 .formGrid {
     display: flex;
     flex-direction: column;    
@@ -118,8 +113,6 @@ a{
     text-decoration: none;
     color: #3f51b5;       
 }
-
-
 .file-upload{    
     padding: 0 6px 0 6px;
     margin: 6px 8px 6px 8px;

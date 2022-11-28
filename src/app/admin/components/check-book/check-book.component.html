@@ -19,22 +19,21 @@
                         type="submit">               
                         Buscar
                 </button>
-            </div>
-   
-    </form>
-</div>
+            </div>   
+        </form>
+    </div>
 
-<div  class="catalog-grid"*ngIf="items.length>0, else emptyList" >      
-    <div class= "catalog-item" *ngFor="let item of items">              
-        <app-bookcard class= "feature" 
+    <div  class="catalog-grid"*ngIf="items.length>0, else emptyList" >      
+        <div class= "catalog-item" *ngFor="let item of items">              
+            <app-bookcard class= "feature" 
                         [book]="item">  
-        </app-bookcard>      
-    </div>       
-</div>
-<ng-template   #emptyList>
-    <div  class="emptyListClass">
-        <h1>No hay libros por validar</h1>
-    </div>           
-</ng-template>
+            </app-bookcard>      
+        </div>       
+    </div>
+    <ng-template   #emptyList>
+        <div  class="emptyListClass">
+            <h1>No hay libros por validar</h1>
+        </div>           
+    </ng-template>
 
 </div>

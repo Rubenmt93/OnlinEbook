@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { BookService } from '../../../services/book.service';
+import { Component } from '@angular/core';
 import { ChargeService } from '../../../services/charge.service';
 import { Charge } from '../../../interfaces/charge';
 import { TotalCharge } from '../../../interfaces/totalcharge';
@@ -38,10 +37,9 @@ export class PaymentComponent {
          
         })             
       });
-     })
+    })
   }
-  payAuthor(item:TotalCharge){          
-      
+  payAuthor(item:TotalCharge){        
     this.chargesServises.payAuthor(item.bookid)
     var date =  new Date().toLocaleString()
     var msg="Se ha realizado el pago correspondiente a las ventas del libro " + item.bookName+ " hasta la fecha " + date

@@ -9,7 +9,7 @@
             <div class="bookReportButtons">
                 <div class="reason-display">
                     {{item.reason}}
-                 </div>
+                </div>
                 <button (click)="desestimar(item.reportId!)"
                     mat-raised-button
                     color="primary">
@@ -20,12 +20,10 @@
                     color="warn">
                     Eliminar
                 </button>
-
             </div>  
         </div>
     </div>
     <ng-template #noBook>
         <span class="noBook">No hay libros reportados</span>
-    </ng-template>
-    
+    </ng-template>    
 </div>

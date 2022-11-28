@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/app/interfaces/user';
@@ -85,8 +85,7 @@ export class AddBookComponent {
     }else{
       this.errorPrice= true
     }
-  }      
-   
+  }        
 }
 
 @Component({

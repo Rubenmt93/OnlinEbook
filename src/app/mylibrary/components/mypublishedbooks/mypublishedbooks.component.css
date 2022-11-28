@@ -18,23 +18,19 @@
     width: 90%;
     margin-top:3%;
     color:rgb(32, 44, 169);
-    border-radius: 2rem;
-    
-    padding: 1%;
-  
+    border-radius: 2rem;    
+    padding: 1%;  
   }
   .tittle-grid h1{
     margin: auto;
     font-size: xx-large;
   }
-  .catalog-item{
-    
+  .catalog-item{    
     margin: auto;
     margin-top: 0;
   }
   .feature{
-      grid-column: span 2;
-      
+      grid-column: span 2;      
   }
   .emptyListClass{
     display: grid;

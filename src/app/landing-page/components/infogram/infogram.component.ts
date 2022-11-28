@@ -6,8 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./infogram.component.css']
 })
 export class InfogramComponent {
-
-  constructor() { }
-
-
+  constructor() {}
 }

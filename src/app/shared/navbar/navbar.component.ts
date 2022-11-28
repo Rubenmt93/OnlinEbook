@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
-import { MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
+
 import { UserService } from '../../services/user.service';
 import { User } from 'src/app/interfaces/user';
 

@@ -1,8 +1,8 @@
 .comment_container{
-    width: 90%;
-    margin: auto;
-    margin-bottom: 10px;
-  }
+  width: 90%;
+  margin: auto;
+  margin-bottom: 10px;
+}
 .comment_header{
   display:flex;
   flex-direction: row;  
@@ -19,15 +19,13 @@
 }
 
 .comment_header h1{
-    color: rgb(255, 255, 255);
-    margin:10px;
-
+  color: rgb(255, 255, 255);
+  margin:10px;
 }
 
 .comment_msg{
   border: 3px solid   rgb(181, 184, 188);
-  padding: 2px;
-  
+  padding: 2px;  
 }
 .comment_msg span{
   margin-left:20px;
@@ -46,10 +44,10 @@
   display: flex;    
 }  
 .textArea{
-    width: 100%;
+  width: 100%;
 }
 .textAreaPlaceholder{
-    color:rgb(33, 33, 33);
+  color:rgb(33, 33, 33);
 }  
   
   

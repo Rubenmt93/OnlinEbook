@@ -40,18 +40,13 @@ form{
     align-items: center;
     color: white;
 }
-
-
 .mat-raised-button.mat-button-disabled {
     color: #cac9c9 !important;
     background-color:#7b84b8 !important;  
-}
-      
-
+}     
 mat-form-field{
     margin-bottom: 10px;
 }
-
 .formGrid {
     display: flex;
     flex-direction: column;    
@@ -111,9 +106,7 @@ span{
 }
 a{
     text-decoration: none;
-    color: #3f51b5;
-    
-    
+    color: #3f51b5;       
 }
 .abstract-textArea{
  width: 100%;

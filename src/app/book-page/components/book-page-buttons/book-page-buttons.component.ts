@@ -53,13 +53,10 @@ export class BookPageButtonsComponent  implements OnInit {
       this.checkFavorite();
       this.checkSlopes();
       this.checkWanted();
-  }
- 
-  
+  }  
   ngOnInit() {
     this.invokeStripe();
   }
-
   makePayment(amount: number) {
     if(amount == 0){
       this.dialog.open(DialogStripe ,{data: "success"});
@@ -74,8 +71,7 @@ export class BookPageButtonsComponent  implements OnInit {
         },
       });
   
-      const paymentstripe = (stripeToken: any) => {
-        
+      const paymentstripe = (stripeToken: any) => {        
         this.stripeService.makePayment(stripeToken,amount,this.user,this.book.name).subscribe((data: any) => {         
           if (data.data === "success") {
             let date: string = new Date().toString();  
@@ -94,9 +90,7 @@ export class BookPageButtonsComponent  implements OnInit {
         amount: this.book.price! * 100,
         currency: 'eur'
       });
-    }
-    
-   
+    }      
   }
 
   invokeStripe() {
@@ -123,8 +117,7 @@ export class BookPageButtonsComponent  implements OnInit {
       if(wanted[0]){
         var aux:Relation= wanted[0] as Relation
         this.bookService.removeWantedBook(aux.eventId!)
-      } 
-      
+      }       
     })
   }
   bookAcquired(){
@@ -171,15 +164,12 @@ export class BookPageButtonsComponent  implements OnInit {
    
   addFavorite(){
     this.bookService.addFavoriteBook(this.user.uid,this.bookId)
-  }
-  
-  
+  }    
   removeFavorite(){
     this.bookService.removeFavoriteBook(this.favoriteRelation[0].eventId!).then(result=>{
       this.favorite= !this.favorite
     }) 
-  }
-    
+  }    
   removeSlope(){
     this.bookService.removeSlopeBook(this.slopesRelation[0].eventId!).then(result=>{
       this.slopes= !this.slopes
@@ -190,7 +180,6 @@ export class BookPageButtonsComponent  implements OnInit {
       this.wanted= !this.wanted
     }) 
   }
-
   addWanted(){
     this.bookService.addWantedBook(this.user.uid,this.bookId)
   }
@@ -200,12 +189,9 @@ export class BookPageButtonsComponent  implements OnInit {
       window.location.href = aux.link!;
     }) 
   }
-
   navigateLogin(){
     this.router.navigate(['/auth/login'])
-  }
-  
-
+  } 
 }
 
 @Component({
@@ -216,8 +202,7 @@ export class BookPageButtonsComponent  implements OnInit {
 export class DialogStripe  {
   
   book!:Book
-  constructor(public dialogRef: MatDialogRef<DialogPasswd>,              
-              private bookService:BookService,
+  constructor(public dialogRef: MatDialogRef<DialogPasswd>,    
               @Inject(MAT_DIALOG_DATA) public data:any) {}  
   closeDialog(){
     this.dialogRef.close();

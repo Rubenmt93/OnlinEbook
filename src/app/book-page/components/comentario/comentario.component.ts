@@ -65,8 +65,7 @@ export class ComentarioComponent {
     var dialogRef =this.dialog.open(ReportDialog);
     dialogRef.afterClosed().subscribe(result => {
       var aux:string[] = result as string[]     
-      this.reportService.addReportComment(this.comment.eventId,this.localuser.uid,aux,this.comment.msg)
-      
+      this.reportService.addReportComment(this.comment.eventId,this.localuser.uid,aux,this.comment.msg)      
     });
   }
   

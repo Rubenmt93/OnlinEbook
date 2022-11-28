@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './dialog-verify.component.html',
   styleUrls: ['./dialog-verify.component.css']
 })
-export class DialogVerifyComponent implements OnInit {
+export class DialogVerifyComponent  {
 
   constructor(public dialog: MatDialog,
               private authservice:AuthService,) { 
@@ -17,13 +17,8 @@ export class DialogVerifyComponent implements OnInit {
           this.dialog.open(DialogVerifyDialog);
         }     
       }
-    });
-  
+    });  
   }
-
-  ngOnInit(): void {
-  }
-
 }
 @Component({
   selector: 'dialog-Verify',

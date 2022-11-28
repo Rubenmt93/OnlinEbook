@@ -27,14 +27,12 @@
   margin: auto;
   font-size: xx-large;
 }
-.catalog-item{
-  
+.catalog-item{  
   margin: auto;
   margin-top: 0;
 }
 .feature{
-    grid-column: span 2;
-    
+    grid-column: span 2;    
 }
 .emptyListClass{
   display: grid;

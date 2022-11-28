@@ -3,5 +3,5 @@ export interface User {
     email:      string;
     userName:   string;
     img:        string;
-    rol?:       number
+    rol?:       number;
 }

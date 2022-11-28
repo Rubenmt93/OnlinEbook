@@ -3,8 +3,7 @@
     display: flex;
     justify-content: center;
 }
-@media (max-width: 750px) {
-  
+@media (max-width: 750px) {  
     .book-page-buttons{   
         margin-bottom: 10px;
         display: flex;

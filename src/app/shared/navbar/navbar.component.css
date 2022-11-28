@@ -10,10 +10,10 @@ mat-icon {
 }
 @media (min-width: 700px) {
   a{
-      color: white;
-      text-decoration: none;
-      margin: 10px;  
-      font-size:x-large;   
+    color: white;
+    text-decoration: none;
+    margin: 10px;  
+    font-size:x-large;   
        
   }
   mat-icon{

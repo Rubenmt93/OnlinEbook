@@ -11,8 +11,6 @@ import { ComentarioComponent, ReportDialog } from './components/comentario/comen
 import { ReactiveFormsModule } from '@angular/forms';
 import { StripeErrorPipe } from './pipes/errorPipe.pipe';
 
-
-
 @NgModule({
   declarations: [
     BookPageComponent,

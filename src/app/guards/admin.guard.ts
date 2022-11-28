@@ -27,7 +27,7 @@ export class AdminGuard implements CanActivate, CanLoad {
   }
   canActivate(): Observable<boolean> | Promise<boolean > | boolean  {    
     if(this.user.rol ==1){
-      return true
+      return true 
     }
     return false       
   }

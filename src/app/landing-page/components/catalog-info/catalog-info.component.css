@@ -34,8 +34,7 @@ h1{
     overflow: scroll;
 }
 iframe{
-    border-radius:2%;
-    
+    border-radius:2%;    
 }
 .catalog-container-info{        
     margin: 0;
@@ -43,8 +42,7 @@ iframe{
     display: flex;
     flex-direction: column;
 }
-.catalog-container-info-item{
-        
+.catalog-container-info-item{        
     border-radius:  20rem;
     background-color:white;
     padding:4%;
@@ -57,8 +55,7 @@ h3{
     font-size: large;
     text-align: center;   
 }
-.transicionLanding{
-    
+.transicionLanding{    
     max-width: 100%;
     min-height: 100px;
     background:url("../../../../assets/transicion-landing1.svg") no-repeat center center ;
@@ -96,10 +93,8 @@ app-catalog-home{
     h3{
         font-size: x-large;
         text-align: center;   
-    }
-    
-    .catalog-container-info-item{
-        
+    }    
+    .catalog-container-info-item{        
         border-radius: 20rem 0px 0px 20rem;
         background-color:white;
         padding:7%;
@@ -110,8 +105,7 @@ app-catalog-home{
         -webkit-box-shadow: 13px 13px 11px -11px rgba(0,0,0,0.75);
         -moz-box-shadow: 13px 13px 11px -11px rgba(0,0,0,0.75);
         box-shadow: 13px 13px 11px -11px rgba(0,0,0,0.75);
-    }
-    
+    }    
     .catalog-container-info-item:nth-child(1){
         width: 50%;
     }
@@ -125,8 +119,7 @@ app-catalog-home{
         max-width: 100%;
         min-height: 200px;
         background:url("../../../../assets/transicion-landing1.svg") no-repeat center center ;
-    }
-    
+    }    
     h1{
         font-size: 400%;
         margin: 1rem;

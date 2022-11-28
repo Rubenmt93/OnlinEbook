@@ -28,7 +28,6 @@ a{
   font-size:90% ; 
 }
 
-
 img{
   max-width: 50px;
   max-height: 50px;
@@ -47,7 +46,7 @@ img{
 }
 
 @media (min-width: 700px) {
-.movileElement{
-  display:none
-}
+  .movileElement{
+    display:none
+  }
 }

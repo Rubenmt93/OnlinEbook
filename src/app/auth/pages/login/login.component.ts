@@ -41,9 +41,9 @@ export class LoginComponent  {
     const email=this.loginForm.controls['email'].value;
     const passwd=this.loginForm.controls['passwd'].value;  
     this.authservice.SignIn( email, passwd )         
-  }
-  
+  }  
 }
+
 @Component({
   selector: 'dialog-passwd-dialog',
   templateUrl: 'dialog-passwd.html',

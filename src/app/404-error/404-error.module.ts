@@ -7,8 +7,7 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 
 @NgModule({
   declarations: [
-    Error404Component,
-    
+    Error404Component,    
   ],
   imports: [
     CommonModule,

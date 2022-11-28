@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-comentarios-container',
   templateUrl: './comentarios-container.component.html',
 })
-export class ComentariosContainerComponent implements OnInit {
+export class ComentariosContainerComponent  {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  
 
 }

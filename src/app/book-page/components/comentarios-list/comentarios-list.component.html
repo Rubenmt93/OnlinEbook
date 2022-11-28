@@ -2,11 +2,10 @@
     <span>No hay comentarios todavia </span>    
 </div>
 <hr>
-<ng-template #showComments>
-    
-<div *ngFor="let comment of commentsList">
-    <app-comentario [commentId]=comment.eventId ></app-comentario>
-</div>
+<ng-template #showComments>    
+    <div *ngFor="let comment of commentsList">
+        <app-comentario [commentId]=comment.eventId ></app-comentario>
+    </div>
 </ng-template>
 
 

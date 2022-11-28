@@ -18,13 +18,13 @@
   margin-left: 10px;
 }
 .comment_header img{
-    border-radius: 50%;
-    max-width: 50px;
-    max-height: 50px;
+  border-radius: 50%;
+  max-width: 50px;
+  max-height: 50px;
 }
 .comment_header h1{
-   color: rgb(255, 255, 255);
-   margin:10px;
+  color: rgb(255, 255, 255);
+  margin:10px;
 
 }
 
@@ -83,7 +83,6 @@
 }
 .reportFormList:focus{
   color: white;
-
 }
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
   background-color: rgb(255, 255, 255);

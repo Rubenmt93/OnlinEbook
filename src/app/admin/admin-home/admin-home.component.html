@@ -1,11 +1,7 @@
-<div class="componentcontainer">  
-
-        
-  <mat-sidenav-container class="profile-container">
-    
+<div class="componentcontainer">          
+  <mat-sidenav-container class="profile-container">    
     <mat-sidenav #sidenav class="sidenav" mode="side" [(opened)]="opened">
-      <mat-icon class="closeSidenav movileElement" (click)="opened=!opened"> close </mat-icon>
-        
+      <mat-icon class="closeSidenav movileElement" (click)="opened=!opened"> close </mat-icon>        
       <mat-nav-list role="list">
         <mat-list-item role="listitem">          
           <img src="{{this.userObject.photoURL}}" alt="">
@@ -16,14 +12,13 @@
           <mat-list-item role="listitem" >  
             <div><mat-icon> book</mat-icon> <span> Validar Libros  </span> </div> 
           </mat-list-item>
-        </a>      
+        </a>    
         
         <a routerLink='./checkCommentReport'>
           <mat-list-item role="listitem">
             <mat-icon> chat_bubble_outline</mat-icon> <span> Reportes Comentarios</span>  
           </mat-list-item>
-        </a>       
-
+        </a>      
         <a routerLink='./checkBookReport'> 
           <mat-list-item role="listitem">
             <mat-icon> report</mat-icon> <span> Reportes Libros </span>  
@@ -33,29 +28,25 @@
           <mat-list-item role="listitem">
             <mat-icon> view_carousel </mat-icon> <span> Carrousel </span>  
           </mat-list-item>
-        </a>    
-            
+        </a>  
         <a routerLink='./paymentAdmin'> 
           <mat-list-item role="listitem">
             <mat-icon> attach_money </mat-icon> <span> Pagos </span>  
           </mat-list-item>
         </a>
       </mat-nav-list>             
-    </mat-sidenav>
-  
+    </mat-sidenav>  
     <mat-sidenav-content>
       <button type="button" 
               mat-raised-button 
               color="basic" 
               class="viewSidenav movileElement"
               (click)="opened=!opened"
-              *ngIf="!opened"> 
-              
+              *ngIf="!opened">               
               <mat-icon>menu</mat-icon>
       </button>
       <router-outlet></router-outlet>
-    </mat-sidenav-content>
-    
+    </mat-sidenav-content>    
   </mat-sidenav-container>
 </div>
    

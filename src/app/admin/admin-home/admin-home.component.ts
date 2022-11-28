@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-home',
@@ -11,8 +10,7 @@ export class AdminHomeComponent implements OnInit {
   userObject:any
   opened=true
   showFiller = false;
-  constructor(private authService:AuthService,
-              private router:Router ) {
+  constructor(private authService:AuthService) {
     this.authService.userStateObs().subscribe(user =>{
       if (user) {                     
         this.userObject= user                            

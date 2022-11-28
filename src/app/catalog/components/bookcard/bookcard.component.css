@@ -7,8 +7,7 @@ main {
   width: 150px;
   -webkit-box-shadow: 15px 14px 24px 1px rgba(0,0,0,0.44);
   -moz-box-shadow: 15px 14px 24px 1px rgba(0,0,0,0.44);
-  box-shadow: 15px 14px 24px 1px rgba(0,0,0,0.44);
-  
+  box-shadow: 15px 14px 24px 1px rgba(0,0,0,0.44);  
 }
 .bookCard-top{
   width:150px ;

@@ -2,8 +2,7 @@
 <div class="componentcontainer">          
   <mat-sidenav-container class="profile-container">    
     <mat-sidenav #sidenav class="sidenav" mode="side" [(opened)]="opened">
-      <mat-icon class="closeSidenav movileElement" (click)="opened=!opened"> close </mat-icon>
-        
+      <mat-icon class="closeSidenav movileElement" (click)="opened=!opened"> close </mat-icon>        
       <mat-nav-list role="list">
         <mat-list-item role="listitem">          
           <img src="{{this.userObject.photoURL}}" alt="">
@@ -31,30 +30,25 @@
           <mat-list-item role="listitem">
             <mat-icon>favorite_border</mat-icon> <span> Libros deseados </span>  
           </mat-list-item>
-        </a> 
-                    
-        
+        </a>                          
         <a routerLink='./myPublishedBooks'> 
           <mat-list-item role="listitem">
             <mat-icon> attach_money</mat-icon>  <span>Mis publicaciones</span>  
           </mat-list-item>
         </a>             
       </mat-nav-list>            
-    </mat-sidenav>
-  
+    </mat-sidenav>  
     <mat-sidenav-content>
       <button type="button" 
               mat-raised-button 
               color="basic" 
               class="viewSidenav movileElement"
               (click)="opened=!opened"
-              *ngIf="!opened"> 
-              
+              *ngIf="!opened">               
               <mat-icon>menu</mat-icon>
       </button>
       <router-outlet></router-outlet>
-    </mat-sidenav-content>
-    
+    </mat-sidenav-content>    
   </mat-sidenav-container>
 </div>
    

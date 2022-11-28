@@ -64,8 +64,6 @@ export class DialogChangePasswd {
     this.router.navigate(['/profile/info']);
   }
 }
-
-
 @Component({
   selector: 'failure-change-passwd-dialog',
   templateUrl: 'change-passwd-dialog-fail.html',

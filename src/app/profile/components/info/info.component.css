@@ -3,11 +3,8 @@
     display: flex;        
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-   
+    flex-direction: column;   
 }
-
-
 .container{
     background: white;
     border-radius: 8px;          
@@ -33,9 +30,8 @@
 td{
     color: black;
 }
- b,mat-list-item{
- color: #3f51b5;
-
+b,mat-list-item{
+    color: #3f51b5;
 }
 
 table{
@@ -47,8 +43,7 @@ tr{
 img{
     max-width: 150px;
     max-height: 150px;
-    border-radius: 50%;
-    
+    border-radius: 50%;    
 }
 .img-container{
     display: flex;
